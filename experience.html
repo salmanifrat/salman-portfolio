@@ -3,11 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience — Mohammad Salman Ifrat</title>
+    <title>Experience & Leadership — Mohammad Salman Ifrat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .plush-card {
+            margin-top: 40px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            padding: 36px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .plush-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.12);
+        }
+        .plush-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .plush-content {
+            flex: 1;
+        }
+        .plush-image-container {
+            width: 0px;
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 0px solid var(--border);
+            opacity: 0;
+            max-width: 0;
+            transform: translateX(30px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .plush-card:hover .plush-image-container {
+            width: 340px;
+            max-width: 340px;
+            opacity: 1;
+            border: 1px solid var(--border);
+            transform: translateX(0) scale(1);
+        }
+        .plush-image-container img {
+            width: 340px;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* IEEE / Conference Role Cards style */
+        .ieee-role-card {
+            margin-top: 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            padding: 28px 32px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .ieee-role-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.12);
+        }
+        .ieee-role-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+        .ieee-role-content {
+            flex: 1;
+        }
+        .ieee-role-image-container {
+            width: 0px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 0px solid var(--border);
+            opacity: 0;
+            max-width: 0;
+            transform: translateX(30px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+        }
+        .ieee-role-card:hover .ieee-role-image-container {
+            width: 280px;
+            max-width: 280px;
+            opacity: 1;
+            border: 1px solid var(--border);
+            transform: translateX(0) scale(1);
+        }
+        .ieee-role-image-container img {
+            width: 280px;
+            height: 200px;
+            object-fit: contain;
+            background: #000;
+        }
+        .ieee-role-image-container::after {
+            content: '🔍 Click to Enlarge';
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #22c55e;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 3px 6px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .ieee-role-image-container:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox Modal */
+        #lightboxModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 15, 14, 0.92);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #lightboxModal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(34, 197, 94, 0.3);
+            object-fit: contain;
+        }
+        #lightboxClose {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: var(--text);
+            font-size: 2.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        #lightboxClose:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .plush-inner, .ieee-role-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .plush-image-container, .ieee-role-image-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 240px;
+                opacity: 1 !important;
+                transform: none !important;
+                border: 1px solid var(--border) !important;
+                margin-top: 20px;
+            }
+            .plush-image-container img, .ieee-role-image-container img {
+                width: 100%;
+                height: 240px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -33,208 +207,246 @@
 
     <div class="page-hero">
         <div class="container">
-            <div class="page-hero-label">Work & Leadership</div>
+            <div class="page-hero-label">Work, Leadership & Community</div>
             <h1 class="page-hero-title">Experience</h1>
-            <p class="page-hero-sub">Entrepreneurship, teaching, IEEE leadership, and community service — all in one place.</p>
+            <p class="page-hero-sub">Entrepreneurship, IEEE leadership, conferences, teaching, and campus volunteering.</p>
         </div>
     </div>
 
     <div class="container" style="padding-top: 0;">
 
-        <!-- Entrepreneurship -->
-        <section class="scroll-reveal">
-            <h2><span>01</span> Entrepreneurship</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">Founder — <span style="color:var(--accent)">PLUSH</span></div>
-                                <div class="timeline-sub">Thrift Business · Sustainability</div>
-                            </div>
-                            <div class="timeline-date">Ongoing</div>
-                        </div>
-                        <p class="timeline-desc">
-                            Founded PLUSH — a thrifting venture built on the belief that conscious consumption can be both stylish and responsible. The business curates pre-loved clothing and accessories, reducing textile waste while making sustainable fashion accessible.
+        <!-- 01 PLUSH -->
+        <section class="scroll-reveal" id="plush">
+            <div class="plush-card">
+                <div class="plush-inner">
+                    <div class="plush-content">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Entrepreneurship · 2024 — Present</div>
+                        <h2 style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">PLUSH — Thrift Business</h2>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-bottom: 16px;">"An expensive experience made affordable."</div>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+                            Founded and led PLUSH to promote sustainable fashion and reduce fast-fashion waste through conscious thrifting. Curated branded apparel starting from affordable price points, managing brand positioning, pop-up stall execution, and active customer engagement.
                         </p>
-                        <div class="badges" style="margin-top: 14px;">
-                            <span class="badge">Entrepreneurship</span>
-                            <span class="badge">Sustainability</span>
-                            <span class="badge">E-Commerce</span>
-                            <span class="badge">Brand Building</span>
+                        <div class="badges" style="margin-bottom: 20px;">
+                            <span class="badge">Founder & Lead</span>
+                            <span class="badge">Sustainable Fashion</span>
+                            <span class="badge">Waste Reduction</span>
+                            <span class="badge">Pop-up Curation</span>
+                        </div>
+                        <div style="display: flex; gap: 16px; align-items: center; border-top: 1px solid var(--border); padding-top: 16px;">
+                            <a href="https://facebook.com/PLUSH.CO" target="_blank" style="font-size: 0.85rem; color: var(--accent); text-decoration: none; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 6px;">
+                                <span>Facebook:</span> PLUSH.CO
+                            </a>
+                            <span style="color: var(--border);">|</span>
+                            <a href="https://instagram.com/GETPLUSHNOW" target="_blank" style="font-size: 0.85rem; color: var(--accent); text-decoration: none; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 6px;">
+                                <span>Instagram:</span> @GETPLUSHNOW
+                            </a>
+                        </div>
+                    </div>
+                    <div class="plush-image-container" onclick="openLightbox('assets/plush_stall.jpg')">
+                        <img src="assets/plush_stall.jpg" alt="PLUSH Stall">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 IEEE NSU Student Branch Chapter -->
+        <section class="scroll-reveal" id="ieee" style="margin-top: 60px;">
+            <div class="nsu-banner-card" style="height: 130px; cursor: pointer;" onclick="window.open('https://ieeensusb.org/', '_blank')">
+                <div class="nsu-banner-bg" style="display: flex; align-items: center; justify-content: flex-end; padding-right: 30px;">
+                    <img src="assets/ieee_logo.png" alt="IEEE NSU Logo" style="height: 75px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
+                </div>
+                <div class="nsu-banner-gradient"></div>
+                <div class="nsu-banner-content">
+                    <h2 class="nsu-banner-title">IEEE NSU Student Branch (INSB) ↗</h2>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+                <!-- Role 1: Sub Executive INSB -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Leadership · 2026 — 2027</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">Sub Executive — Membership Development Team</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">IEEE NSU Student Branch (INSB)</div>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
+                                Engaged and recruited prospective student members into the IEEE community; delivered official presentations at the INSB Fresher Orientation to onboard new cohorts into technical excellence.
+                            </p>
+                        </div>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/ieee_sub_exec.jpg')">
+                            <img src="assets/ieee_sub_exec.jpg" alt="IEEE Sub Executive Poster">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 2: PR In-charge IAS -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Leadership · Jan 2024 — Feb 2025</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">In-charge — PR & Corporate Team & Social Media</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">IEEE IAS (Industry Applications Society) Chapter, NSU</div>
+                            <ul style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin: 0; padding-left: 18px;">
+                                <li style="margin-bottom: 6px;">Directed public relations and corporate communications for the IAS chapter, building collaborative bridges between student engineers and industry professionals.</li>
+                                <li>Managed and curated official social media channels to amplify chapter events, workshops, and technical initiatives.</li>
+                            </ul>
+                        </div>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/ias_logo.png')">
+                            <img src="assets/ias_logo.png" alt="IEEE IAS Chapter Logo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 3: Events PES -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Active Member</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">Member — Event Management Team</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">IEEE PES (Power and Energy Society) Chapter, NSU</div>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
+                                Coordinated logistics, venue management, and participant engagement for high-impact technical workshops and seminars hosted by IEEE PES.
+                            </p>
+                        </div>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/pes_logo.jpg')">
+                            <img src="assets/pes_logo.jpg" alt="IEEE PES Chapter Logo">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- IEEE NSU Student Branch -->
-        <section id="ieee" class="scroll-reveal">
-            <h2><span>02</span> IEEE NSU Student Branch Chapter</h2>
-
-            <!-- IEEE header banner -->
-            <div class="ieee-page-banner">
-                <div class="ieee-page-banner-left">
-                    <div class="ieee-logo-text" style="font-size: 2rem;">IEEE</div>
-                    <div>
-                        <div style="font-size: 1rem; font-weight: 600; color: var(--text);">NSU Student Branch (INSB)</div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">North South University, Dhaka</div>
-                    </div>
+        <!-- 03 Volunteering in Conferences -->
+        <section class="scroll-reveal" id="conferences" style="margin-top: 60px;">
+            <div class="nsu-banner-card" style="height: 130px; cursor: default;">
+                <div class="nsu-banner-bg">
+                    <img src="assets/nsu_campus.jpg" alt="International Conferences" onerror="this.src='assets/banner.jpg';">
+                    <div class="nsu-banner-gradient"></div>
                 </div>
-                <div class="ieee-page-banner-right">
-                    <span class="ieee-role-chip">3 Active Roles</span>
+                <div class="nsu-banner-content">
+                    <h2 class="nsu-banner-title">Volunteering in Conferences</h2>
                 </div>
             </div>
 
-            <div class="timeline" style="margin-top: 32px;">
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">Sub Executive — Membership Development Team</div>
-                                <div class="timeline-sub">IEEE NSU Student Branch (INSB)</div>
-                            </div>
-                            <div class="timeline-date">Ongoing</div>
+            <div style="margin-top: 24px;">
+                <!-- Conference 1: July Revolution -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Volunteer · July 27, 2025</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">1st International Conference on the July Revolution (ICJR-1, 2025)</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">Senate Bhaban, University of Dhaka</div>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
+                                Volunteered actively during the historic 1st International Conference on the July Revolution. Contributed to the successful coordination and execution of high-profile academic sessions and delegate management.
+                            </p>
                         </div>
-                        <p class="timeline-desc">
-                            Engaged and recruited students into the IEEE NSU branch. Delivered presentations at the INSB Fresher Orientation, introducing new students to IEEE's mission, opportunities, and the value of professional engineering communities.
-                        </p>
-                        <div class="badges" style="margin-top: 14px;">
-                            <span class="badge">Student Recruitment</span>
-                            <span class="badge">Public Speaking</span>
-                            <span class="badge">Orientation Events</span>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/cert_july_rev.jpg')">
+                            <img src="assets/cert_july_rev.jpg" alt="ICJR-1 2025 Certificate">
                         </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">In-charge — PR & Corporate Team</div>
-                                <div class="timeline-sub">IEEE IAS (Industry Applications Society) Chapter, NSU</div>
-                            </div>
-                            <div class="timeline-date">Ongoing</div>
+                <!-- Conference 2: SPAC 25 -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Participant / Volunteer · 2025</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">Student Professional Awareness Conference 2025 (SPAC 25)</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">IEEE NSU Student Branch</div>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
+                                Successfully participated in SPAC 25, gaining professional insights, technical networking, and industry leadership exposure organized by IEEE NSU Student Branch.
+                            </p>
                         </div>
-                        <p class="timeline-desc">
-                            Led public relations and corporate outreach for the IAS chapter at NSU. Managed communications between the chapter and industry partners, coordinated sponsorships, and represented the chapter at external engagements.
-                        </p>
-                        <div class="badges" style="margin-top: 14px;">
-                            <span class="badge">Public Relations</span>
-                            <span class="badge">Corporate Outreach</span>
-                            <span class="badge">Sponsorship</span>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/cert_spac25.jpg')">
+                            <img src="assets/cert_spac25.jpg" alt="SPAC 25 Certificate">
                         </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">Member — Event Management Team</div>
-                                <div class="timeline-sub">IEEE PES (Power and Energy Society) Chapter, NSU</div>
-                            </div>
-                            <div class="timeline-date">Ongoing</div>
+                <!-- Conference 3: China-South Asia Civilization -->
+                <div class="ieee-role-card">
+                    <div class="ieee-role-inner">
+                        <div class="ieee-role-content">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px;">Student Volunteer · Dec 27 — 28, 2024</div>
+                            <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">International Conference on “China - South Asia Civilization and Connectivity”</h3>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;">North South University (SIPG & CSCSS)</div>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
+                                Served as a Student Volunteer for the international conference exploring civilization, connectivity, history, and contemporary geopolitical issues between China and South Asia.
+                            </p>
                         </div>
-                        <p class="timeline-desc">
-                            Contributed to the planning and execution of IEEE PES events at NSU — handling logistics, venue coordination, volunteer management, and participant engagement for engineering and energy-focused programmes.
-                        </p>
-                        <div class="badges" style="margin-top: 14px;">
-                            <span class="badge">Event Planning</span>
-                            <span class="badge">Logistics</span>
-                            <span class="badge">Team Coordination</span>
+                        <div class="ieee-role-image-container" onclick="openLightbox('assets/cert_china_conf.jpg')">
+                            <img src="assets/cert_china_conf.jpg" alt="China-South Asia Conference Certificate">
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Teaching -->
-        <section class="scroll-reveal">
-            <h2><span>03</span> Teaching</h2>
-            <div class="timeline">
+        <!-- 04 Teaching -->
+        <section class="scroll-reveal" id="teaching" style="margin-top: 60px;">
+            <div class="nsu-banner-card" style="height: 130px; cursor: default;">
+                <div class="nsu-banner-bg">
+                    <img src="assets/mm_college_new.webp" alt="Teaching" onerror="this.src='assets/banner.jpg';">
+                    <div class="nsu-banner-gradient"></div>
+                </div>
+                <div class="nsu-banner-content">
+                    <h2 class="nsu-banner-title">Teaching & Academic Mentorship</h2>
+                </div>
+            </div>
+
+            <div class="timeline" style="margin-top: 24px;">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-body">
                         <div class="timeline-header">
                             <div>
-                                <div class="timeline-title">Private Tutor</div>
-                                <div class="timeline-sub">RAJUK Uttara Model School & College · Hurdco International · Playpen School</div>
+                                <div class="timeline-title">Private Academic Tutor</div>
+                                <div class="timeline-sub">RAJUK Uttara · Hurdco International · Playpen School</div>
                             </div>
-                            <div class="timeline-date">Past</div>
+                            <div class="timeline-date">Ongoing / Past</div>
                         </div>
-                        <p class="timeline-desc">
-                            Provided one-to-one academic support for students across Bangla Medium, English Version, and English Medium curricula. Covered homework guidance, concept building, and exam preparation.
+                        <p class="timeline-desc" style="margin-top: 10px;">
+                            Taught students from premier institutions (RAJUK, Hurdco, Playpen) across Bangla, English Version, and English Medium curricula in Mathematics, Science, ICT, and Basic Programming. Provided one-to-one academic support, homework guidance, and exam preparation.
                         </p>
-                        <h3 class="subsection-title" style="margin-top: 20px;">Subjects Taught</h3>
-                        <div class="badges">
+                        <div class="badges" style="margin-top: 14px;">
                             <span class="badge">Mathematics</span>
-                            <span class="badge">English</span>
-                            <span class="badge">Science</span>
-                            <span class="badge">ICT / Computer Studies</span>
+                            <span class="badge">Science & ICT</span>
                             <span class="badge">Basic Programming</span>
+                            <span class="badge">Exam Prep</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Volunteer & Community -->
-        <section class="scroll-reveal">
-            <h2><span>04</span> Volunteer & Community</h2>
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">Volunteer — International Conferences (×2)</div>
-                                <div class="timeline-sub">IEEE & Related Organisations</div>
-                            </div>
-                        </div>
-                        <p class="timeline-desc">
-                            Served as an on-ground volunteer at two international conferences hosted under IEEE and affiliated bodies — supporting delegate coordination, event logistics, and participant experience.
-                        </p>
-                    </div>
+        <!-- 05 Others / Campus Community -->
+        <section class="scroll-reveal" id="others" style="margin-top: 60px;">
+            <div class="nsu-banner-card" style="height: 130px; cursor: default;">
+                <div class="nsu-banner-bg">
+                    <img src="assets/ac_laha_school.jpg" alt="Campus Community" onerror="this.src='assets/banner.jpg';">
+                    <div class="nsu-banner-gradient"></div>
                 </div>
+                <div class="nsu-banner-content">
+                    <h2 class="nsu-banner-title">Campus & Community Involvement</h2>
+                </div>
+            </div>
 
+            <div class="timeline" style="margin-top: 24px;">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-body">
                         <div class="timeline-header">
                             <div>
-                                <div class="timeline-title">NSU Fresher Advising & Fresher Orientation</div>
+                                <div class="timeline-title">NSU Fresher Advising & Orientation Assistant</div>
                                 <div class="timeline-sub">North South University</div>
                             </div>
+                            <div class="timeline-date">University Service</div>
                         </div>
-                        <p class="timeline-desc">
-                            Guided new NSU students through the academic advising process and fresher orientation — helping them navigate course selection, campus life, and university resources.
+                        <p class="timeline-desc" style="margin-top: 10px;">
+                            Guided and assisted incoming freshman students during university orientation and academic advising sessions, helping them navigate course registration, campus life, and university resources.
                         </p>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-body">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-title">IEEE Workshops & Industrial Tours</div>
-                                <div class="timeline-sub">IEEE NSU & Affiliated Chapters</div>
-                            </div>
-                        </div>
-                        <p class="timeline-desc">
-                            Actively participated in workshops and industrial tours organised by IEEE and related organisations, building industry awareness and expanding professional networks across engineering sectors.
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -243,6 +455,23 @@
         </footer>
     </div>
 
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" onclick="closeLightbox()">
+        <span id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="" alt="Enlarged View">
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        function openLightbox(imgSrc) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
