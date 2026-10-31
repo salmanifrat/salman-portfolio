@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .status-msg {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">MSI. // Admin</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">← View Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginSection" class="admin-container">
+            <h2 style="margin-bottom: 20px; font-family: 'Cinzel', serif;">Admin Authentication</h2>
+            <p class="about-text" style="font-size: 0.9rem; margin-bottom: 20px;">Enter your admin password to manage your portfolio content.</p>
+            <div class="form-group">
+                <label>Password (Default: salman123)</label>
+                <input type="password" id="adminPasswordInput" placeholder="Enter password...">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="loginAdmin()">Login to Dashboard</button>
+            <div id="loginStatus" class="status-msg"></div>
+        </div>
+
+        <!-- Dashboard Screen (Hidden until login) -->
+        <div id="dashboardSection" class="admin-container" style="display: none;">
+            <h2 style="margin-bottom: 20px; font-family: 'Cinzel', serif;">Portfolio Dashboard</h2>
+
+            <!-- Separate Banner Photo Upload -->
+            <div class="form-group">
+                <label>Cover Banner Image (Hero Background)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <input type="file" id="bannerFileInput" accept="image/*" style="padding: 8px;">
+                    <button class="btn btn-primary" onclick="uploadBannerPhoto()">Upload Banner</button>
+                </div>
+                <div id="bannerStatus" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;"></div>
+            </div>
+
+            <!-- Separate Profile Photo Upload -->
+            <div class="form-group">
+                <label>Profile Picture (Circular Avatar)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <input type="file" id="profileFileInput" accept="image/*" style="padding: 8px;">
+                    <button class="btn btn-primary" onclick="uploadProfilePhoto()">Upload Profile Pic</button>
+                </div>
+                <div id="profileStatus" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;"></div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 25px 0;">
+
+            <!-- Portfolio Info Form -->
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="editName">
+            </div>
+            <div class="form-group">
+                <label>Professional Title</label>
+                <input type="text" id="editTitle">
+            </div>
+            <div class="form-group">
+                <label>Affiliation / Department</label>
+                <input type="text" id="editAffiliation">
+            </div>
+            <div class="form-group">
+                <label>About Me Bio</label>
+                <textarea id="editAbout"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Change Admin Password (Optional)</label>
+                <input type="password" id="editPassword" placeholder="Leave blank to keep current password">
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="savePortfolioChanges()">Save Changes</button>
+            <div id="saveStatus" class="status-msg"></div>
+        </div>
+    </div>
+
+    <script>
+        async function loginAdmin() {
+            const password = document.getElementById('adminPasswordInput').value;
+            const status = document.getElementById('loginStatus');
+
+            const formData = new FormData();
+            formData.append('password', password);
+
+            try {
+                const res = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+                if (result.success) {
+                    document.getElementById('loginSection').style.display = 'none';
+                    document.getElementById('dashboardSection').style.display = 'block';
+                    loadDashboardData();
+                } else {
+                    status.style.color = '#ef4444';
+                    status.innerText = 'Incorrect password!';
+                }
+            } catch (err) {
+                status.style.color = '#ef4444';
+                status.innerText = 'Login failed. Server error.';
+            }
+        }
+
+        async function loadDashboardData() {
+            try {
+                const res = await fetch('/api/data');
+                const data = await res.json();
+                document.getElementById('editName').value = data.name || '';
+                document.getElementById('editTitle').value = data.title || '';
+                document.getElementById('editAffiliation').value = data.affiliation || '';
+                document.getElementById('editAbout').value = data.about || '';
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function uploadBannerPhoto() {
+            const fileInput = document.getElementById('bannerFileInput');
+            const status = document.getElementById('bannerStatus');
+            if (fileInput.files.length === 0) {
+                status.innerText = 'Please select a banner image first.';
+                status.style.color = '#ef4444';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                status.innerText = 'Uploading banner...';
+                const res = await fetch('/api/admin/upload-banner', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+                if (result.success) {
+                    status.style.color = '#10b981';
+                    status.innerText = 'Banner uploaded successfully! Refresh portfolio.';
+                } else {
+                    status.style.color = '#ef4444';
+                    status.innerText = 'Banner upload failed.';
+                }
+            } catch (err) {
+                status.style.color = '#ef4444';
+                status.innerText = 'Error uploading banner.';
+            }
+        }
+
+        async function uploadProfilePhoto() {
+            const fileInput = document.getElementById('profileFileInput');
+            const status = document.getElementById('profileStatus');
+            if (fileInput.files.length === 0) {
+                status.innerText = 'Please select a profile picture first.';
+                status.style.color = '#ef4444';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                status.innerText = 'Uploading profile pic...';
+                const res = await fetch('/api/admin/upload-profile', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+                if (result.success) {
+                    status.style.color = '#10b981';
+                    status.innerText = 'Profile picture uploaded successfully! Refresh portfolio.';
+                } else {
+                    status.style.color = '#ef4444';
+                    status.innerText = 'Profile picture upload failed.';
+                }
+            } catch (err) {
+                status.style.color = '#ef4444';
+                status.innerText = 'Error uploading profile picture.';
+            }
+        }
+
+        async function savePortfolioChanges() {
+            const status = document.getElementById('saveStatus');
+            const formData = new FormData();
+            formData.append('name', document.getElementById('editName').value);
+            formData.append('title', document.getElementById('editTitle').value);
+            formData.append('affiliation', document.getElementById('editAffiliation').value);
+            formData.append('about', document.getElementById('editAbout').value);
+            formData.append('new_password', document.getElementById('editPassword').value);
+
+            try {
+                const res = await fetch('/api/admin/update', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+                if (result.success) {
+                    status.style.color = '#10b981';
+                    status.innerText = 'Changes saved successfully!';
+                } else {
+                    status.style.color = '#ef4444';
+                    status.innerText = 'Save failed.';
+                }
+            } catch (err) {
+                status.style.color = '#ef4444';
+                status.innerText = 'Error saving changes.';
+            }
+        }
+    </script>
+</body>
+</html>

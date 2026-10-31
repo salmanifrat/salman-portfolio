@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo" id="navLogo">Mohammad Salman Ifrat</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home & About</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="experience.html" class="nav-item">Experience & IF</a>
+                <a href="projects.html" class="nav-item active">Projects</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
+            <div class="hero-info" style="grid-column: 1 / -1;">
+                <h1>Featured Projects & Research</h1>
+                <p class="about-text" style="margin-top: 10px;">
+                    A showcase of my flagship RAG systems, AI research, and software engineering projects.
+                </p>
+            </div>
+        </header>
+
+        <section class="scroll-reveal" style="padding: 40px 0 80px;">
+            <h2><span>01</span> Flagship System</h2>
+
+            <!-- Flagship Project Card -->
+            <div class="card flagship-card" style="margin-top: 30px;">
+                <span class="date">Flagship Project • CSE327 & CSE299</span>
+                <h3>TaxEaseBD</h3>
+                <p class="project-subtitle">RAG-Powered Tax Compliance Assistant for Bangladesh</p>
+                <p class="about-text" style="margin: 12px 0 20px;">
+                    A specialized Retrieval-Augmented Generation (RAG) assistant trained on National Board of Revenue (NBR) tax laws and statutory regulatory orders in Bangladesh. Built with FastAPI, LangChain, FAISS, and LLaMA via Groq.
+                </p>
+                <div class="badges" style="margin-bottom: 20px;">
+                    <span class="badge">Python</span>
+                    <span class="badge">FastAPI</span>
+                    <span class="badge">LangChain</span>
+                    <span class="badge">FAISS</span>
+                    <span class="badge">Groq / LLaMA</span>
+                </div>
+                <div class="social-buttons">
+                    <a href="https://github.com/TODO/taxeasebd" target="_blank" class="btn btn-primary">GitHub Repo</a>
+                    <a href="https://TODO-demo.vercel.app" target="_blank" class="btn">Live Demo</a>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 60px;"><span>02</span> Research & Utilities</h2>
+            <!-- Secondary Grid Projects -->
+            <div class="grid-2" style="margin-top: 30px;">
+                <div class="card">
+                    <span class="date">Senior Design • CSE499</span>
+                    <h3>Mars Image Novelty Detection</h3>
+                    <p class="about-text" style="margin: 10px 0;">Developing a computer vision model to categorize Mars surface imagery objects into familiar, unfamiliar, and uncertain classes. Currently in literature review and dataset curation stage.</p>
+                </div>
+                <div class="card">
+                    <span class="date">AI Tooling</span>
+                    <h3>Custom RAG Evaluation Pipeline</h3>
+                    <p class="about-text" style="margin: 10px 0;">A benchmarking harness for evaluating retrieval relevance and hallucination rates in domain-specific technical documentation QA systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

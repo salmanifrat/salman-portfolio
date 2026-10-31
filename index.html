@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Salman Ifrat — Portfolio</title>
+    <meta name="description" content="Portfolio of Mohammad Salman Ifrat, 4th-year CSE student at North South University specializing in RAG systems, AI, and software engineering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Interactive Cursor Amber Spotlight -->
+    <div id="cursor-spotlight"></div>
+
+    <!-- Posh Cinematic Welcome Overlay -->
+    <div id="welcome-overlay" onclick="dismissWelcome()">
+        <div class="welcome-content">
+            <div class="welcome-greeting">Assalamu Alaikum</div>
+            <div class="welcome-sub">Mohammad Salman Ifrat</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 24px; letter-spacing: 0.2em;">CLICK ANYWHERE TO ENTER</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Top Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo-container">
+                <div class="nav-profile-pic" id="navProfilePic">
+                    <img src="assets/profile.jpg" alt="Mohammad Salman Ifrat" class="nav-profile-img" onerror="this.src='assets/photo.jpg';">
+                </div>
+                <a href="index.html" class="logo">Mohammad Salman Ifrat</a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="experience.html" class="nav-item">Experience</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <a href="admin" class="nav-item" style="color: var(--accent);">Admin</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Usain Bolt Full-Screen Hero Section (Single Name element on banner that morphs into profile pic + name + details on blur, scrolling away naturally with banner) -->
+    <header class="bolt-hero" id="boltHero">
+        <div class="bolt-hero-bg">
+            <img src="assets/banner.jpg" alt="Mohammad Salman Ifrat Banner" class="bolt-hero-img" onerror="this.src='assets/photo.jpg';">
+            <div class="bolt-hero-gradient"></div>
+        </div>
+
+        <div class="bolt-hero-content" id="heroContent">
+            <div class="profile-pic-container">
+                <img src="assets/profile.jpg" alt="Mohammad Salman Ifrat Profile" class="profile-pic-img" onerror="this.src='assets/photo.jpg';">
+            </div>
+            <div class="name-details-wrapper">
+                <h2 class="bolt-hero-name">Mohammad Salman Ifrat</h2>
+                <div class="profile-details">
+                    <div class="profile-title">RAG Systems Engineer & CSE Scholar</div>
+                    <div class="profile-affiliation">Department of Computer Science & Engineering, North South University</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-down-indicator">
+            <span>SCROLL TO EXPLORE</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 60px;">
+        <!-- About Me Section -->
+        <section id="about" class="scroll-reveal">
+            <h2><span>01</span> About Me</h2>
+            <p class="about-text">
+                I am a 4th-year Computer Science and Engineering student at <strong>North South University</strong>, Dhaka, graduating in late 2027. My technical work centers around Retrieval-Augmented Generation (RAG) systems, building robust backend architectures with LangChain, FAISS, HuggingFace embeddings, Groq/LLaMA, and FastAPI. Alongside AI engineering, I am active in student leadership, academic research, and community education.
+            </p>
+            <h3 class="subsection-title">Core Focus Areas</h3>
+            <div class="badges">
+                <span class="badge">RAG Systems</span>
+                <span class="badge">LangChain & FAISS</span>
+                <span class="badge">FastAPI & Python</span>
+                <span class="badge">LLM Integration</span>
+                <span class="badge">Novelty Detection</span>
+            </div>
+        </section>
+
+        <!-- Ask This Page (Interactive RAG Search) -->
+        <section id="ask-page" class="scroll-reveal">
+            <h2><span>02</span> Ask This Page (Mini RAG)</h2>
+            <p class="about-text">Have a question about my background, projects, or research? Query my portfolio knowledge base directly:</p>
+
+            <div class="ask-box">
+                <div class="preset-chips">
+                    <button class="chip" onclick="askPreset('What is TaxEaseBD?')">What is TaxEaseBD?</button>
+                    <button class="chip" onclick="askPreset('What are Salman\'s research interests?')">Research interests?</button>
+                    <button class="chip" onclick="askPreset('What is IF?')">What is IF?</button>
+                    <button class="chip" onclick="askPreset('When is graduation?')">Graduation date?</button>
+                </div>
+
+                <div class="ask-input-row">
+                    <input type="text" id="ragQueryInput" placeholder="Ask anything about Salman's background..." autocomplete="off">
+                    <button class="theme-toggle" style="padding: 14px 24px; background: var(--accent); color: var(--bg); border: none; font-weight: 600;" onclick="runRagQuery()">Search</button>
+                </div>
+
+                <div id="ragResultContainer" class="rag-result-box" style="display: none;">
+                    <div id="ragAnswerText"></div>
+                    <div id="ragSourcesBox" class="rag-sources"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-reveal">
+            <h2><span>03</span> Get In Touch</h2>
+            <p class="about-text">
+                Whether you want to discuss RAG architectures, academic research, tutoring inquiries, or just chat—my inbox is open.
+            </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
+                <a href="mailto:salman.ifrat@northsouth.edu" class="theme-toggle" style="padding: 12px 24px; background: var(--accent); color: var(--bg); border: none; text-decoration: none;">Send Email</a>
+                <a href="https://github.com" target="_blank" class="theme-toggle" style="padding: 12px 24px; text-decoration: none;">GitHub Profile</a>
+                <a href="https://linkedin.com" target="_blank" class="theme-toggle" style="padding: 12px 24px; text-decoration: none;">LinkedIn Profile</a>
+            </div>
+                </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision & RAG.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

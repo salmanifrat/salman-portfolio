@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience & IF — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo" id="navLogo">Mohammad Salman Ifrat</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home & About</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="experience.html" class="nav-item active">Experience & IF</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
+            <div class="hero-info" style="grid-column: 1 / -1;">
+                <h1>Experience, Leadership & "IF" Brand</h1>
+                <p class="about-text" style="margin-top: 10px;">
+                    A comprehensive look at my professional journey, entrepreneurial ventures, academic leadership, and content creation.
+                </p>
+            </div>
+        </header>
+
+        <!-- Business & Professional Ventures -->
+        <section class="scroll-reveal" style="padding: 40px 0;">
+            <h2><span>01</span> Ventures & Businesses</h2>
+            <div class="grid-2" style="margin-top: 30px;">
+                <div class="card">
+                    <span class="date">Entrepreneurial Venture</span>
+                    <h3>Business & Consulting Projects</h3>
+                    <p class="about-text" style="margin: 10px 0;">
+                        Building and advising digital solutions, streamlining workflows, and exploring tech-driven commercial ideas tailored for the local and remote ecosystem.
+                    </p>
+                </div>
+                <div class="card">
+                    <span class="date">Education & Mentorship</span>
+                    <h3>Private Academic Tutoring</h3>
+                    <p class="about-text" style="margin: 10px 0;">
+                        Mentoring students across Bangla Medium, English Version, and English Medium in Mathematics, Physics, Chemistry, ICT, and Basic Programming.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership & Conferences -->
+        <section class="scroll-reveal" style="padding: 40px 0;">
+            <h2><span>02</span> Leadership & IEEE</h2>
+            <div class="timeline" style="margin-top: 30px;">
+                <div class="timeline-item">
+                    <span class="timeline-date">2024 — Present</span>
+                    <h3>Sub Executive — Membership Development Team</h3>
+                    <p class="timeline-org">IEEE NSU Student Branch</p>
+                    <p class="timeline-desc">Leading member engagement initiatives, organizing tech seminars, and fostering collaboration among engineering students.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2023 — Present</span>
+                    <h3>Academic Conference Volunteer</h3>
+                    <p class="timeline-org">International Conferences @ NSU</p>
+                    <p class="timeline-desc">Volunteered at two major international academic conferences hosted at North South University, handling technical coordination and guest hospitality.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- "IF" Brand Section -->
+        <section class="scroll-reveal" style="padding: 40px 0 80px;" id="if-brand">
+            <h2><span>03</span> "IF" Content Brand</h2>
+            <p class="about-text">
+                <strong>"IF"</strong> is my personal creative outlet and content brand on Instagram and YouTube where I explore Banglish psychology, philosophy, modern existentialism, and social commentary. <em>Note: Content uploads are currently on hiatus while focusing on final year RAG research, but will resume soon.</em>
+            </p>
+
+            <div class="grid-2" style="margin-top: 30px;">
+                <div class="card" style="text-align: center; padding: 40px 24px;">
+                    <span class="date">Instagram Channel</span>
+                    <h3 style="margin-bottom: 8px;">"IF" Reels & Shorts</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Psychological insights and social commentary in Banglish.</p>
+                    <a href="https://instagram.com/TODO" target="_blank" class="btn" style="display: inline-flex;">Visit Instagram ↗</a>
+                </div>
+                <div class="card" style="text-align: center; padding: 40px 24px;">
+                    <span class="date">YouTube Channel</span>
+                    <h3 style="margin-bottom: 8px;">"IF" Video Essays</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Long-form philosophical explorations and student life reflections.</p>
+                    <a href="https://youtube.com/@TODO" target="_blank" class="btn" style="display: inline-flex;">Visit YouTube ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

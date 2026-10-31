@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Corner — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo" id="navLogo">Mohammad Salman Ifrat</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home & About</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="experience.html" class="nav-item">Experience & IF</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="weird.html" class="nav-item active">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
+            <div class="hero-info" style="grid-column: 1 / -1;">
+                <h1>The Weird Corner</h1>
+                <p class="about-text" style="margin-top: 10px;">
+                    A glimpse into unconventional beliefs, half-baked ideas, and personal philosophies.
+                </p>
+            </div>
+        </header>
+
+        <section class="scroll-reveal" style="padding: 40px 0 80px;">
+            <h2><span>01</span> Thoughts & Easter Eggs</h2>
+
+            <div class="grid-2" style="margin-top: 30px;">
+                <div class="card">
+                    <span class="date">Belief 01</span>
+                    <h3>Curiosity > Memorization</h3>
+                    <p class="about-text" style="margin: 10px 0;">Exams test memory; real-world engineering tests the willingness to read 10-year-old forum threads at 3 AM.</p>
+                </div>
+                <div class="card">
+                    <span class="date">Belief 02</span>
+                    <h3>Code is Poetry</h3>
+                    <p class="about-text" style="margin: 10px 0;">If a function requires a 20-line comment to explain what it does, the abstraction is wrong.</p>
+                </div>
+                <div class="card">
+                    <span class="date">Idea Unbuilt</span>
+                    <h3>Bangla Dialect Translator</h3>
+                    <p class="about-text" style="margin: 10px 0;">An LLM fine-tuned exclusively on regional Bangladeshi dialects to preserve linguistic nuances.</p>
+                </div>
+                <div class="card">
+                    <span class="date">Easter Egg</span>
+                    <h3>Midnight Coder</h3>
+                    <p class="about-text" style="margin: 10px 0;">90% of my best debugging breakthroughs happen between 1 AM and 3 AM with lo-fi instrumental beats playing.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

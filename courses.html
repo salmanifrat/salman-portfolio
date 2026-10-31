@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo" id="navLogo">Mohammad Salman Ifrat</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home & About</a>
+                <a href="courses.html" class="nav-item active">Courses</a>
+                <a href="experience.html" class="nav-item">Experience & IF</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
+            <div class="hero-info" style="grid-column: 1 / -1;">
+                <h1>CSE Coursework & Learning Outcomes</h1>
+                <p class="about-text" style="margin-top: 10px;">
+                    Detailed breakdown of core academic coursework completed during my Computer Science & Engineering degree at North South University, including topics covered and practical learning outcomes.
+                </p>
+            </div>
+        </header>
+
+        <section class="scroll-reveal" style="padding: 40px 0 80px;">
+            <h2><span>01</span> Completed CSE Courses</h2>
+
+            <div class="courses-detailed-grid" style="display: grid; gap: 24px; margin-top: 30px;">
+
+                <div class="card">
+                    <span class="date">CSE 221 • Algorithms & Data Structures</span>
+                    <h3>Data Structures & Algorithms</h3>
+                    <p class="about-text" style="margin: 10px 0 15px;"><strong>Topics Covered:</strong> Trees, Graphs, Dynamic Programming, Greedy Algorithms, Sorting, Hashing, Time & Space Complexity Analysis.</p>
+                    <p style="font-size: 0.9rem; color: var(--text);"><strong>Key Learning Outcomes:</strong> Mastered efficient problem-solving paradigms, optimizing computational time and memory footprints for complex backend systems.</p>
+                </div>
+
+                <div class="card">
+                    <span class="date">CSE 311 • Database Systems</span>
+                    <h3>Database Management Systems</h3>
+                    <p class="about-text" style="margin: 10px 0 15px;"><strong>Topics Covered:</strong> Relational Algebra, SQL, Normalization (1NF to BCNF), Indexing, Transactions, Concurrency Control, NoSQL basics.</p>
+                    <p style="font-size: 0.9rem; color: var(--text);"><strong>Key Learning Outcomes:</strong> Designed robust relational schemas, wrote optimized complex queries, and ensured ACID compliance for high-load database transactions.</p>
+                </div>
+
+                <div class="card">
+                    <span class="date">CSE 327 • Software Engineering</span>
+                    <h3>Software Engineering & System Design</h3>
+                    <p class="about-text" style="margin: 10px 0 15px;"><strong>Topics Covered:</strong> Agile/Scrum Methodologies, UML Modeling, Design Patterns, Testing Frameworks, CI/CD pipelines.</p>
+                    <p style="font-size: 0.9rem; color: var(--text);"><strong>Key Learning Outcomes:</strong> Gained hands-on team engineering experience, building modular, maintainable software architectures aligned with industry standards.</p>
+                </div>
+
+                <div class="card">
+                    <span class="date">CSE 331 • Computer Networks</span>
+                    <h3>Computer Networks</h3>
+                    <p class="about-text" style="margin: 10px 0 15px;"><strong>Topics Covered:</strong> OSI & TCP/IP Models, Routing Protocols, Socket Programming, HTTP/HTTPS, DNS, Network Security.</p>
+                    <p style="font-size: 0.9rem; color: var(--text);"><strong>Key Learning Outcomes:</strong> Understood packet transmission mechanics, network socket communication, and protocols underpinning modern web infrastructure.</p>
+                </div>
+
+                <div class="card">
+                    <span class="date">CSE 373 • Artificial Intelligence</span>
+                    <h3>Artificial Intelligence</h3>
+                    <p class="about-text" style="margin: 10px 0 15px;"><strong>Topics Covered:</strong> Heuristic Search, A* Algorithm, Knowledge Representation, Propositional Logic, Intro to Machine Learning & Neural Networks.</p>
+                    <p style="font-size: 0.9rem; color: var(--text);"><strong>Key Learning Outcomes:</strong> Built autonomous agents and intelligent search systems, laying the groundwork for modern LLM and RAG specialization.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
