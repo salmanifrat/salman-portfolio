@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education & Transcripts — Mohammad Salman Ifrat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mohammad Salman Ifrat</a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="education.html" class="nav-item active">Education</a>
+                <a href="experience.html" class="nav-item">Experience</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-label">Academic Record & Transcript</div>
+            <h1 class="page-hero-title">Education</h1>
+            <p class="page-hero-sub">Degrees, institutions, and comprehensive coursework breakdown at North South University.</p>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 0;">
+
+        <!-- University Section -->
+        <section class="scroll-reveal">
+            <!-- NSU Banner Card with Campus Background & Gradient Overlay -->
+            <a href="https://www.northsouth.edu" target="_blank" class="nsu-banner-card" title="Visit North South University">
+                <div class="nsu-banner-bg">
+                    <img src="assets/nsu_plaza.jpg" alt="North South University Campus" onerror="this.src='assets/nsu_campus.jpg';">
+                    <div class="nsu-banner-gradient"></div>
+                </div>
+                <div class="nsu-banner-content">
+                    <h2 class="nsu-banner-title">North South University</h2>
+                </div>
+            </a>
+
+            <div class="timeline" style="margin-top: 32px;">
+                <div class="timeline-item" id="bscnsu">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <a href="https://ece.northsouth.edu/undergraduate/academics/programs/bs-cse/" target="_blank" class="degree-glow-box" title="Visit NSU CSE Department">
+                                    Bachelor of Science — Computer Science & Engineering
+                                </a>
+                                <div class="timeline-sub" style="margin-top: 10px;">North South University, Bashundhara, Dhaka</div>
+                            </div>
+                            <div class="timeline-date">2022 — 2027 (Expected)</div>
+                        </div>
+                        <p class="timeline-desc" style="margin-top: 14px;">
+                            Pursuing a full-fledged BSc in CSE at one of Bangladesh's leading private universities. Coursework spans core computer science fundamentals through to applied machine learning, software engineering, and senior design research.
+                        </p>
+
+                        <!-- CSE COURSES -->
+                        <h3 class="subsection-title" style="margin-top: 36px;">Computer Science & Engineering (CSE) Courses</h3>
+                        <div class="course-grid">
+                            <div class="course-card" data-desc="Fundamentals of programming logic, control structures, and modular functions.">
+                                <div class="course-row"><span class="c-code">CSE115</span><span class="c-name">Programming Language I</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Fundamentals of programming logic, control structures, and modular functions.</div>
+                            </div>
+                            <div class="course-card" data-desc="Hands-on coding lab implementing basic programming logic and algorithms in C.">
+                                <div class="course-row"><span class="c-code">CSE115L</span><span class="c-name">Programming Language I Lab</span><span class="c-cr">1.0 cr</span></div>
+                                <div class="course-desc">Hands-on coding lab implementing basic programming logic and algorithms in C.</div>
+                            </div>
+                            <div class="course-card" data-desc="Mathematical logic, set theory, graph theory, and combinatorial analysis.">
+                                <div class="course-row"><span class="c-code">CSE173</span><span class="c-name">Discrete Mathematics</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Mathematical logic, set theory, graph theory, and combinatorial analysis.</div>
+                            </div>
+                            <div class="course-card" data-desc="Object-oriented programming principles, pointers, classes, and memory management.">
+                                <div class="course-row"><span class="c-code">CSE215</span><span class="c-name">Programming Language II</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Object-oriented programming principles, pointers, classes, and memory management.</div>
+                            </div>
+                            <div class="course-card" data-desc="Practical implementation of OOP paradigms using C++ / Java.">
+                                <div class="course-row"><span class="c-code">CSE215L</span><span class="c-name">Programming Language II Lab</span><span class="c-cr">1.0 cr</span></div>
+                                <div class="course-desc">Practical implementation of OOP paradigms using C++ / Java.</div>
+                            </div>
+                            <div class="course-card" data-desc="Linear and non-linear data structures, sorting, searching, and algorithm efficiency.">
+                                <div class="course-row"><span class="c-code">CSE225</span><span class="c-name">Data Structure & Algorithms</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Linear and non-linear data structures, sorting, searching, and algorithm efficiency.</div>
+                            </div>
+                            <div class="course-card" data-desc="Boolean algebra, logic gates, combinational and sequential circuit design.">
+                                <div class="course-row"><span class="c-code">CSE231</span><span class="c-name">Digital Logic</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Boolean algebra, logic gates, combinational and sequential circuit design.</div>
+                            </div>
+                            <div class="course-card" data-desc="Early-stage collaborative engineering project planning and prototyping.">
+                                <div class="course-row"><span class="c-code">CSE299</span><span class="c-name">Junior Design</span><span class="c-cr">1.0 cr</span></div>
+                                <div class="course-desc">Early-stage collaborative engineering project planning and prototyping.</div>
+                            </div>
+                            <div class="course-card" data-desc="Relational database design, SQL queries, normalization, and transactions.">
+                                <div class="course-row"><span class="c-code">CSE311</span><span class="c-name">Database Management System</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Relational database design, SQL queries, normalization, and transactions.</div>
+                            </div>
+                            <div class="course-card" data-desc="Software development life cycle, agile methodologies, and system architecture.">
+                                <div class="course-row"><span class="c-code">CSE327</span><span class="c-name">Software Engineering</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Software development life cycle, agile methodologies, and system architecture.</div>
+                            </div>
+                            <div class="course-card" data-desc="CPU architecture, instruction sets, pipelining, and memory hierarchy.">
+                                <div class="course-row"><span class="c-code">CSE332</span><span class="c-name">Computer Org. & Architecture</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">CPU architecture, instruction sets, pipelining, and memory hierarchy.</div>
+                            </div>
+                            <div class="course-card" data-desc="Advanced algorithm design paradigms: greedy, dynamic programming, and graph algorithms.">
+                                <div class="course-row"><span class="c-code">CSE373</span><span class="c-name">Design & Analysis of Algorithms</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Advanced algorithm design paradigms: greedy, dynamic programming, and graph algorithms.</div>
+                            </div>
+                            <div class="course-card" data-desc="Syntax, semantics, paradigms, and execution models of programming languages.">
+                                <div class="course-row"><span class="c-code">CSE425</span><span class="c-name">Concepts of Programming Lang.</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Syntax, semantics, paradigms, and execution models of programming languages.</div>
+                            </div>
+                            <div class="course-card" data-desc="Capstone graduation project — novelty detection for Mars imagery.">
+                                <div class="course-row"><span class="c-code">CSE499</span><span class="c-name">Senior Design (In Progress)</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Capstone graduation project — novelty detection for Mars imagery.</div>
+                            </div>
+                        </div>
+
+                        <!-- MATH COURSES -->
+                        <h3 class="subsection-title" style="margin-top: 36px;">Mathematics & Quantitative Courses</h3>
+                        <div class="course-grid">
+                            <div class="course-card" data-desc="Foundational algebra and trigonometric preparation for university calculus.">
+                                <div class="course-row"><span class="c-code">MAT116</span><span class="c-name">Pre-Calculus (Non-credit)</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Foundational algebra and trigonometric preparation for university calculus.</div>
+                            </div>
+                            <div class="course-card" data-desc="Limits, continuity, derivatives, and applications of differentiation.">
+                                <div class="course-row"><span class="c-code">MAT120</span><span class="c-name">Calculus & Analytic Geometry-I</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Limits, continuity, derivatives, and applications of differentiation.</div>
+                            </div>
+                            <div class="course-card" data-desc="Matrices, determinants, vector spaces, eigenvalues, and linear transformations.">
+                                <div class="course-row"><span class="c-code">MAT125</span><span class="c-name">Introduction to Linear Algebra</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Matrices, determinants, vector spaces, eigenvalues, and linear transformations.</div>
+                            </div>
+                            <div class="course-card" data-desc="Integration techniques, sequences, series, and polar coordinates.">
+                                <div class="course-row"><span class="c-code">MAT130</span><span class="c-name">Calculus & Analytic Geometry-II</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Integration techniques, sequences, series, and polar coordinates.</div>
+                            </div>
+                            <div class="course-card" data-desc="Multivariable calculus, partial derivatives, and multiple integrals.">
+                                <div class="course-row"><span class="c-code">MAT250</span><span class="c-name">Calculus & Analytic Geo-IV</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Multivariable calculus, partial derivatives, and multiple integrals.</div>
+                            </div>
+                            <div class="course-card" data-desc="Ordinary differential equations and complex analysis for engineers.">
+                                <div class="course-row"><span class="c-code">MAT350</span><span class="c-name">Engineering Mathematics</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Ordinary differential equations and complex analysis for engineers.</div>
+                            </div>
+                            <div class="course-card" data-desc="Probability distributions, hypothesis testing, and statistical inference.">
+                                <div class="course-row"><span class="c-code">MAT361</span><span class="c-name">Probability and Statistics</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Probability distributions, hypothesis testing, and statistical inference.</div>
+                            </div>
+                        </div>
+
+                        <!-- SCIENCE & GENERAL COURSES -->
+                        <h3 class="subsection-title" style="margin-top: 36px;">Science, EEE & General Foundation</h3>
+                        <div class="course-grid">
+                            <div class="course-card" data-desc="Mechanics, waves, thermodynamics, and optics.">
+                                <div class="course-row"><span class="c-code">PHY107</span><span class="c-name">General Physics-I</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Mechanics, waves, thermodynamics, and optics.</div>
+                            </div>
+                            <div class="course-card" data-desc="Electricity, magnetism, and modern physics.">
+                                <div class="course-row"><span class="c-code">PHY108</span><span class="c-name">General Physics-II</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Electricity, magnetism, and modern physics.</div>
+                            </div>
+                            <div class="course-card" data-desc="Chemical bonding, atomic structure, and chemical kinetics.">
+                                <div class="course-row"><span class="c-code">CHE101</span><span class="c-name">General Chemistry</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Chemical bonding, atomic structure, and chemical kinetics.</div>
+                            </div>
+                            <div class="course-card" data-desc="Cell biology, genetics, and biological systems.">
+                                <div class="course-row"><span class="c-code">BIO103</span><span class="c-name">Biology I</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Cell biology, genetics, and biological systems.</div>
+                            </div>
+                            <div class="course-card" data-desc="DC/AC circuits, Ohm's law, network theorems, and AC power.">
+                                <div class="course-row"><span class="c-code">EEE141</span><span class="c-name">Electrical Circuits</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">DC/AC circuits, Ohm's law, network theorems, and AC power.</div>
+                            </div>
+                            <div class="course-card" data-desc="Practical circuit testing and oscilloscope measurements.">
+                                <div class="course-row"><span class="c-code">EEE141L</span><span class="c-name">Electrical Circuits Lab</span><span class="c-cr">1.0 cr</span></div>
+                                <div class="course-desc">Practical circuit testing and oscilloscope measurements.</div>
+                            </div>
+                            <div class="course-card" data-desc="Technical sketching and CAD engineering drawings.">
+                                <div class="course-row"><span class="c-code">EEE154</span><span class="c-name">Engineering Drawing</span><span class="c-cr">1.0 cr</span></div>
+                                <div class="course-desc">Technical sketching and CAD engineering drawings.</div>
+                            </div>
+                            <div class="course-card" data-desc="Foundational academic writing and grammar structure.">
+                                <div class="course-row"><span class="c-code">ENG102</span><span class="c-name">Intro to Composition</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Foundational academic writing and grammar structure.</div>
+                            </div>
+                            <div class="course-card" data-desc="Advanced composition, research writing, and critical analysis.">
+                                <div class="course-row"><span class="c-code">ENG103</span><span class="c-name">Intermediate Composition</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Advanced composition, research writing, and critical analysis.</div>
+                            </div>
+                            <div class="course-card" data-desc="Rhetoric, presentation delivery, and professional communication.">
+                                <div class="course-row"><span class="c-code">ENG111</span><span class="c-name">Public Speaking</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Rhetoric, presentation delivery, and professional communication.</div>
+                            </div>
+                            <div class="course-card" data-desc="Microeconomic theory, market structures, supply, and demand.">
+                                <div class="course-row"><span class="c-code">ECO101</span><span class="c-name">Microeconomics</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Microeconomic theory, market structures, supply, and demand.</div>
+                            </div>
+                            <div class="course-card" data-desc="Political systems, governance, and comparative politics.">
+                                <div class="course-row"><span class="c-code">POL101</span><span class="c-name">Political Science</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Political systems, governance, and comparative politics.</div>
+                            </div>
+                            <div class="course-card" data-desc="Ethical frameworks, moral philosophy, and professional ethics.">
+                                <div class="course-row"><span class="c-code">PHI104</span><span class="c-name">Introduction to Ethics</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Ethical frameworks, moral philosophy, and professional ethics.</div>
+                            </div>
+                            <div class="course-card" data-desc="Physical and human geography, environmental awareness.">
+                                <div class="course-row"><span class="c-code">ENV203</span><span class="c-name">Geography</span><span class="c-cr">3.0 cr</span></div>
+                                <div class="course-desc">Physical and human geography, environmental awareness.</div>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-top: 36px;">Senior Design Project (CSE499)</h3>
+                        <p class="timeline-desc">
+                            <strong>Novelty Detection for Mars Imagery</strong> — Building a computer vision system that classifies surface regions in Mars imagery as <em>familiar</em>, <em>unfamiliar</em>, or <em>not sure</em>, to support autonomous planetary exploration and mission planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary & Higher Secondary (College & School Highlighted) -->
+        <section class="scroll-reveal" style="margin-top: 60px;">
+            <h2><span>02</span> College & School</h2>
+            <div class="timeline" style="margin-top: 24px;">
+                <div class="timeline-item" id="hsc">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <!-- College Banner Card with Campus Background & Gradient Overlay -->
+                        <a href="https://www.mmcitycollege.edu.bd/" target="_blank" class="nsu-banner-card" title="Visit Govt. M.M. City College">
+                            <div class="nsu-banner-bg">
+                                <img src="assets/mm_college_new.webp" alt="Govt. M.M. City College" onerror="this.src='assets/mm_college.jpg';">
+                                <div class="nsu-banner-gradient"></div>
+                            </div>
+                            <div class="nsu-banner-content">
+                                <h2 class="nsu-banner-title">Govt. M.M. City College</h2>
+                            </div>
+                        </a>
+
+                        <div class="timeline-header" style="margin-top: 20px;">
+                            <div>
+                                <div class="timeline-sub" style="font-size: 0.95rem; font-weight: 600; color: var(--text);">Higher Secondary Certificate (HSC) — Science</div>
+                                <div class="timeline-sub" style="margin-top: 4px;">Khulna, Bangladesh</div>
+                            </div>
+                            <div class="timeline-date">GPA 5.00 / 5.00</div>
+                        </div>
+                        <p class="timeline-desc" style="margin-top: 10px;">
+                            Achieved a perfect GPA in the Science stream. Core subjects: Physics, Chemistry, Mathematics, and Biology. Demonstrated consistent academic excellence at the college level.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" id="ssc">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <!-- School Banner Card with Campus Background & Gradient Overlay -->
+                        <a href="https://www.facebook.com/aclahaschool/" target="_blank" class="nsu-banner-card" title="Visit A C Laha Pilot High School">
+                            <div class="nsu-banner-bg">
+                                <img src="assets/ac_laha_school.jpg" alt="A C Laha Pilot High School" onerror="this.src='assets/banner.jpg';">
+                                <div class="nsu-banner-gradient"></div>
+                            </div>
+                            <div class="nsu-banner-content">
+                                <h2 class="nsu-banner-title">A C Laha Pilot High School</h2>
+                            </div>
+                        </a>
+
+                        <div class="timeline-header" style="margin-top: 20px;">
+                            <div>
+                                <div class="timeline-sub" style="font-size: 0.95rem; font-weight: 600; color: var(--text);">Secondary School Certificate (SSC) — Science</div>
+                                <div class="timeline-sub" style="margin-top: 4px;">Bagerhat, Bangladesh</div>
+                            </div>
+                            <div class="timeline-date">GPA 5.00 / 5.00</div>
+                        </div>
+                        <p class="timeline-desc" style="margin-top: 10px;">
+                            Completed SSC with a perfect GPA, establishing a strong early foundation in Mathematics, Science, and English that shaped subsequent academic pursuits.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammad Salman Ifrat — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience & IF — Mohammad Salman Ifrat</title>
+    <title>Experience — Mohammad Salman Ifrat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
     <nav>
         <div class="container nav-content">
-            <a href="index.html" class="logo" id="navLogo">Mohammad Salman Ifrat</a>
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mohammad Salman Ifrat</a>
+            </div>
             <div class="nav-links" id="navLinks">
-                <a href="index.html" class="nav-item">Home & About</a>
-                <a href="courses.html" class="nav-item">Courses</a>
-                <a href="experience.html" class="nav-item active">Experience & IF</a>
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="education.html" class="nav-item">Education</a>
+                <a href="experience.html" class="nav-item active">Experience</a>
                 <a href="projects.html" class="nav-item">Projects</a>
+                <a href="courses.html" class="nav-item">Courses</a>
                 <a href="weird.html" class="nav-item">Weird Corner</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
             </div>
@@ -29,81 +31,215 @@
         </div>
     </nav>
 
-    <div class="container">
-        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
-            <div class="hero-info" style="grid-column: 1 / -1;">
-                <h1>Experience, Leadership & "IF" Brand</h1>
-                <p class="about-text" style="margin-top: 10px;">
-                    A comprehensive look at my professional journey, entrepreneurial ventures, academic leadership, and content creation.
-                </p>
-            </div>
-        </header>
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-label">Work & Leadership</div>
+            <h1 class="page-hero-title">Experience</h1>
+            <p class="page-hero-sub">Entrepreneurship, teaching, IEEE leadership, and community service — all in one place.</p>
+        </div>
+    </div>
 
-        <!-- Business & Professional Ventures -->
-        <section class="scroll-reveal" style="padding: 40px 0;">
-            <h2><span>01</span> Ventures & Businesses</h2>
-            <div class="grid-2" style="margin-top: 30px;">
-                <div class="card">
-                    <span class="date">Entrepreneurial Venture</span>
-                    <h3>Business & Consulting Projects</h3>
-                    <p class="about-text" style="margin: 10px 0;">
-                        Building and advising digital solutions, streamlining workflows, and exploring tech-driven commercial ideas tailored for the local and remote ecosystem.
-                    </p>
-                </div>
-                <div class="card">
-                    <span class="date">Education & Mentorship</span>
-                    <h3>Private Academic Tutoring</h3>
-                    <p class="about-text" style="margin: 10px 0;">
-                        Mentoring students across Bangla Medium, English Version, and English Medium in Mathematics, Physics, Chemistry, ICT, and Basic Programming.
-                    </p>
+    <div class="container" style="padding-top: 0;">
+
+        <!-- Entrepreneurship -->
+        <section class="scroll-reveal">
+            <h2><span>01</span> Entrepreneurship</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Founder — <span style="color:var(--accent)">PLUSH</span></div>
+                                <div class="timeline-sub">Thrift Business · Sustainability</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">
+                            Founded PLUSH — a thrifting venture built on the belief that conscious consumption can be both stylish and responsible. The business curates pre-loved clothing and accessories, reducing textile waste while making sustainable fashion accessible.
+                        </p>
+                        <div class="badges" style="margin-top: 14px;">
+                            <span class="badge">Entrepreneurship</span>
+                            <span class="badge">Sustainability</span>
+                            <span class="badge">E-Commerce</span>
+                            <span class="badge">Brand Building</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Leadership & Conferences -->
-        <section class="scroll-reveal" style="padding: 40px 0;">
-            <h2><span>02</span> Leadership & IEEE</h2>
-            <div class="timeline" style="margin-top: 30px;">
-                <div class="timeline-item">
-                    <span class="timeline-date">2024 — Present</span>
-                    <h3>Sub Executive — Membership Development Team</h3>
-                    <p class="timeline-org">IEEE NSU Student Branch</p>
-                    <p class="timeline-desc">Leading member engagement initiatives, organizing tech seminars, and fostering collaboration among engineering students.</p>
+        <!-- IEEE NSU Student Branch -->
+        <section id="ieee" class="scroll-reveal">
+            <h2><span>02</span> IEEE NSU Student Branch Chapter</h2>
+
+            <!-- IEEE header banner -->
+            <div class="ieee-page-banner">
+                <div class="ieee-page-banner-left">
+                    <div class="ieee-logo-text" style="font-size: 2rem;">IEEE</div>
+                    <div>
+                        <div style="font-size: 1rem; font-weight: 600; color: var(--text);">NSU Student Branch (INSB)</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">North South University, Dhaka</div>
+                    </div>
                 </div>
+                <div class="ieee-page-banner-right">
+                    <span class="ieee-role-chip">3 Active Roles</span>
+                </div>
+            </div>
+
+            <div class="timeline" style="margin-top: 32px;">
+
                 <div class="timeline-item">
-                    <span class="timeline-date">2023 — Present</span>
-                    <h3>Academic Conference Volunteer</h3>
-                    <p class="timeline-org">International Conferences @ NSU</p>
-                    <p class="timeline-desc">Volunteered at two major international academic conferences hosted at North South University, handling technical coordination and guest hospitality.</p>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Sub Executive — Membership Development Team</div>
+                                <div class="timeline-sub">IEEE NSU Student Branch (INSB)</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">
+                            Engaged and recruited students into the IEEE NSU branch. Delivered presentations at the INSB Fresher Orientation, introducing new students to IEEE's mission, opportunities, and the value of professional engineering communities.
+                        </p>
+                        <div class="badges" style="margin-top: 14px;">
+                            <span class="badge">Student Recruitment</span>
+                            <span class="badge">Public Speaking</span>
+                            <span class="badge">Orientation Events</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">In-charge — PR & Corporate Team</div>
+                                <div class="timeline-sub">IEEE IAS (Industry Applications Society) Chapter, NSU</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">
+                            Led public relations and corporate outreach for the IAS chapter at NSU. Managed communications between the chapter and industry partners, coordinated sponsorships, and represented the chapter at external engagements.
+                        </p>
+                        <div class="badges" style="margin-top: 14px;">
+                            <span class="badge">Public Relations</span>
+                            <span class="badge">Corporate Outreach</span>
+                            <span class="badge">Sponsorship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Member — Event Management Team</div>
+                                <div class="timeline-sub">IEEE PES (Power and Energy Society) Chapter, NSU</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">
+                            Contributed to the planning and execution of IEEE PES events at NSU — handling logistics, venue coordination, volunteer management, and participant engagement for engineering and energy-focused programmes.
+                        </p>
+                        <div class="badges" style="margin-top: 14px;">
+                            <span class="badge">Event Planning</span>
+                            <span class="badge">Logistics</span>
+                            <span class="badge">Team Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Teaching -->
+        <section class="scroll-reveal">
+            <h2><span>03</span> Teaching</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Private Tutor</div>
+                                <div class="timeline-sub">RAJUK Uttara Model School & College · Hurdco International · Playpen School</div>
+                            </div>
+                            <div class="timeline-date">Past</div>
+                        </div>
+                        <p class="timeline-desc">
+                            Provided one-to-one academic support for students across Bangla Medium, English Version, and English Medium curricula. Covered homework guidance, concept building, and exam preparation.
+                        </p>
+                        <h3 class="subsection-title" style="margin-top: 20px;">Subjects Taught</h3>
+                        <div class="badges">
+                            <span class="badge">Mathematics</span>
+                            <span class="badge">English</span>
+                            <span class="badge">Science</span>
+                            <span class="badge">ICT / Computer Studies</span>
+                            <span class="badge">Basic Programming</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- "IF" Brand Section -->
-        <section class="scroll-reveal" style="padding: 40px 0 80px;" id="if-brand">
-            <h2><span>03</span> "IF" Content Brand</h2>
-            <p class="about-text">
-                <strong>"IF"</strong> is my personal creative outlet and content brand on Instagram and YouTube where I explore Banglish psychology, philosophy, modern existentialism, and social commentary. <em>Note: Content uploads are currently on hiatus while focusing on final year RAG research, but will resume soon.</em>
-            </p>
+        <!-- Volunteer & Community -->
+        <section class="scroll-reveal">
+            <h2><span>04</span> Volunteer & Community</h2>
+            <div class="timeline">
 
-            <div class="grid-2" style="margin-top: 30px;">
-                <div class="card" style="text-align: center; padding: 40px 24px;">
-                    <span class="date">Instagram Channel</span>
-                    <h3 style="margin-bottom: 8px;">"IF" Reels & Shorts</h3>
-                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Psychological insights and social commentary in Banglish.</p>
-                    <a href="https://instagram.com/TODO" target="_blank" class="btn" style="display: inline-flex;">Visit Instagram ↗</a>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Volunteer — International Conferences (×2)</div>
+                                <div class="timeline-sub">IEEE & Related Organisations</div>
+                            </div>
+                        </div>
+                        <p class="timeline-desc">
+                            Served as an on-ground volunteer at two international conferences hosted under IEEE and affiliated bodies — supporting delegate coordination, event logistics, and participant experience.
+                        </p>
+                    </div>
                 </div>
-                <div class="card" style="text-align: center; padding: 40px 24px;">
-                    <span class="date">YouTube Channel</span>
-                    <h3 style="margin-bottom: 8px;">"IF" Video Essays</h3>
-                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Long-form philosophical explorations and student life reflections.</p>
-                    <a href="https://youtube.com/@TODO" target="_blank" class="btn" style="display: inline-flex;">Visit YouTube ↗</a>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">NSU Fresher Advising & Fresher Orientation</div>
+                                <div class="timeline-sub">North South University</div>
+                            </div>
+                        </div>
+                        <p class="timeline-desc">
+                            Guided new NSU students through the academic advising process and fresher orientation — helping them navigate course selection, campus life, and university resources.
+                        </p>
+                    </div>
                 </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">IEEE Workshops & Industrial Tours</div>
+                                <div class="timeline-sub">IEEE NSU & Affiliated Chapters</div>
+                            </div>
+                        </div>
+                        <p class="timeline-desc">
+                            Actively participated in workshops and industrial tours organised by IEEE and related organisations, building industry awareness and expanding professional networks across engineering sectors.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <footer>
-            <p>© 2026 Mohammad Salman Ifrat. Crafted with precision.</p>
+            <p>© 2026 Mohammad Salman Ifrat — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a></p>
         </footer>
     </div>
 

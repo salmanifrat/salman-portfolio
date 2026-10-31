@@ -41,18 +41,9 @@
     color: var(--bg);
 }
 
-/* Interactive Cursor Spotlight */
+/* Interactive Cursor Spotlight (Disabled/Normal) */
 #cursor-spotlight {
-    position: fixed;
-    width: 280px;
-    height: 280px;
-    background: radial-gradient(circle, rgba(234, 179, 8, 0.18) 0%, rgba(34, 197, 94, 0.08) 40%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    transition: transform 0.08s ease-out;
-    mix-blend-mode: plus-lighter;
+    display: none;
 }
 
 html {
@@ -430,25 +421,43 @@ nav {
     margin-top: 4px;
 }
 
-/* Social Icons Pop-in with Profile Details */
+/* Subtle, Minimalist Social Icon Buttons — ash tone, full-width spread */
 .profile-socials {
     display: flex;
-    gap: 16px;
-    margin-top: 10px;
+    gap: 0;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.profile-socials a {
-    color: var(--text-muted);
+.social-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: #7a8a83;
     text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08s;
-    transition: var(--transition);
+    transition: color 0.3s ease, background 0.3s ease;
+    flex: 1;
 }
 
-.profile-socials a:hover {
-    color: var(--accent);
+.social-icon-btn svg {
+    stroke: #7a8a83;
+    transition: stroke 0.3s ease;
+}
+
+.social-icon-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: #c2cdc8;
+}
+
+.social-icon-btn:hover svg {
+    stroke: #c2cdc8;
 }
 
 .scroll-down-indicator {
@@ -486,7 +495,7 @@ nav {
 
 /* Sections */
 section {
-    padding: 90px 0;
+    padding: 70px 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -541,7 +550,7 @@ section h2 span {
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 0.8rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono`, monospace;
     font-weight: 400;
     transition: var(--transition);
     letter-spacing: 0.05em;
@@ -550,6 +559,694 @@ section h2 span {
 .badge:hover {
     border-color: var(--accent);
     color: var(--text);
+}
+
+/* ─── Page Hero (Education, Experience, etc.) ─── */
+.page-hero {
+    padding: 110px 0 50px;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.page-hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.page-hero-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+/* ─── Snapshot Rows (home page brief summaries) ─── */
+.snapshot-block {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.snapshot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s ease;
+}
+
+.snapshot-row:last-child {
+    border-bottom: none;
+}
+
+.snapshot-row:hover {
+    background: var(--bg-card);
+}
+
+.snapshot-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.snapshot-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.snapshot-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ─── Section "View more" link ─── */
+.section-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s ease;
+}
+
+.section-link:hover {
+    opacity: 0.75;
+}
+
+/* ─── IEEE Block (home page card) ─── */
+.ieee-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background 0.25s ease, border-color 0.25s ease;
+    flex-wrap: wrap;
+}
+
+.ieee-block:hover {
+    background: var(--bg-card-hover);
+    border-left-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.ieee-block-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.ieee-logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+}
+
+.ieee-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.ieee-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.ieee-roles {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ieee-role-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.ieee-arrow {
+    font-size: 1.1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ─── IEEE Page Banner (experience.html) ─── */
+.ieee-page-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    flex-wrap: wrap;
+}
+
+.ieee-page-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.ieee-page-banner-right {
+    flex-shrink: 0;
+}
+
+/* Project Cards Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ─── Education Header Row with Image ─── */
+.edu-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.edu-header-img-wrap {
+    flex: 1;
+    min-width: 280px;
+    height: 110px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.edu-header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.85);
+    transition: transform 0.5s ease;
+}
+
+.edu-header-img-wrap:hover .edu-header-img {
+    transform: scale(1.04);
+}
+
+/* ─── NSU Banner Card with Campus Background & Gradient Overlay ─── */
+.nsu-banner-card {
+    display: block;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    height: 140px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nsu-banner-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.nsu-banner-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.75);
+    transition: transform 0.6s ease;
+}
+
+#hsc .nsu-banner-bg img {
+    object-position: center 35%;
+}
+
+.nsu-banner-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(11, 15, 14, 0.98) 0%, rgba(11, 15, 14, 0.85) 45%, rgba(11, 15, 14, 0.2) 100%);
+    z-index: 2;
+}
+
+.nsu-banner-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 40px;
+    padding-top: 6px; /* slightly adjusted downwards for exact vertical centering */
+}
+
+.nsu-banner-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.nsu-banner-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nsu-banner-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-top: 4px;
+    max-width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nsu-banner-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 45px rgba(34, 197, 94, 0.15);
+    transform: translateY(-2px);
+}
+
+.nsu-banner-card:hover .nsu-banner-bg img {
+    transform: scale(1.03);
+}
+
+.nsu-banner-card:hover .nsu-banner-title {
+    color: var(--accent);
+}
+
+/* ─── NSU & Degree Glowy Header Boxes ─── */
+.nsu-glow-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    transition: all 0.35s ease;
+}
+
+.nsu-glow-box span {
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.nsu-glow-box:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    box-shadow: 0 10px 35px rgba(34, 197, 94, 0.15);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.degree-glow-box {
+    display: inline-block;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: all 0.35s ease;
+}
+
+.degree-glow-box:hover {
+    background: var(--bg-card);
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.15);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* External Links in Titles */
+.ext-link-title {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ext-link-title:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* ─── Course Transcript Grid with Independent Hover ─── */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.course-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    height: 52px;
+    box-sizing: border-box;
+}
+
+.course-card:hover {
+    background: var(--bg-card);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
+    height: auto;
+    transform: translateY(-2px);
+    z-index: 20;
+}
+
+.course-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.c-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.c-name {
+    font-size: 0.88rem;
+    color: var(--text);
+    flex: 1;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: white-space 0.2s ease;
+}
+
+.course-card:hover .c-name {
+    white-space: normal;
+    overflow: visible;
+    line-height: 1.35;
+}
+
+.c-cr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.course-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.course-card:hover .course-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+.section-title-glow {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.section-title-glow:hover {
+    background: rgba(34, 197, 94, 0.08);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    color: var(--accent);
+}
+
+.item-glow {
+    cursor: pointer;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: -14px -18px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.item-glow:hover {
+    background: rgba(19, 24, 22, 0.9);
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.1);
+    transform: translateY(-2px);
+}
+
+.timeline-item.item-glow {
+    padding: 16px;
+    margin: 0 0 16px 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+.timeline-item.item-glow:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.12);
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+}
+
+.project-card--inprogress {
+    border-style: dashed;
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.project-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+}
+
+.project-tag--wip {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    border-color: #f59e0b;
+}
+
+.project-course {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.project-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+}
+
+/* Timeline (Education & Experience) */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Vertical line connecting dots */
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 14px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.timeline-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    outline: 1px solid var(--accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.timeline-body {
+    flex: 1;
+    padding-left: 8px;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.timeline-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+}
+
+.timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+}
+
+.timeline-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
 }
 
 /* Ask Page Mini RAG Box */
@@ -674,7 +1371,7 @@ footer {
         display: block;
     }
     .ask-input-row {
-        flex-direction: type;
+        flex-direction: column;
     }
     .scroll-progress {
         display: none;
