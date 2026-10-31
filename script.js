@@ -175,12 +175,12 @@ function toggleMobileMenu() {
 function toggleTheme() {
     const html = document.documentElement;
     const currentTheme = html.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
+    if (currentTheme === 'light') {
         html.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-    } else {
-        html.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+    } else {
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
     }
 }
 
@@ -202,6 +202,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
     }
 
     const ragInput = document.getElementById('ragQueryInput');
