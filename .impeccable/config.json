@@ -8,6 +8,15 @@
         "value": "plus jakarta sans",
         "createdAt": "2026-11-01T20:52:40.953Z",
         "reason": "user decided: intentional clean geometric sans typography choice"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "*.html"
+        ],
+        "createdAt": "2026-11-01T21:02:22.734Z",
+        "reason": "user decided: intentional premium gold ambient lighting glow"
       }
     ]
   }
