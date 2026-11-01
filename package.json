@@ -1,0 +1,24 @@
+{
+  "name": "salman-portfolio",
+  "version": "1.0.0",
+  "description": "To run your portfolio locally with the FastAPI backend:",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmanifrat/salman-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/salmanifrat/salman-portfolio/issues"
+  },
+  "homepage": "https://github.com/salmanifrat/salman-portfolio#readme",
+  "devDependencies": {
+    "impeccable": "^4.8.0"
+  }
+}
