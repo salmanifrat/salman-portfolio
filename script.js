@@ -212,4 +212,38 @@ window.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') runRagQuery();
         });
     }
+
+    // Lusion-style Advanced 3D Card Tilt for Projects, Experience & Timeline Cards
+    const tiltCards = document.querySelectorAll('.project-card, .plush-card, .ieee-role-card, .timeline-item, .nsu-banner-card');
+    tiltCards.forEach(card => {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within card
+            const y = e.clientY - rect.top;  // y position within card
+
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+
+            const dx = x - xc;
+            const dy = y - yc;
+
+            const maxTilt = 8; // degrees
+            const rotateX = (-dy / yc) * maxTilt;
+            const rotateY = (dx / xc) * maxTilt;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.01, 1.01, 1.01)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
+        });
+    });
 });
