@@ -214,7 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     // Lusion-style Advanced 3D Card Tilt for Projects, Experience & Timeline Cards
-    const tiltCards = document.querySelectorAll('.project-card, .plush-card, .ieee-role-card, .timeline-item, .nsu-banner-card');
+    const tiltCards = document.querySelectorAll('.project-card, .plush-card, .ieee-role-card, .course-card, .nsu-banner-card');
     tiltCards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
         card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
