@@ -1,13 +1,13 @@
 :root {
-    --bg: #0c1210;
-    --bg-card: #121a17;
-    --bg-card-hover: #192420;
-    --border: #202e29;
-    --text: #f0f4f2;
-    --text-muted: #9aa8a2;
-    --accent: #2e7d51;
-    --accent-glow: rgba(46, 125, 81, 0.15);
-    --code-bg: #0e1513;
+    --bg: #14110f;
+    --bg-card: #1c1815;
+    --bg-card-hover: #26211d;
+    --border: #322b26;
+    --text: #f4f0ec;
+    --text-muted: #a69d95;
+    --accent: #b8860b;
+    --accent-glow: rgba(184, 134, 11, 0.15);
+    --code-bg: #181412;
     --radius: 8px;
     --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
