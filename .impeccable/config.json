@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-11-01T20:52:40.953Z",
+        "reason": "user decided: intentional clean geometric sans typography choice"
+      }
+    ]
+  }
+}
