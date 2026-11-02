@@ -41,9 +41,36 @@
     color: var(--bg);
 }
 
-/* Interactive Cursor Spotlight (Disabled/Normal) */
-#cursor-spotlight {
+/* Lusion-Style Custom Amber Cursor & Magnetism */
+.custom-cursor {
+    position: fixed;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
     display: none;
+}
+@media (min-width: 1024px) and (pointer: fine) {
+    .custom-cursor {
+        display: block;
+    }
+    body, a, button, input {
+        cursor: none !important;
+    }
+}
+.custom-cursor.hovered {
+    width: 56px;
+    height: 56px;
+    background-color: var(--accent-glow);
+    border-color: var(--accent);
+    backdrop-filter: blur(2px);
+}
+.magnetic-btn, .magnetic-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -96,7 +123,7 @@ body {
     }
 }
 
-/* Posh Cinematic Welcome Overlay */
+/* Phase 1 Preloader */
 #welcome-overlay {
     position: fixed;
     inset: 0;
@@ -108,40 +135,55 @@ body {
     opacity: 1;
     visibility: visible;
     cursor: pointer;
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 #welcome-overlay.fade-out {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
-.welcome-content {
+.preloader-inner {
     text-align: center;
-    animation: cinematicFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 280px;
 }
 
-@keyframes cinematicFadeIn {
-    0% { transform: translateY(20px); opacity: 0; filter: blur(4px); }
-    100% { transform: translateY(0); opacity: 1; filter: blur(0); }
-}
-
-.welcome-greeting {
+.preloader-name {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 16px;
     letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-.welcome-sub {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 1.8rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    font-weight: 400;
+.preloader-track {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.preloader-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.05s linear;
+}
+
+.preloader-skip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-top: 8px;
+    text-transform: uppercase;
 }
 
 .container {
@@ -296,6 +338,20 @@ nav {
     margin-top: 70px;
 }
 
+/* WebGL Water-Wave Hero Canvas Container */
+#water-wave-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+#water-wave-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .bolt-hero-bg {
     position: absolute;
     inset: 0;
@@ -425,7 +481,50 @@ nav {
     margin-top: 4px;
 }
 
-/* Subtle, Minimalist Social Icon Buttons — ash tone, full-width spread */
+/* Marquee Infinite Interest Strip */
+.marquee-section {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    margin-top: 60px;
+    margin-bottom: 60px;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-flex;
+    gap: 40px;
+    animation: marqueeScroll 25s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track span {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.marquee-track span:hover {
+    color: var(--accent);
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 .profile-socials {
     display: flex;
     gap: 0;

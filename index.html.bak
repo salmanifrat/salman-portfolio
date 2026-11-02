@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Salman Ifrat — Portfolio</title>
+    <meta name="description" content="Portfolio of Mohammed Salman Ifrat, CS student, full-stack developer, and aspiring entrepreneur at North South University.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:,">
+    <!-- Local OGL Library UMD Bundle -->
+    <script src="vendor/ogl.umd.js"></script>
+</head>
+<body>
+
+    <div id="welcome-overlay" onclick="dismissWelcome()">
+        <div class="welcome-content">
+            <div class="welcome-greeting">Assalamu Alaikum</div>
+            <div class="welcome-sub">Mohammed Salman Ifrat</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 24px; letter-spacing: 0.2em;">CLICK ANYWHERE TO ENTER</div>
+        </div>
+    </div>
+
+    <!-- Custom Amber Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <div id="scroll-progress"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo-container">
+                <div class="nav-profile-pic" id="navProfilePic">
+                    <img src="assets/profile.jpg" alt="Mohammad Salman Ifrat" class="nav-profile-img" onerror="this.src='assets/photo.jpg';">
+                </div>
+                <a href="index.html" class="logo" style="white-space: nowrap;">Mohammed Salman Ifrat</a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="education.html" class="nav-item">Education</a>
+                <a href="experience.html" class="nav-item">Experience</a>
+                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="courses.html" class="nav-item">Courses</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <a href="admin" class="nav-item" style="color: var(--accent);">Admin</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="bolt-hero" id="boltHero">
+        <div class="bolt-hero-bg" id="water-wave-container">
+            <img src="assets/banner.jpg" alt="Mohammad Salman Ifrat Banner" class="bolt-hero-img" id="heroBannerImg" onerror="this.src='assets/photo.jpg';">
+            <div class="bolt-hero-gradient"></div>
+        </div>
+        <div class="bolt-hero-content" id="heroContent">
+            <div class="profile-pic-container">
+                <img src="assets/profile.jpg" alt="Mohammad Salman Ifrat Profile" class="profile-pic-img" onerror="this.src='assets/photo.jpg';">
+            </div>
+            <div class="name-details-wrapper">
+                <h2 class="bolt-hero-name" style="white-space: nowrap;">Mohammed Salman Ifrat</h2>
+                <div class="profile-details">
+                    <div class="profile-title">CS Student • Full Stack Dev • Aspiring Entrepreneur</div>
+                    <div class="profile-affiliation">Department of Computer Science & Engineering, North South University</div>
+                    <div class="profile-socials">
+                        <a href="https://github.com/salmanifrat" target="_blank" class="social-icon-btn" title="GitHub">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="social-icon-btn" title="LinkedIn">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="social-icon-btn" title="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="mailto:ifrat.official25@gmail.com" class="social-icon-btn" title="Email">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down-indicator">
+            <span>SCROLL TO EXPLORE</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 0;">
+
+        <!-- 01 About -->
+        <section id="about" class="scroll-reveal">
+            <h2><span>01</span> About Me</h2>
+            <p class="about-text">
+                Aspiring entrepreneur and CSE student at <strong>North South University</strong>, Dhaka — with a strong foundation in programming, machine learning, and RAG-based AI systems. Active in IEEE through leadership and organisational roles.
+            </p>
+            <p class="about-text" style="margin-top: -10px;">
+                Passionate about building businesses with a focus on sustainability and positive environmental impact. I blend technology, communication, and teamwork to craft meaningful, long-term solutions.
+            </p>
+            <div class="badges" style="margin-top: 20px;">
+                <span class="badge">Full Stack Dev</span>
+                <span class="badge">RAG Systems & AI</span>
+                <span class="badge">Machine Learning</span>
+                <span class="badge">FastAPI & Python</span>
+                <span class="badge">Entrepreneurship</span>
+                <span class="badge">Sustainability</span>
+                <span class="badge">Human Psychology</span>
+                <span class="badge">Political Philosophy</span>
+            </div>
+        </section>
+
+        <!-- 02 Education -->
+        <section id="education" class="scroll-reveal">
+            <h2 class="section-title-glow" onclick="location.href='education.html'"><span>02</span> Education</h2>
+            <div class="timeline">
+                <div class="timeline-item item-glow" onclick="location.href='education.html#bscnsu'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">B.Sc. in Computer Science & Engineering</div>
+                                <div class="timeline-sub">North South University, Dhaka</div>
+                            </div>
+                            <div class="timeline-date">2022 — 2027</div>
+                        </div>
+                        <p class="timeline-desc">Pursuing BSc CSE covering algorithms, data structures, machine learning, software engineering and database systems. Active IEEE member and senior design researcher.</p>
+                    </div>
+                </div>
+                <div class="timeline-item item-glow" onclick="location.href='education.html#hsc'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">HSC — Science</div>
+                                <div class="timeline-sub">Govt. M.M. City College, Khulna</div>
+                            </div>
+                            <div class="timeline-date">GPA 5.00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item item-glow" onclick="location.href='education.html#ssc'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">SSC — Science</div>
+                                <div class="timeline-sub">A C Laha Pilot High School, Bagerhat</div>
+                            </div>
+                            <div class="timeline-date">GPA 5.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 Experience -->
+        <section id="experience" class="scroll-reveal">
+            <h2 class="section-title-glow" onclick="location.href='experience.html'"><span>03</span> Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item item-glow" onclick="location.href='experience.html#plush'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Founder — <span style="color:var(--accent)">PLUSH</span> (Thrift Business)</div>
+                                <div class="timeline-sub">Entrepreneurship · Sustainability</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">Founded a thrifting venture curating pre-loved fashion to make conscious consumption accessible and reduce textile waste.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item item-glow" onclick="location.href='experience.html#ieee'">
+                    <div class="timeline-dot" style="background: var(--accent);"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">
+                                    <span class="ieee-logo-text" style="font-size:0.95rem; margin-right:6px;">IEEE</span>
+                                    NSU Student Branch Chapter
+                                </div>
+                                <div class="timeline-sub">Sub Executive — Membership Development Team</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc" style="margin-top: 10px;">Engaged and recruited prospective student members into the IEEE community; delivered official presentations at the INSB Fresher Orientation.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item item-glow" onclick="location.href='experience.html#conferences'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Volunteering in International Conferences</div>
+                                <div class="timeline-sub">IEEE & Global Academic Bodies</div>
+                            </div>
+                            <div class="timeline-date">Conferences</div>
+                        </div>
+                        <p class="timeline-desc">Served as an on-ground volunteer across international academic and technical conferences, managing delegate coordination and networking.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item item-glow" onclick="location.href='experience.html#teaching'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Teaching & Academic Mentorship</div>
+                                <div class="timeline-sub">RAJUK Uttara · Hurdco International · Playpen School</div>
+                            </div>
+                            <div class="timeline-date">Ongoing</div>
+                        </div>
+                        <p class="timeline-desc">One-to-one academic tutoring across Mathematics, Science, ICT, and Basic Programming for students from premier institutions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item item-glow" onclick="location.href='experience.html#others'">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Campus & Community Involvement</div>
+                                <div class="timeline-sub">North South University</div>
+                            </div>
+                            <div class="timeline-date">Service</div>
+                        </div>
+                        <p class="timeline-desc">Guided incoming freshman students during university orientation and academic advising sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 Projects -->
+        <section id="projects" class="scroll-reveal">
+            <h2 class="section-title-glow" onclick="location.href='projects.html'"><span>04</span> Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card item-glow" onclick="location.href='projects.html#taxease'">
+                    <div class="project-card-header">
+                        <div class="project-name">TaxEaseBD <span class="project-tag">NBR TaxSahayak</span></div>
+                        <div class="project-course">CSE327 / CSE299</div>
+                    </div>
+                    <p class="project-desc">RAG-based tax compliance assistant for Bangladesh — FastAPI backend, FAISS retrieval, smart tax calculator for multiple entity types.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge">FastAPI</span>
+                        <span class="badge">FAISS</span>
+                        <span class="badge">RAG</span>
+                        <span class="badge">Python</span>
+                    </div>
+                </div>
+                <div class="project-card item-glow" onclick="location.href='projects.html#ainsahayak'">
+                    <div class="project-card-header">
+                        <div class="project-name">Ain Sahayak</div>
+                        <div class="project-course">Legal AI</div>
+                    </div>
+                    <p class="project-desc">Bangla legal assistant powered by LangChain, FAISS, HuggingFace embeddings, Groq (LLaMA) and FastAPI.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge">LangChain</span>
+                        <span class="badge">HuggingFace</span>
+                        <span class="badge">Groq</span>
+                        <span class="badge">FastAPI</span>
+                    </div>
+                </div>
+                <div class="project-card project-card--inprogress item-glow" onclick="location.href='projects.html#mars'">
+                    <div class="project-card-header">
+                        <div class="project-name">Mars Novelty Detection <span class="project-tag project-tag--wip">In Progress</span></div>
+                        <div class="project-course">CSE499</div>
+                    </div>
+                    <p class="project-desc">Novelty detection for Mars surface imagery — classifies regions as familiar, unfamiliar, or uncertain for autonomous planetary exploration.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge">Machine Learning</span>
+                        <span class="badge">Computer Vision</span>
+                        <span class="badge">Python</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Interest Strip -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <span>✦ AI & RAG Systems</span>
+                <span>✦ Full-Stack Engineering</span>
+                <span>✦ Sustainable Entrepreneurship</span>
+                <span>✦ Human Psychology & Philosophy</span>
+                <span>✦ Python & FastAPI</span>
+                <span>✦ Lusion-Inspired Interactions</span>
+                <span>✦ AI & RAG Systems</span>
+                <span>✦ Full-Stack Engineering</span>
+                <span>✦ Sustainable Entrepreneurship</span>
+                <span>✦ Human Psychology & Philosophy</span>
+                <span>✦ Python & FastAPI</span>
+                <span>✦ Lusion-Inspired Interactions</span>
+            </div>
+        </div>
+
+        <!-- 05 Skills -->
+        <section id="skills" class="scroll-reveal">
+            <h2><span>05</span> Skills</h2>
+            <h3 class="subsection-title">Technical</h3>
+            <div class="badges">
+                <span class="badge">Python</span>
+                <span class="badge">Machine Learning</span>
+                <span class="badge">RAG Systems</span>
+                <span class="badge">LangChain & FAISS</span>
+                <span class="badge">HuggingFace</span>
+                <span class="badge">Groq / LLaMA</span>
+                <span class="badge">FastAPI</span>
+                <span class="badge">MS Office (Advanced)</span>
+            </div>
+            <h3 class="subsection-title">Creative</h3>
+            <div class="badges">
+                <span class="badge">Video Editing</span>
+                <span class="badge">Photography</span>
+                <span class="badge">Content Creation</span>
+            </div>
+            <h3 class="subsection-title">Languages</h3>
+            <div class="badges">
+                <span class="badge">Bengali — Fluent</span>
+                <span class="badge">English — Fluent</span>
+                <span class="badge">Hindi — Conversational</span>
+                <span class="badge">Arabic — Reading & Writing</span>
+            </div>
+        </section>
+
+        <!-- 06 Ask -->
+        <section id="ask-page" class="scroll-reveal">
+            <h2><span>06</span> Ask This Page (Mini RAG)</h2>
+            <p class="about-text">Have a question about my background, projects, or research? Query my portfolio knowledge base directly:</p>
+            <div class="ask-box">
+                <div class="preset-chips">
+                    <button class="chip" onclick="askPreset('What is TaxEaseBD?')">What is TaxEaseBD?</button>
+                    <button class="chip" onclick="askPreset('What are Salman\'s research interests?')">Research interests?</button>
+                    <button class="chip" onclick="askPreset('What is PLUSH?')">What is PLUSH?</button>
+                    <button class="chip" onclick="askPreset('What is Ain Sahayak?')">Ain Sahayak?</button>
+                    <button class="chip" onclick="askPreset('What IEEE roles does Salman hold?')">IEEE roles?</button>
+                </div>
+                <div class="ask-input-row">
+                    <input type="text" id="ragQueryInput" placeholder="Ask anything about Salman's background..." autocomplete="off">
+                    <button class="theme-toggle" style="padding: 14px 24px; background: var(--accent); color: var(--bg); border: none; font-weight: 600;" onclick="runRagQuery()">Search</button>
+                </div>
+                <div id="ragResultContainer" class="rag-result-box" style="display: none;">
+                    <div id="ragAnswerText"></div>
+                    <div id="ragSourcesBox" class="rag-sources"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 Contact -->
+        <section id="contact" class="scroll-reveal">
+            <h2><span>07</span> Get In Touch</h2>
+            <p class="about-text">Whether you want to discuss full-stack engineering, startups, academic research, or just exchange ideas — my inbox is always open.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
+                <a href="mailto:ifrat.official25@gmail.com" class="theme-toggle" style="padding: 12px 24px; background: var(--accent); color: var(--bg); border: none; text-decoration: none;">Send Email</a>
+                <a href="https://github.com/salmanifrat" target="_blank" class="theme-toggle" style="padding: 12px 24px; text-decoration: none;">GitHub</a>
+                <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="theme-toggle" style="padding: 12px 24px; text-decoration: none;">LinkedIn</a>
+                <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="theme-toggle" style="padding: 12px 24px; text-decoration: none;">Facebook</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Mohammed Salman Ifrat — CSE @ North South University</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script src="paint.js"></script>
+</body>
+</html>

@@ -2,45 +2,44 @@
 let knowledgeBase = [];
 
 async function loadPortfolioData() {
-    try {
-        const res = await fetch('/api/data');
-        const data = await res.json();
-
-        knowledgeBase = [
-            {
-                keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship"],
-                answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq.",
-                source: "Projects • TaxEaseBD"
-            },
-            {
-                keywords: ["mars", "vision", "cse499", "senior", "design", "novelty", "image"],
-                answer: "For his senior design project (CSE499), Salman is developing a computer vision model to categorize Mars surface imagery objects into familiar, unfamiliar, and uncertain classes (novelty detection).",
-                source: "Research • Mars Vision"
-            },
-            {
-                keywords: ["nsu", "north", "south", "university", "cse", "student", "graduation", "batch"],
-                answer: `Salman is a 4th-year Computer Science and Engineering student at North South University (NSU) in Dhaka, expecting to graduate in late 2027.`,
-                source: "About • Education"
-            },
-            {
-                keywords: ["ieee", "sub", "executive", "membership", "development", "volunteered", "conference"],
-                answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has volunteered at two major international conferences hosted at NSU.",
-                source: "Experience • IEEE & Leadership"
-            },
-            {
-                keywords: ["tutor", "tutoring", "math", "science", "english", "ict", "programming"],
-                answer: "Salman works as a private academic tutor across Bangla Medium, English Version, and English Medium, teaching Math, Physics, Chemistry, ICT, and basic programming.",
-                source: "Experience • Tutoring"
-            },
-            {
-                keywords: ["if", "brand", "instagram", "youtube", "psychology", "philosophy", "banglish"],
-                answer: "\"IF\" is Salman's personal creative content brand on Instagram and YouTube focusing on Banglish psychology, philosophy, and modern social commentary.",
-                source: "Content Brand • IF"
-            }
-        ];
-    } catch (err) {
-        console.error("Could not load backend portfolio data", err);
+    // Directly use static local data.js without attempting fetch('/api/data') when served statically (avoids 404 in console)
+    if (typeof portfolioData !== 'undefined' && portfolioData.knowledgeBase) {
+        knowledgeBase = portfolioData.knowledgeBase;
+        return;
     }
+
+    knowledgeBase = [
+        {
+            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship"],
+            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq.",
+            source: "Projects • TaxEaseBD"
+        },
+        {
+            keywords: ["mars", "vision", "cse499", "senior", "design", "novelty", "image"],
+            answer: "For his senior design project (CSE499), Salman is developing a computer vision model to categorize Mars surface imagery objects into familiar, unfamiliar, and uncertain classes (novelty detection).",
+            source: "Research • Mars Vision"
+        },
+        {
+            keywords: ["nsu", "north", "south", "university", "cse", "student", "graduation", "batch"],
+            answer: "Salman is a 4th-year Computer Science and Engineering student at North South University (NSU) in Dhaka, expecting to graduate in late 2027.",
+            source: "About • Education"
+        },
+        {
+            keywords: ["ieee", "sub", "executive", "membership", "development", "volunteered", "conference"],
+            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has volunteered at two major international conferences hosted at NSU.",
+            source: "Experience • IEEE & Leadership"
+        },
+        {
+            keywords: ["tutor", "tutoring", "math", "science", "english", "ict", "programming"],
+            answer: "Salman works as a private academic tutor across Bangla Medium, English Version, and English Medium, teaching Math, Physics, Chemistry, ICT, and basic programming.",
+            source: "Experience • Tutoring"
+        },
+        {
+            keywords: ["if", "brand", "instagram", "youtube", "psychology", "philosophy", "banglish"],
+            answer: "\"IF\" is Salman's personal creative content brand on Instagram and YouTube focusing on Banglish psychology, philosophy, and modern social commentary.",
+            source: "Content Brand • IF"
+        }
+    ];
 }
 
 // Welcome Overlay
@@ -52,23 +51,40 @@ function dismissWelcome() {
     }
 }
 
-// Interactive Cursor Amber Spotlight & Portrait Tilt
+// Interactive Custom Amber Cursor & Magnetic Elements
 document.addEventListener('mousemove', (e) => {
-    const spotlight = document.getElementById('cursor-spotlight');
-    if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
+    const cursor = document.getElementById('customCursor');
+    if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     }
 
     // Portrait tilt effect based on cursor position
-    const profilePic = document.querySelector('.profile-pic-container.bolt-hero.transformed .profile-pic-container') || document.querySelector('.profile-pic-container');
-    if (profilePic && profilePic.classList.contains('visible') || heroIsTransformed()) {
+    const profilePic = document.querySelector('.profile-pic-container');
+    if (profilePic && (profilePic.classList.contains('visible') || heroIsTransformed())) {
         const rect = profilePic.getBoundingClientRect();
         const xCenter = rect.left + rect.width / 2;
         const yCenter = rect.top + rect.height / 2;
-        const xVal = (e.clientX - xCenter) / 25;
-        const yVal = (e.clientY - yCenter) / 25;
-        profilePic.style.transform = `perspective(500px) rotateY(${xVal}deg) rotateX(${-yVal}deg) scale(1.05)`;
+        const xVal = (e.clientX - xCenter) / 20;
+        const yVal = (e.clientY - yCenter) / 20;
+        profilePic.style.transform = `perspective(500px) rotateY(${xVal}deg) rotateX(${-yVal}deg) scale(1.03)`;
+    }
+});
+
+// Cursor hover effects on interactive elements
+document.addEventListener('mouseover', (e) => {
+    const cursor = document.getElementById('customCursor');
+    if (!cursor) return;
+    if (e.target.closest('a, button, .project-card, .card, .chip, .timeline-item, input')) {
+        cursor.classList.add('hovered');
+    }
+});
+
+document.addEventListener('mouseout', (e) => {
+    const cursor = document.getElementById('customCursor');
+    if (!cursor) return;
+    if (e.target.closest('a, button, .project-card, .card, .chip, .timeline-item, input')) {
+        cursor.classList.remove('hovered');
     }
 });
 
@@ -213,7 +229,42 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lusion-style Advanced 3D Card Tilt for Projects, Experience & Timeline Cards
+    // Magnetic Buttons & Nav Links Effect
+    const magneticItems = document.querySelectorAll('.nav-links a, button, .chip, .social-icon-btn');
+    magneticItems.forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const hx = rect.left + rect.width / 2;
+            const hy = rect.top + rect.height / 2;
+            const dx = (e.clientX - hx) * 0.3;
+            const dy = (e.clientY - hy) * 0.3;
+            item.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translate(0px, 0px)';
+            item.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+        item.addEventListener('mouseenter', () => {
+            item.style.transition = 'none';
+        });
+    });
+
+    // Marquee speed reaction to scroll velocity
+    let lastScrollY = window.scrollY;
+    const marqueeTrack = document.querySelector('.marquee-track');
+    window.addEventListener('scroll', () => {
+        const scrollDelta = Math.abs(window.scrollY - lastScrollY);
+        lastScrollY = window.scrollY;
+        if (marqueeTrack) {
+            const currentAnimDuration = Math.max(10, 25 - scrollDelta * 0.5);
+            marqueeTrack.style.animationDuration = currentAnimDuration + 's';
+            clearTimeout(window.marqueeTimeout);
+            window.marqueeTimeout = setTimeout(() => {
+                marqueeTrack.style.animationDuration = '25s';
+            }, 300);
+        }
+    });
+
     const tiltCards = document.querySelectorAll('.project-card, .plush-card, .ieee-role-card, .course-card, .nsu-banner-card');
     tiltCards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
@@ -221,21 +272,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within card
-            const y = e.clientY - rect.top;  // y position within card
-
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
             const xc = rect.width / 2;
             const yc = rect.height / 2;
-
             const dx = x - xc;
             const dy = y - yc;
-
-            const maxTilt = 8; // degrees
+            const maxTilt = 8;
             const rotateX = (-dy / yc) * maxTilt;
             const rotateY = (dx / xc) * maxTilt;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.01, 1.01, 1.01)`;
         });
+
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)`;
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';

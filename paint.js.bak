@@ -1,0 +1,324 @@
+/**
+ * paint.js — Screen Paint & Velocity-Field Smear Effect (Lusion-inspired)
+ * Mode: "image" (hero banner distortion) with live tune debug panel (Press 'L')
+ */
+
+(function () {
+    // Bail out if touch device, reduced motion, or data saver
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+
+    if (isTouch || reducedMotion || saveData) {
+        return;
+    }
+
+    if (typeof window.OGL === 'undefined') {
+        console.error('paint.js: window.OGL global is missing. WebGL water-wave shader disabled; standard <img> remains visible.');
+        return;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('water-wave-container');
+        const imgEl = document.getElementById('heroBannerImg');
+        if (!container || !imgEl) {
+            console.error('paint.js: #water-wave-container or #heroBannerImg not found in DOM.');
+            return;
+        }
+
+        // Config object with live tune parameters
+        const config = {
+            paintScale: 0.25,
+            blurScale: 0.125,
+            pushStrength: 25,
+            velocityDissipation: 0.985,
+            weightDissipation1: 0.985,
+            weightDissipation2: 0.5,
+            minRadius: 0,
+            maxRadius: 80,
+            radiusDistanceRange: 100,
+            smearAmount: 20,
+            smearMultiplier: 1.25,
+            rgbShift: 1.2,
+            colorMultiplier: 1.0,
+            shade: 1.25,
+            useCurlNoise: false,
+            mode: "image"
+        };
+
+        // OGL Setup
+        const renderer = new OGL.Renderer({ dpr: Math.min(window.devicePixelRatio, 2), alpha: true });
+        const gl = renderer.gl;
+        container.appendChild(gl.canvas);
+
+        // Check half-float support
+        const ext = gl.getExtension('OES_texture_float_linear') || gl.getExtension('OES_texture_half_float_linear');
+        const floatType = gl.getExtension('OES_texture_float') ? gl.FLOAT : (gl.HALF_FLOAT || gl.UNSIGNED_BYTE);
+
+        const camera = new OGL.Camera(gl, { fov: 45 });
+        camera.position.set(0, 0, 5);
+        const scene = new OGL.Transform();
+
+        // Load image texture
+        const texture = new OGL.Texture(gl, { generateMipmaps: false });
+        const imageObj = new Image();
+        imageObj.crossOrigin = 'anonymous';
+        imageObj.src = imgEl.src;
+        imageObj.onload = () => {
+            texture.image = imageObj;
+        };
+
+        // Shaders
+        const baseVert = `
+            attribute vec2 uv;
+            attribute vec2 position;
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = vec4(position, 0.0, 1.0);
+            }
+        `;
+
+        const simFrag = `
+            precision highp float;
+            uniform sampler2D tOldPaint;
+            uniform vec2 uMouse;
+            uniform vec2 uPrevMouse;
+            uniform vec2 uResolution;
+            uniform float uVelocityDissipation;
+            uniform float uWeightDissip1;
+            uniform float uWeightDissip2;
+            uniform float uRadius;
+            uniform float uPushStrength;
+            varying vec2 vUv;
+
+            void main() {
+                vec2 uv = vUv;
+                vec4 paint = texture2D(tOldPaint, uv);
+
+                // Dissipate
+                paint.xy = (paint.xy - 0.5) * uVelocityDissipation + 0.5;
+                paint.z *= uWeightDissip1;
+                paint.w *= uWeightDissip2;
+
+                // Advect from offset
+                vec2 velocity = (paint.xy - 0.5) * 2.0;
+                vec2 adressedUV = uv - velocity * 0.005;
+                vec4 advected = texture2D(tOldPaint, adressedUV);
+                paint.xy = mix(paint.xy, advected.xy, 0.2);
+
+                // Capsule distance brush
+                vec2 p = uv * uResolution;
+                vec2 m = uMouse * uResolution;
+                vec2 pm = uPrevMouse * uResolution;
+
+                vec2 pa = p - pm, ba = m - pm;
+                float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+                float d = length(pa - ba * h);
+
+                float currentRadius = max(uRadius, 2.0);
+                if (d < currentRadius) {
+                    float weight = smoothstep(currentRadius, 0.0, d);
+                    vec2 dir = normalize(m - pm + 0.001);
+                    vec2 newVel = dir * 0.5 + 0.5;
+                    paint.xy = mix(paint.xy, newVel, weight);
+                    paint.z = clamp(paint.z + weight, 0.0, 1.0);
+                    paint.w = clamp(paint.w + weight * 0.8, 0.0, 1.0);
+                }
+
+                gl_FragColor = clamp(paint, 0.0, 1.0);
+            }
+        `;
+
+        const renderFrag = `
+            precision highp float;
+            uniform sampler2D tMap;
+            uniform sampler2D tPaint;
+            uniform float uRgbShift;
+            uniform float uSmearAmount;
+            uniform float uSmearMultiplier;
+            varying vec2 vUv;
+
+            // Simple hash for noise jitter
+            float random(vec2 co) {
+                return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+            }
+
+            void main() {
+                vec2 uv = vUv;
+                vec4 paint = texture2D(tPaint, uv);
+                vec2 vel = (paint.xy - 0.5) * 2.0 * paint.z;
+
+                vec2 totalOffset = vel * (uSmearAmount * 0.001 * uSmearMultiplier);
+                float jitter = random(uv) * 0.5;
+
+                // 9-sample smear along velocity
+                vec4 colorSum = vec4(0.0);
+                float totalWeight = 0.0;
+                for (int i = 0; i < 9; i++) {
+                    float t = float(i) / 8.0 - 0.5 + jitter * 0.1;
+                    vec2 sampleUV = uv - totalOffset * t;
+                    colorSum += texture2D(tMap, sampleUV);
+                    totalWeight += 1.0;
+                }
+                vec4 baseColor = colorSum / totalWeight;
+
+                // Iridescent teal/amber color shift
+                float speed = length(vel);
+                vec3 iridescence = sin(vec3(speed * 40.0 + uv.x * 10.0) + vec3(0.0, 2.0, 4.0) * uRgbShift) * speed * paint.z * 0.35;
+
+                // Mix amber/teal palette tint (#c5a059 & #276945)
+                vec3 tint = mix(vec3(0.77, 0.63, 0.35), vec3(0.15, 0.41, 0.27), smoothstep(0.0, 1.0, uv.y));
+                baseColor.rgb += iridescence * tint * 0.8;
+
+                gl_FragColor = baseColor;
+            }
+        `;
+
+        // Create render targets for ping-pong simulation
+        const rtWidth = Math.floor(window.innerWidth * config.paintScale);
+        const rtHeight = Math.floor(window.innerHeight * config.paintScale);
+        const rtOpts = { width: rtWidth, height: rtHeight, format: gl.RGBA, type: floatType };
+
+        let paintA = new OGL.RenderTarget(gl, rtOpts);
+        let paintB = new OGL.RenderTarget(gl, rtOpts);
+        let currentPaint = paintA;
+        let nextPaint = paintB;
+
+        const geometry = new OGL.Geometry(gl, {
+            position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) },
+            uv: { size: 2, data: new Float32Array([0, 0, 2, 0, 0, 2]) },
+        });
+
+        const renderProgram = new OGL.Program(gl, {
+            vertex: baseVert,
+            fragment: renderFrag,
+            uniforms: {
+                tMap: { value: texture },
+                tPaint: { value: currentPaint.texture },
+                uRgbShift: { value: config.rgbShift },
+                uSmearAmount: { value: config.smearAmount },
+                uSmearMultiplier: { value: config.smearMultiplier }
+            }
+        });
+        const renderMesh = new OGL.Mesh(gl, { geometry, program: renderProgram });
+        renderMesh.setParent(scene);
+
+        const simProgram = new OGL.Program(gl, {
+            vertex: baseVert,
+            fragment: simFrag,
+            uniforms: {
+                tOldPaint: { value: currentPaint.texture },
+                uMouse: { value: new OGL.Vec2(0.5, 0.5) },
+                uPrevMouse: { value: new OGL.Vec2(0.5, 0.5) },
+                uResolution: { value: new OGL.Vec2(rtWidth, rtHeight) },
+                uVelocityDissipation: { value: config.velocityDissipation },
+                uWeightDissip1: { value: config.weightDissipation1 },
+                uWeightDissip2: { value: config.weightDissipation2 },
+                uRadius: { value: config.maxRadius },
+                uPushStrength: { value: config.pushStrength }
+            }
+        });
+        const simMesh = new OGL.Mesh(gl, { geometry, program: simProgram });
+
+        let mouse = { x: 0.5, y: 0.5, prevX: 0.5, prevY: 0.5 };
+        let lastMoveTime = performance.now();
+        let isMoving = false;
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = 1.0 - (e.clientY - rect.top) / rect.height;
+
+            mouse.prevX = mouse.x;
+            mouse.prevY = mouse.y;
+            mouse.x = x;
+            mouse.y = y;
+            lastMoveTime = performance.now();
+            isMoving = true;
+        });
+
+        function resize() {
+            if (!container) return;
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            renderer.setSize(w, h);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let isVisible = true;
+        const observer = new IntersectionObserver(([entry]) => {
+            isVisible = entry.isIntersecting;
+        }, { threshold: 0.05 });
+        observer.observe(container);
+
+        function update() {
+            requestAnimationFrame(update);
+
+            if (!isVisible || document.hidden) return;
+
+            // Idle check (~2s without movement -> pause painting to save CPU/GPU)
+            if (performance.now() - lastMoveTime > 2000) {
+                isMoving = false;
+            }
+
+            simProgram.uniforms.tOldPaint.value = currentPaint.texture;
+            simProgram.uniforms.uMouse.value.set(mouse.x, mouse.y);
+            simProgram.uniforms.uPrevMouse.value.set(mouse.prevX, mouse.prevY);
+            simProgram.uniforms.uVelocityDissipation.value = config.velocityDissipation;
+            simProgram.uniforms.uWeightDissip1.value = config.weightDissipation1;
+            simProgram.uniforms.uWeightDissip2.value = config.weightDissipation2;
+            simProgram.uniforms.uRadius.value = isMoving ? config.maxRadius : 0.0;
+            simProgram.uniforms.uPushStrength.value = config.pushStrength;
+
+            renderer.render({ scene: simMesh, target: nextPaint });
+            renderProgram.uniforms.tPaint.value = nextPaint.texture;
+            renderProgram.uniforms.uRgbShift.value = config.rgbShift;
+            renderProgram.uniforms.uSmearAmount.value = config.smearAmount;
+            renderProgram.uniforms.uSmearMultiplier.value = config.smearMultiplier;
+
+            renderer.render({ scene, camera });
+
+            const temp = currentPaint;
+            currentPaint = nextPaint;
+            nextPaint = temp;
+
+            // Ease previous mouse towards current to damp velocity when stopped
+            mouse.prevX += (mouse.x - mouse.prevX) * 0.3;
+            mouse.prevY += (mouse.y - mouse.prevY) * 0.3;
+        }
+        requestAnimationFrame(update);
+
+        // Hidden debug panel toggle with 'L' key
+        let debugPanel = null;
+        window.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'l' && !['input', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) {
+                if (!debugPanel) {
+                    debugPanel = document.createElement('div');
+                    debugPanel.style.cssText = 'position:fixed; bottom:20px; right:20px; z-index:999999; background:rgba(18,16,14,0.95); border:1px solid #c5a059; padding:20px; border-radius:8px; color:#f5f2eb; font-family:JetBrains Mono,monospace; font-size:12px; width:300px; box-shadow:0 10px 30px rgba(0,0,0,0.5);';
+                    debugPanel.innerHTML = `
+                        <div style="font-weight:bold; margin-bottom:12px; color:#c5a059; display:flex; justify-content:space-between;"><span>PAINT CONFIG TUNER</span><span style="cursor:pointer;" onclick="this.parentElement.parentElement.style.display='none'">[X]</span></div>
+                        <div style="margin-bottom:8px;">Push Strength: <input type="range" id="cfgPush" min="5" max="50" value="${config.pushStrength}" style="width:100%;"></div>
+                        <div style="margin-bottom:8px;">Max Radius: <input type="range" id="cfgRadius" min="10" max="150" value="${config.maxRadius}" style="width:100%;"></div>
+                        <div style="margin-bottom:8px;">Smear Amount: <input type="range" id="cfgSmear" min="5" max="50" value="${config.smearAmount}" style="width:100%;"></div>
+                        <div style="margin-bottom:8px;">RGB Shift: <input type="range" id="cfgRgb" min="0.1" max="3" step="0.1" value="${config.rgbShift}" style="width:100%;"></div>
+                        <button id="cfgCopy" style="background:#c5a059; color:#12100e; border:none; padding:8px; width:100%; font-weight:bold; border-radius:4px; cursor:pointer; margin-top:8px;">Copy Config</button>
+                    `;
+                    document.body.appendChild(debugPanel);
+
+                    document.getElementById('cfgPush').addEventListener('input', (ev) => { config.pushStrength = parseFloat(ev.target.value); });
+                    document.getElementById('cfgRadius').addEventListener('input', (ev) => { config.maxRadius = parseFloat(ev.target.value); });
+                    document.getElementById('cfgSmear').addEventListener('input', (ev) => { config.smearAmount = parseFloat(ev.target.value); });
+                    document.getElementById('cfgRgb').addEventListener('input', (ev) => { config.rgbShift = parseFloat(ev.target.value); });
+                    document.getElementById('cfgCopy').addEventListener('click', () => {
+                        navigator.clipboard.writeText(JSON.stringify(config, null, 2));
+                        alert('Config copied to clipboard!');
+                    });
+                } else {
+                    debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+                }
+            }
+        });
+    });
+})();

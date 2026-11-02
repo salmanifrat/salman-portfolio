@@ -182,8 +182,13 @@
             }
         }
     </style>
+    <script src="vendor/ogl.umd.js"></script>
+    <script src="paint.js"></script>
 </head>
 <body>
+
+    <!-- Custom Amber Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
 
     <div id="scroll-progress"></div>
 
@@ -465,6 +470,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="lusion-engine.js"></script>
     <script>
         function openLightbox(imgSrc) {
             const modal = document.getElementById('lightboxModal');

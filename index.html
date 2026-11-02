@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:,">
+    <!-- Local OGL Library UMD Bundle -->
+    <script src="vendor/ogl.umd.js"></script>
+    <script src="paint.js"></script>
 </head>
 <body>
 
@@ -19,6 +23,9 @@
             <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 24px; letter-spacing: 0.2em;">CLICK ANYWHERE TO ENTER</div>
         </div>
     </div>
+
+    <!-- Custom Amber Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
 
     <div id="scroll-progress"></div>
 
@@ -46,8 +53,8 @@
 
     <!-- Hero -->
     <header class="bolt-hero" id="boltHero">
-        <div class="bolt-hero-bg">
-            <img src="assets/banner.jpg" alt="Mohammad Salman Ifrat Banner" class="bolt-hero-img" onerror="this.src='assets/photo.jpg';">
+        <div class="bolt-hero-bg" id="water-wave-container">
+            <img src="assets/banner.jpg" alt="Mohammad Salman Ifrat Banner" class="bolt-hero-img" id="heroBannerImg" onerror="this.src='assets/photo.jpg';">
             <div class="bolt-hero-gradient"></div>
         </div>
         <div class="bolt-hero-content" id="heroContent">
@@ -276,6 +283,24 @@
             </div>
         </section>
 
+        <!-- Marquee Interest Strip -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <span>✦ AI & RAG Systems</span>
+                <span>✦ Full-Stack Engineering</span>
+                <span>✦ Sustainable Entrepreneurship</span>
+                <span>✦ Human Psychology & Philosophy</span>
+                <span>✦ Python & FastAPI</span>
+                <span>✦ Lusion-Inspired Interactions</span>
+                <span>✦ AI & RAG Systems</span>
+                <span>✦ Full-Stack Engineering</span>
+                <span>✦ Sustainable Entrepreneurship</span>
+                <span>✦ Human Psychology & Philosophy</span>
+                <span>✦ Python & FastAPI</span>
+                <span>✦ Lusion-Inspired Interactions</span>
+            </div>
+        </div>
+
         <!-- 05 Skills -->
         <section id="skills" class="scroll-reveal">
             <h2><span>05</span> Skills</h2>
@@ -345,6 +370,8 @@
         </footer>
     </div>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="lusion-engine.js"></script>
 </body>
 </html>

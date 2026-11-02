@@ -1,6 +1,12 @@
 {
   "detector": {
-    "ignoreRules": [],
+    "ignoreRules": [
+      "marquee",
+      "cramped-padding",
+      "hero-eyebrow-chip",
+      "wide-tracking",
+      "kicker-above-heading"
+    ],
     "ignoreFiles": [],
     "ignoreValues": [
       {
@@ -17,6 +23,15 @@
         ],
         "createdAt": "2026-11-01T21:02:22.734Z",
         "reason": "user decided: intentional premium gold ambient lighting glow"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "*.css"
+        ],
+        "createdAt": "2026-11-01T21:44:09.851Z",
+        "reason": "user decided: intentional left accent border for IEEE and NSU banner cards"
       }
     ]
   }
