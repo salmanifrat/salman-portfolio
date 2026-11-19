@@ -48,13 +48,108 @@ function dismissWelcome() {
     if (overlay) overlay.style.display = 'none';
 }
 
-// Scroll Progress Bar
+// Floating 3D Navbar Interactions (CodeXR inspired)
+const floatingNav = document.querySelector('nav');
+if (floatingNav) {
+    // 3D Tilt perspective on mousemove
+    floatingNav.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 860) return;
+        const rect = floatingNav.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotX = -(y / (rect.height / 2)) * 6.5;
+        const rotY = (x / (rect.width / 2)) * 8.5;
+        floatingNav.style.transform = `translateX(-50%) perspective(900px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-2px)`;
+    });
+
+    floatingNav.addEventListener('mouseleave', () => {
+        floatingNav.style.transform = 'translateX(-50%) perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+}
+
+// Gliding Pill Indicator inside Nav Links Track
+function initGlidingNavPill() {
+    const navLinksTrack = document.getElementById('navLinks');
+    if (!navLinksTrack) return;
+
+    let pill = navLinksTrack.querySelector('.nav-gliding-pill');
+    if (!pill) {
+        pill = document.createElement('div');
+        pill.className = 'nav-gliding-pill';
+        navLinksTrack.prepend(pill);
+    }
+
+    const items = navLinksTrack.querySelectorAll('a.nav-item');
+    const activeItem = navLinksTrack.querySelector('a.nav-item.active');
+
+    function moveTo(item, immediate = false) {
+        if (!item || window.innerWidth <= 860) {
+            pill.style.opacity = '0';
+            return;
+        }
+        const itemRect = item.getBoundingClientRect();
+        const trackRect = navLinksTrack.getBoundingClientRect();
+        const left = itemRect.left - trackRect.left;
+        const width = itemRect.width;
+
+        if (immediate) {
+            pill.style.transition = 'none';
+        }
+        pill.style.left = `${left}px`;
+        pill.style.width = `${width}px`;
+        pill.style.opacity = '1';
+
+        if (immediate) {
+            pill.offsetHeight; // force reflow
+            pill.style.transition = '';
+        }
+    }
+
+    // Set initial position after fonts and layout calculate
+    setTimeout(() => {
+        if (activeItem) moveTo(activeItem, true);
+    }, 60);
+
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => moveTo(item));
+    });
+
+    navLinksTrack.addEventListener('mouseleave', () => {
+        if (activeItem) {
+            moveTo(activeItem);
+        } else {
+            pill.style.opacity = '0';
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        const current = navLinksTrack.querySelector('a.nav-item:hover') || activeItem;
+        if (current) moveTo(current);
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlidingNavPill);
+} else {
+    initGlidingNavPill();
+}
+
+// Scroll Progress & Navbar Compression
 window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     const progressBar = document.getElementById('scroll-progress');
     if (progressBar) progressBar.style.width = scrolled + '%';
+
+    // Compress floating nav on scroll
+    if (floatingNav) {
+        if (winScroll > 40) {
+            floatingNav.classList.add('scrolled');
+        } else {
+            floatingNav.classList.remove('scrolled');
+        }
+    }
 
     // Navbar profile picture pops in after scrolling past hero
     const navProfilePic = document.getElementById('navProfilePic');

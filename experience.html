@@ -20,7 +20,7 @@
         }
         .plush-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.12);
+            box-shadow: 0 10px 40px var(--accent-glow);
         }
         .plush-inner {
             display: flex;
@@ -69,7 +69,7 @@
         }
         .ieee-role-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.12);
+            box-shadow: 0 10px 40px var(--accent-glow);
         }
         .ieee-role-inner {
             display: flex;
@@ -113,7 +113,7 @@
             bottom: 6px;
             right: 6px;
             background: rgba(0, 0, 0, 0.75);
-            color: #22c55e;
+            color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.65rem;
             padding: 3px 6px;
@@ -134,8 +134,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(11, 15, 14, 0.92);
-            backdrop-filter: blur(5px);
+            background-color: rgba(10, 10, 13, 0.94);
+            backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -145,7 +145,7 @@
             max-height: 90vh;
             border-radius: 8px;
             border: 1px solid var(--accent);
-            box-shadow: 0 0 50px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 50px var(--accent-glow);
             object-fit: contain;
         }
         #lightboxClose {
