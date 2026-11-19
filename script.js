@@ -42,58 +42,13 @@ async function loadPortfolioData() {
     ];
 }
 
-// Welcome Overlay
+// Welcome Overlay stub for backward compatibility
 function dismissWelcome() {
     const overlay = document.getElementById('welcome-overlay');
-    if (overlay) {
-        overlay.classList.add('fade-out');
-        sessionStorage.setItem('welcomed', 'true');
-    }
+    if (overlay) overlay.style.display = 'none';
 }
 
-// Interactive Custom Amber Cursor & Magnetic Elements
-document.addEventListener('mousemove', (e) => {
-    const cursor = document.getElementById('customCursor');
-    if (cursor) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    }
-
-    // Portrait tilt effect based on cursor position
-    const profilePic = document.querySelector('.profile-pic-container');
-    if (profilePic && (profilePic.classList.contains('visible') || heroIsTransformed())) {
-        const rect = profilePic.getBoundingClientRect();
-        const xCenter = rect.left + rect.width / 2;
-        const yCenter = rect.top + rect.height / 2;
-        const xVal = (e.clientX - xCenter) / 20;
-        const yVal = (e.clientY - yCenter) / 20;
-        profilePic.style.transform = `perspective(500px) rotateY(${xVal}deg) rotateX(${-yVal}deg) scale(1.03)`;
-    }
-});
-
-// Cursor hover effects on interactive elements
-document.addEventListener('mouseover', (e) => {
-    const cursor = document.getElementById('customCursor');
-    if (!cursor) return;
-    if (e.target.closest('a, button, .project-card, .card, .chip, .timeline-item, input')) {
-        cursor.classList.add('hovered');
-    }
-});
-
-document.addEventListener('mouseout', (e) => {
-    const cursor = document.getElementById('customCursor');
-    if (!cursor) return;
-    if (e.target.closest('a, button, .project-card, .card, .chip, .timeline-item, input')) {
-        cursor.classList.remove('hovered');
-    }
-});
-
-function heroIsTransformed() {
-    const hero = document.getElementById('boltHero');
-    return hero && hero.classList.contains('transformed');
-}
-
-// Scroll Progress & In-Banner Transition Choreography
+// Scroll Progress Bar
 window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -101,27 +56,17 @@ window.addEventListener('scroll', () => {
     const progressBar = document.getElementById('scroll-progress');
     if (progressBar) progressBar.style.width = scrolled + '%';
 
-    const heroSection = document.getElementById('boltHero');
+    // Navbar profile picture pops in after scrolling past hero
     const navProfilePic = document.getElementById('navProfilePic');
-
-    // When scrolling past hero (~350px), blur banner background and transform the single name into profile pic + name + details on the banner
-    if (heroSection) {
-        if (winScroll > 350) {
-            heroSection.classList.add('blurred', 'transformed');
-        } else {
-            heroSection.classList.remove('blurred', 'transformed');
-        }
-    }
-
-    // Navbar profile picture pops in ONLY when the profile name section on the banner has scrolled up past the screen (winScroll > 650px)
     if (navProfilePic) {
-        if (winScroll > 650) {
+        if (winScroll > 500) {
             navProfilePic.classList.add('visible');
         } else {
             navProfilePic.classList.remove('visible');
         }
     }
 });
+
 
 // Scroll Reveal Observer for other sections
 const observerOptions = {
@@ -204,12 +149,8 @@ function toggleTheme() {
 window.addEventListener('DOMContentLoaded', () => {
     loadPortfolioData();
 
-    if (sessionStorage.getItem('welcomed') === 'true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const overlay = document.getElementById('welcome-overlay');
-        if (overlay) overlay.style.display = 'none';
-    } else {
-        setTimeout(dismissWelcome, 3000);
-    }
+    const overlay = document.getElementById('welcome-overlay');
+    if (overlay) overlay.style.display = 'none';
 
     document.querySelectorAll('.scroll-reveal').forEach(el => {
         observer.observe(el);
@@ -228,26 +169,6 @@ window.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') runRagQuery();
         });
     }
-
-    // Magnetic Buttons & Nav Links Effect
-    const magneticItems = document.querySelectorAll('.nav-links a, button, .chip, .social-icon-btn');
-    magneticItems.forEach(item => {
-        item.addEventListener('mousemove', (e) => {
-            const rect = item.getBoundingClientRect();
-            const hx = rect.left + rect.width / 2;
-            const hy = rect.top + rect.height / 2;
-            const dx = (e.clientX - hx) * 0.3;
-            const dy = (e.clientY - hy) * 0.3;
-            item.style.transform = `translate(${dx}px, ${dy}px)`;
-        });
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translate(0px, 0px)';
-            item.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-        });
-        item.addEventListener('mouseenter', () => {
-            item.style.transition = 'none';
-        });
-    });
 
     // Marquee speed reaction to scroll velocity
     let lastScrollY = window.scrollY;

@@ -4,7 +4,7 @@ import os
 DATA_FILE = "portfolio_data.json"
 
 DEFAULT_DATA = {
-    "name": "Mohammad Salman Ifrat",
+    "name": "Mohammed Salman Ifrat",
     "title": "RAG Systems Engineer & CSE Student",
     "affiliation": "Department of Computer Science & Engineering, North South University",
     "about": "I am a 4th-year Computer Science and Engineering student at North South University, Dhaka, graduating in late 2027. My technical work centers around Retrieval-Augmented Generation (RAG) systems, building robust backend architectures with LangChain, FAISS, HuggingFace embeddings, Groq/LLaMA, and FastAPI.",

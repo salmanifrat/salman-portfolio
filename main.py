@@ -98,10 +98,6 @@ def read_index():
 def read_admin():
     return FileResponse("admin.html")
 
-@app.get("/courses.html")
-def read_courses():
-    return FileResponse("courses.html")
-
 @app.get("/experience.html")
 def read_experience():
     return FileResponse("experience.html")
