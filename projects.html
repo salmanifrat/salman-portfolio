@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects — Mohammed Salman Ifrat</title>
+    <title>Projects and Ventures — Mohammed Salman Ifrat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,9 +24,10 @@
             </div>
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-item">Home</a>
-                <a href="projects.html" class="nav-item active">Projects</a>
+                <a href="projects.html" class="nav-item active">Projects &amp; Ventures</a>
                 <a href="experience.html" class="nav-item">Experience</a>
                 <a href="education.html" class="nav-item">Education</a>
+                <a href="skills.html" class="nav-item">Skills</a>
                 <a href="weird.html" class="nav-item">Weird Corner</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
             </div>
@@ -34,52 +35,369 @@
         </div>
     </nav>
 
-    <div class="container">
-        <header class="hero scroll-reveal" style="padding: 60px 0 40px; border-bottom: 1px solid var(--border);">
-            <div class="hero-info" style="grid-column: 1 / -1;">
-                <h1>Featured Projects & Research</h1>
-                <p class="about-text" style="margin-top: 10px;">
-                    A showcase of my flagship RAG systems, AI research, and software engineering projects.
-                </p>
-            </div>
-        </header>
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-label">Engineering Systems · Applied AI · Research · Ventures</div>
+            <h1 class="page-hero-title">Projects and Ventures</h1>
+            <p class="page-hero-sub">Production Retrieval-Augmented Generation (RAG), relational database systems, procedural systems programming, computer vision research, and commercial ventures.</p>
+        </div>
+    </div>
 
-        <section class="scroll-reveal" style="padding: 40px 0 80px;">
-            <h2><span>01</span> Flagship System</h2>
+    <div class="container" style="padding-top: 0;">
 
-            <!-- Flagship Project Card -->
-            <div class="card flagship-card" style="margin-top: 30px;">
-                <span class="date">Flagship Project • CSE327 & CSE299</span>
+        <!-- Technical Projects & Research -->
+        <section class="scroll-reveal" style="padding: 50px 0;">
+            <h2>Projects &amp; Research</h2>
+
+            <!-- Project 1: TaxEaseBD (Completed) -->
+            <div class="flagship-project-card" style="margin-bottom: 36px;">
+                <div class="flagship-project-top">
+                    <div class="flagship-project-tags">
+                        <span class="project-tag project-tag--completed">● Completed</span>
+                        <span class="project-tag">RAG Architecture</span>
+                        <span class="project-tag">LegalTech</span>
+                        <span class="project-tag">Groq LPU</span>
+                    </div>
+                </div>
+
                 <h3>TaxEaseBD</h3>
-                <p class="project-subtitle">RAG-Powered Tax Compliance Assistant for Bangladesh</p>
-                <p class="about-text" style="margin: 12px 0 20px;">
-                    A specialized Retrieval-Augmented Generation (RAG) assistant trained on National Board of Revenue (NBR) tax laws and statutory regulatory orders in Bangladesh. Built with FastAPI, LangChain, FAISS, and LLaMA via Groq.
+                <div class="project-subtitle">RAG-Powered Legal &amp; Tax Compliance Assistant for Bangladesh</div>
+
+                <p class="project-desc">
+                    An asynchronous Retrieval-Augmented Generation (RAG) assistant designed to index complex National Board of Revenue (NBR) legal statutes, annual Finance Act revisions, and official Statutory Regulatory Orders (SROs). Built to eliminate the high legal barrier to entry and ambiguous taxation questions faced by everyday Bangladeshi citizens, freelancers, and small business owners.
                 </p>
-                <div class="badges" style="margin-bottom: 20px;">
+
+                <p class="project-desc">
+                    The system features an automated legal document ingestion pipeline with semantic sliding-window chunking that preserves strict statutory clause boundaries. Vector embeddings are stored in a dense FAISS index and retrieved in real-time. Generation is orchestrated through Groq Cloud LPU acceleration with LLaMA 3, enforcing anti-hallucination prompt constraints that require direct clause citations for every answer.
+                </p>
+
+                <!-- Mini Metrics -->
+                <div class="flagship-metrics-grid">
+                    <div class="flagship-metric-card">
+                        <div class="flagship-metric-value">150+</div>
+                        <div class="flagship-metric-label">Pages Indexed</div>
+                    </div>
+                    <div class="flagship-metric-card">
+                        <div class="flagship-metric-value">100%</div>
+                        <div class="flagship-metric-label">Citation Grounded</div>
+                    </div>
+                    <div class="flagship-metric-card">
+                        <div class="flagship-metric-value">&lt; 850ms</div>
+                        <div class="flagship-metric-label">LPU Inference</div>
+                    </div>
+                    <div class="flagship-metric-card">
+                        <div class="flagship-metric-value">BN + EN</div>
+                        <div class="flagship-metric-label">Bilingual Support</div>
+                    </div>
+                </div>
+
+                <!-- Engineering Highlights -->
+                <div class="flagship-what-i-built">
+                    <div class="flagship-what-i-built-label">Engineering Highlights</div>
+                    <ul>
+                        <li>Automated legal document ingestion pipeline with semantic chunking to preserve statutory clause boundaries</li>
+                        <li>Built an asynchronous FastAPI service orchestrating LangChain retrieval and dense FAISS vector indices</li>
+                        <li>Integrated Groq Cloud LPU acceleration with LLaMA 3 for ultra-low latency response times under 850ms</li>
+                        <li>Engineered strict anti-hallucination prompts requiring direct citations to relevant NBR statutory clauses</li>
+                        <li>Designed a clean, bilingual (Bengali &amp; English) user interface for seamless citizen accessibility</li>
+                    </ul>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div class="flagship-stack">
                     <span class="badge">Python</span>
                     <span class="badge">FastAPI</span>
                     <span class="badge">LangChain</span>
                     <span class="badge">FAISS</span>
-                    <span class="badge">Groq / LLaMA</span>
+                    <span class="badge">Groq Cloud</span>
+                    <span class="badge">LLaMA 3</span>
+                    <span class="badge">React</span>
                 </div>
-                <div class="social-buttons">
-                    <a href="https://github.com/TODO/taxeasebd" target="_blank" class="btn btn-primary">GitHub Repo</a>
-                    <a href="https://TODO-demo.vercel.app" target="_blank" class="btn">Live Demo</a>
+
+                <!-- Action Buttons & Repo Note -->
+                <div class="flagship-actions">
+                    <a href="https://github.com/salman-ifrat/taxeasebd" target="_blank" class="btn btn-primary btn-ghost btn-disabled">GitHub (Private Repository)</a>
+                    <a href="#" class="btn btn-ghost btn-disabled">Live Demo (Staging)</a>
                 </div>
+                <div class="repo-status-note">Code repository is currently private during evaluation and staging — technical architecture demo available on request.</div>
             </div>
 
-            <h2 style="margin-top: 60px;"><span>02</span> Research & Utilities</h2>
-            <!-- Secondary Grid Projects -->
-            <div class="grid-2" style="margin-top: 30px;">
-                <div class="card">
-                    <span class="date">Senior Design • CSE499</span>
-                    <h3>Mars Image Novelty Detection</h3>
-                    <p class="about-text" style="margin: 10px 0;">Developing a computer vision model to categorize Mars surface imagery objects into familiar, unfamiliar, and uncertain classes. Currently in literature review and dataset curation stage.</p>
+            <!-- Project 2: Departmental Store Management System (Completed) -->
+            <div class="flagship-project-card" style="margin-bottom: 36px;">
+                <div class="flagship-project-top">
+                    <div class="flagship-project-tags">
+                        <span class="project-tag project-tag--completed">● Completed</span>
+                        <span class="project-tag">Database Systems</span>
+                        <span class="project-tag">Full-Stack Architecture</span>
+                        <span class="project-tag">ACID Compliant</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <span class="date">AI Tooling</span>
-                    <h3>Custom RAG Evaluation Pipeline</h3>
-                    <p class="about-text" style="margin: 10px 0;">A benchmarking harness for evaluating retrieval relevance and hallucination rates in domain-specific technical documentation QA systems.</p>
+
+                <h3>Departmental Store Management System</h3>
+                <div class="project-subtitle">Relational Database Engine &amp; Retail Inventory Management Platform</div>
+
+                <p class="project-desc">
+                    An end-to-end supermarket retail and inventory management platform designed to automate high-volume retail operations. Centralizes stock auditing, supplier procurement cycles, checkout billing point-of-sale (POS) interactions, and comprehensive transactional audit logging into a single cohesive architecture.
+                </p>
+
+                <p class="project-desc">
+                    Engineered a robust, normalized MySQL relational schema guaranteeing referential integrity, primary and foreign key constraints, and full ACID transaction reliability. Built a hybrid backend utilizing PHP for request routing and cashier session management, alongside Python data processing routines for automated sales analytics, low-inventory notifications, and supplier re-order forecasting.
+                </p>
+
+                <!-- Engineering Highlights -->
+                <div class="flagship-what-i-built">
+                    <div class="flagship-what-i-built-label">Engineering Highlights</div>
+                    <ul>
+                        <li>Designed normalized relational database schema (3NF/BCNF) with optimized indexing for fast multi-table joins</li>
+                        <li>Implemented database triggers and stored procedures for real-time inventory deductions upon POS checkout</li>
+                        <li>Built backend query orchestration with PHP and Python scripts for transactional sales metrics and revenue summaries</li>
+                        <li>Engineered role-based access control (RBAC) separating cashier checkout functions from managerial administrative panels</li>
+                        <li>Enforced ACID transaction boundaries to prevent race conditions during concurrent stock updates and billing</li>
+                    </ul>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div class="flagship-stack">
+                    <span class="badge">MySQL</span>
+                    <span class="badge">PHP</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Relational Schema</span>
+                    <span class="badge">SQL Stored Procedures</span>
+                    <span class="badge">RBAC</span>
+                </div>
+
+                <div class="repo-status-note">Project code was developed and archived on a prior GitHub account — system architecture documentation and schema design available on request.</div>
+            </div>
+
+            <!-- Project 3: Mobile Phone Management System (Completed) -->
+            <div class="flagship-project-card" style="margin-bottom: 36px;">
+                <div class="flagship-project-top">
+                    <div class="flagship-project-tags">
+                        <span class="project-tag project-tag--completed">● Completed</span>
+                        <span class="project-tag">Systems Programming</span>
+                        <span class="project-tag">Pure C</span>
+                        <span class="project-tag">File Streams</span>
+                    </div>
+                </div>
+
+                <h3>Mobile Phone Management System</h3>
+                <div class="project-subtitle">Low-Level Procedural Terminal Engine with File Stream Persistence</div>
+
+                <p class="project-desc">
+                    A standalone procedural inventory and device management engine engineered entirely in pure C without third-party frameworks or external libraries. Designed to model real-world mobile retail dealership operations, handling device inventories, unique IMEI registration, customer warranty tracking, and sales auditing through a responsive command-line interface.
+                </p>
+
+                <p class="project-desc">
+                    Implemented low-level file I/O streams for permanent disk-based record persistence, enabling reliable binary and structured text data storage across application sessions. Built dynamic memory management routines and raw pointer manipulation to maintain in-memory record catalogs, coupled with optimized search and sorting algorithms for instantaneous record retrieval.
+                </p>
+
+                <!-- Engineering Highlights -->
+                <div class="flagship-what-i-built">
+                    <div class="flagship-what-i-built-label">Engineering Highlights</div>
+                    <ul>
+                        <li>Architected modular C data structures (`struct`) modeling multi-field device specifications, IMEI identifiers, and warranty records</li>
+                        <li>Implemented low-level file stream handlers (`fopen`, `fread`, `fwrite`, `fseek`) ensuring reliable disk persistence</li>
+                        <li>Engineered linear and binary search algorithms for sub-millisecond querying of device records by model, serial, or price range</li>
+                        <li>Integrated defensive user-input validation and buffer management preventing memory leaks, pointer corruption, and overflows</li>
+                        <li>Structured modular header files and source units to maintain strict procedural separation of concerns</li>
+                    </ul>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div class="flagship-stack">
+                    <span class="badge">C</span>
+                    <span class="badge">Pointer Arithmetic</span>
+                    <span class="badge">Binary File I/O</span>
+                    <span class="badge">Data Structures</span>
+                    <span class="badge">Memory Management</span>
+                    <span class="badge">CLI Architecture</span>
+                </div>
+
+                <div class="repo-status-note">Project code was developed and archived on a prior GitHub account — core algorithms and implementation review available on request.</div>
+            </div>
+
+            <!-- Project 4: Mars Image Novelty Detection (Ongoing) -->
+            <div class="flagship-project-card" id="mars" style="margin-bottom: 0;">
+                <div class="flagship-project-top">
+                    <div class="flagship-project-tags">
+                        <span class="project-tag project-tag--ongoing">● Ongoing</span>
+                        <span class="project-tag">Computer Vision</span>
+                        <span class="project-tag">Space AI</span>
+                        <span class="project-tag">Out-of-Distribution</span>
+                    </div>
+                </div>
+
+                <h3>Mars Image Novelty Detection</h3>
+                <div class="project-subtitle">Open-Set Novelty &amp; Anomaly Detection for Martian Surface Imagery</div>
+
+                <p class="project-desc">
+                    An active computer vision and machine learning research project addressing the operational constraints of planetary rovers and orbiters. Investigating open-set methodologies to classify Martian surface imagery into three epistemic domains: <em>familiar terrain</em>, <em>unfamiliar anomalies</em>, and <em>uncertain observations</em>.
+                </p>
+
+                <p class="project-desc">
+                    Due to delayed orbital communication windows and severe transmission bandwidth limitations, rovers cannot stream every captured frame back to Earth. This system aims to provide on-rover autonomous intelligence capable of recognizing scientifically novel geological formations, prioritizing anomalous observations for downlink without waiting for manual human-in-the-loop review.
+                </p>
+
+                <!-- Research Progress Bar -->
+                <div class="research-progress-bar-wrap">
+                    <div class="research-progress-label">
+                        <span>Research Milestones Completed</span>
+                        <span>Stage 2 of 5 (~25% · Literature Review &amp; Dataset Curation)</span>
+                    </div>
+                    <div class="research-progress-bar">
+                        <div class="research-progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Engineering Highlights -->
+                <div class="flagship-what-i-built">
+                    <div class="flagship-what-i-built-label">Research &amp; Engineering Highlights</div>
+                    <ul>
+                        <li>Formalized open-set novelty formulation and downlink prioritization criteria under space communication constraints</li>
+                        <li>Building image preprocessing and normalization pipelines across NASA HiRISE orbiter and Curiosity rover datasets</li>
+                        <li>Developing deep convolutional feature extraction pipelines with latent space distance metrics and anomaly thresholding</li>
+                        <li>Benchmarking detection fidelity against traditional out-of-distribution (OOD) and reconstruction-based baselines</li>
+                        <li>Working toward senior capstone defense and peer-reviewed manuscript submission</li>
+                    </ul>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div class="flagship-stack">
+                    <span class="badge">Python</span>
+                    <span class="badge">PyTorch</span>
+                    <span class="badge">OpenCV</span>
+                    <span class="badge">NASA HiRISE</span>
+                    <span class="badge">Out-of-Distribution (OOD)</span>
+                    <span class="badge">Anomaly Detection</span>
+                </div>
+
+                <div class="repo-status-note">Active capstone research project — experimental pipeline, dataset curation, and manuscript in continuous development.</div>
+            </div>
+        </section>
+
+        <!-- Ventures Section -->
+        <section class="scroll-reveal" style="padding: 50px 0;">
+            <h2>Ventures</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -10px; margin-bottom: 28px; line-height: 1.6;">
+                Early commercial apparel initiatives launched to test sustainable retail models, waste reduction, and artisan craftsmanship.
+            </p>
+
+            <div class="projects-duo-grid">
+                <!-- Card 1: PLUSH -->
+                <div class="flagship-project-card" style="margin-bottom: 0;">
+                    <div>
+                        <div class="flagship-project-top">
+                            <div class="flagship-project-tags">
+                                <span class="project-tag">Formative Venture</span>
+                                <span class="project-tag">Waste Reduction</span>
+                                <span class="project-tag">Sustainable Fashion</span>
+                            </div>
+                        </div>
+
+                        <h3>PLUSH — Thrift Business</h3>
+                        <div class="project-subtitle">Waste Reduction &amp; Sustainable Circular Fashion</div>
+
+                        <p class="project-desc">
+                            Founded PLUSH with a core mission centered around waste reduction and promoting sustainable circular fashion. Addressed the environmental impact of fast-fashion textile waste by creating an accessible platform for pre-loved, curated apparel for university students and youth in Dhaka.
+                        </p>
+
+                        <p class="project-desc">
+                            Spearheaded end-to-end venture operations including supply chain sourcing, garment authentication, unit pricing, digital brand marketing, and on-campus pop-up retail stalls at North South University. While the business was an early trial that was discontinued, it provided crucial, battle-tested lessons in inventory turnover, customer acquisition costs, and circular retail logistics.
+                        </p>
+
+                        <div class="flagship-what-i-built" style="margin-top: 18px;">
+                            <div class="flagship-what-i-built-label">Venture Highlights</div>
+                            <ul>
+                                <li>Designed and executed pop-up retail stalls at North South University engaging hundreds of students</li>
+                                <li>Managed sustainable inventory curation, pricing models, and direct-to-consumer order fulfillment</li>
+                                <li>Built social media presence and community engagement focused on environmental fashion consciousness</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flagship-stack" style="margin-top: 20px;">
+                            <span class="badge">Sustainable Fashion</span>
+                            <span class="badge">Waste Reduction</span>
+                            <span class="badge">Circular Retail</span>
+                            <span class="badge">Pop-up Operations</span>
+                            <span class="badge">Supply Chain</span>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap;">
+                            <a href="https://facebook.com/PLUSH.CO" target="_blank" class="btn btn-ghost" style="padding: 8px 16px; font-size: 0.8rem;">Facebook: PLUSH.CO ↗</a>
+                            <a href="https://instagram.com/GETPLUSHNOW" target="_blank" class="btn btn-ghost" style="padding: 8px 16px; font-size: 0.8rem;">Instagram: @GETPLUSHNOW ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: IBU -->
+                <div class="flagship-project-card" style="margin-bottom: 0;">
+                    <div>
+                        <div class="flagship-project-top">
+                            <div class="flagship-project-tags">
+                                <span class="project-tag">First Venture</span>
+                                <span class="project-tag">Artisan Fashion</span>
+                                <span class="project-tag">Custom Apparel</span>
+                            </div>
+                        </div>
+
+                        <h3>IBU — Hand-Painted Apparel</h3>
+                        <div class="project-subtitle">Wearable Ethnic Art — Custom Hand-Painted Punjabi &amp; T-Shirts</div>
+
+                        <p class="project-desc">
+                            Salman's first entrepreneurial venture in the apparel sector. Conceptualized and launched <strong>IBU</strong> to blend traditional Bangladeshi artisan craftsmanship with contemporary casual wear, specializing in bespoke hand-painted Punjabi, customized graphic t-shirts, and tailored artisan garments.
+                        </p>
+
+                        <p class="project-desc">
+                            Directed fabric procurement, curated commission briefs with local artisans, tested colorfast pigment durability, and managed custom order fulfillment and delivery logistics nationwide via social commerce. An early exploratory venture that instilled deep appreciation for craft preservation, customer personalization, and product quality control.
+                        </p>
+
+                        <div class="flagship-what-i-built" style="margin-top: 18px;">
+                            <div class="flagship-what-i-built-label">Venture Highlights</div>
+                            <ul>
+                                <li>Sourced raw textiles and coordinated custom hand-painting commissions for seasonal festival collections</li>
+                                <li>Managed bespoke customer design requests, sizing customizations, and nationwide courier distribution</li>
+                                <li>Led digital storefront marketing and social commerce customer relations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flagship-stack" style="margin-top: 20px;">
+                            <span class="badge">Hand-Painted Punjabi</span>
+                            <span class="badge">Artisan T-Shirts</span>
+                            <span class="badge">Bespoke Commissions</span>
+                            <span class="badge">DTC Logistics</span>
+                            <span class="badge">Craftsmanship</span>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap;">
+                            <a href="https://www.facebook.com/profile.php?id=100064260244610" target="_blank" class="btn btn-ghost" style="padding: 8px 16px; font-size: 0.8rem;">Facebook: IBU ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Roadmap -->
+        <section class="scroll-reveal" style="padding: 50px 0 80px; border-bottom: none;">
+            <h2>On The Horizon</h2>
+
+            <div class="coming-next-grid">
+                <div class="coming-next-card">
+                    <div class="coming-next-card-label">Planned · LegalTech API</div>
+                    <h4>TaxEaseBD Developer API</h4>
+                    <p>Packaging TaxEaseBD's retrieval engine into an authenticated REST API for fintech platforms, accounting software, and payroll systems in Bangladesh.</p>
+                </div>
+                <div class="coming-next-card">
+                    <div class="coming-next-card-label">Research · Developer Tooling</div>
+                    <h4>RAG Evaluation &amp; Hallucination Harness</h4>
+                    <p>An open-source benchmark suite for quantifying retrieval recall, precision, and faithfulness across domain-specific statutory corpora.</p>
+                </div>
+                <div class="coming-next-card">
+                    <div class="coming-next-card-label">Venture · Circular Economy</div>
+                    <h4>Circular Retail Platform Core</h4>
+                    <p>Architecting digital inventory management and peer-to-peer verification tooling for circular retail initiatives.</p>
                 </div>
             </div>
         </section>

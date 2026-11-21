@@ -313,3 +313,112 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Interactive 1-click email copy
+function copyEmailToClipboard() {
+    const email = 'ifrat.official25@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+        const textSpan = document.getElementById('copyEmailText');
+        if (textSpan) {
+            const original = textSpan.innerText;
+            textSpan.innerText = 'Copied to Clipboard! ✓';
+            setTimeout(() => {
+                textSpan.innerText = original;
+            }, 2500);
+        }
+    }).catch(err => {
+        window.location.href = 'mailto:ifrat.official25@gmail.com';
+    });
+}
+
+// Power-User shortcut: '/' or 'Cmd+K' to focus in-browser AI search
+document.addEventListener('keydown', (e) => {
+    const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+    if (activeTag === 'input' || activeTag === 'textarea' || (document.activeElement && document.activeElement.isContentEditable)) {
+        return;
+    }
+
+    if (e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+        e.preventDefault();
+        const searchInput = document.getElementById('ragQueryInput');
+        const askSection = document.getElementById('ask-page');
+        if (searchInput && askSection) {
+            askSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                searchInput.focus();
+                searchInput.select();
+            }, 350);
+        }
+    }
+});
+
+// Magnetic Buttons physics for .btn and .social-icon-btn
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn, .social-icon-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate3d(${x * 0.18}px, ${y * 0.22}px, 0)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate3d(0, 0, 0)';
+            btn.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease';
+        });
+
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transition = 'transform 0.08s ease-out';
+        });
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMagneticButtons);
+} else {
+    initMagneticButtons();
+}
+
+// Global Lightbox Handler
+function openLightbox(imgSrc) {
+    let modal = document.getElementById('lightboxModal');
+    let modalImg = document.getElementById('lightboxImg');
+    
+    // Auto-create modal element if not present in the DOM
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'lightboxModal';
+        modal.innerHTML = `
+            <span id="lightboxClose" onclick="closeLightbox()">&times;</span>
+            <img id="lightboxImg" src="" alt="Certificate Preview">
+        `;
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.id === 'lightboxClose') {
+                closeLightbox();
+            }
+        });
+        document.body.appendChild(modal);
+        modalImg = document.getElementById('lightboxImg');
+    }
+    
+    modalImg.src = imgSrc;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+
+

@@ -25,9 +25,10 @@
             </div>
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-item active">Home</a>
-                <a href="projects.html" class="nav-item">Projects</a>
+                <a href="projects.html" class="nav-item">Projects &amp; Ventures</a>
                 <a href="experience.html" class="nav-item">Experience</a>
                 <a href="education.html" class="nav-item">Education</a>
+                <a href="skills.html" class="nav-item">Skills</a>
                 <a href="weird.html" class="nav-item">Weird Corner</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
             </div>
@@ -35,51 +36,50 @@
         </div>
     </nav>
 
-    <!-- Hero — Split Panel -->
-    <header class="bolt-hero" id="boltHero">
+    <div class="container" style="padding-top: 100px;">
 
-        <!-- LEFT: Text content -->
-        <div class="hero-left">
-            <div class="greeting-animate hero-greeting">✦ Assalamu Alaikum ✦</div>
-            <div class="hero-name-rule"></div>
-            <h1 class="bolt-hero-name">Mohammed<br>Salman Ifrat</h1>
-            <div class="profile-title">CS Student · Full-Stack Dev · Aspiring Entrepreneur</div>
-            <div class="profile-affiliation">
-                Department of Computer Science &amp; Engineering,<br>North South University, Dhaka
+        <!-- Hero — Split Grid -->
+        <header class="bolt-hero" id="boltHero">
+
+            <!-- LEFT: Text content -->
+            <div class="hero-left">
+                <div class="greeting-animate hero-greeting">✦ Assalamu Alaikum ✦</div>
+                <div class="hero-name-rule"></div>
+                <h1 class="bolt-hero-name">Mohammed<br>Salman Ifrat</h1>
+                <div class="profile-title">CS Student · Full-Stack Dev · Aspiring Entrepreneur</div>
+                <div class="profile-affiliation">
+                    Department of Computer Science &amp; Engineering,<br>North South University, Dhaka
+                </div>
+                <div class="hero-cta">
+                    <a href="projects.html" class="btn btn-primary">View My Work →</a>
+                    <a href="mailto:ifrat.official25@gmail.com" class="btn btn-secondary">Get in Touch</a>
+                </div>
+                <div class="profile-socials">
+                    <a href="https://github.com/salmanifrat" target="_blank" class="social-icon-btn" title="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="social-icon-btn" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="social-icon-btn" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="mailto:ifrat.official25@gmail.com" class="social-icon-btn" title="Email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                </div>
             </div>
-            <div class="hero-cta">
-                <a href="projects.html" class="btn btn-primary">View My Work →</a>
-                <a href="mailto:ifrat.official25@gmail.com" class="btn btn-secondary">Get in Touch</a>
+
+            <!-- RIGHT: Photo panel -->
+            <div class="hero-right">
+                <img src="assets/banner.jpg" alt="Mohammed Salman Ifrat" class="hero-right-img" onerror="this.src='assets/photo.jpg';">
+                <div class="hero-photo-tag">
+                    <span class="pulse-dot"></span>
+                    <span>Dhaka, BD · Senior Undergraduate @ NSU</span>
+                </div>
             </div>
-            <div class="profile-socials">
-                <a href="https://github.com/salmanifrat" target="_blank" class="social-icon-btn" title="GitHub">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="social-icon-btn" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="social-icon-btn" title="Facebook">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-                <a href="mailto:ifrat.official25@gmail.com" class="social-icon-btn" title="Email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </a>
-            </div>
-        </div>
 
-        <!-- RIGHT: Photo panel -->
-        <div class="hero-right">
-            <img src="assets/banner.jpg" alt="Mohammed Salman Ifrat" class="hero-right-img" onerror="this.src='assets/photo.jpg';">
-        </div>
-
-        <div class="scroll-down-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-arrow">↓</div>
-        </div>
-
-    </header>
-
-    <div class="container" style="padding-top: 0;">
+        </header>
 
         <!-- Executive Impact & Stat Bar -->
         <div class="impact-stat-bar scroll-reveal">
@@ -95,7 +95,7 @@
             </div>
             <div class="impact-stat-card">
                 <div class="impact-stat-label">Leadership</div>
-                <div class="impact-stat-value">IEEE NSU SB Executive</div>
+                <div class="impact-stat-value">Sub Executive @ IEEE NSU SB</div>
                 <div class="impact-stat-detail">Membership Development &amp; International Conference Operations</div>
             </div>
             <div class="impact-stat-card">
@@ -105,9 +105,9 @@
             </div>
         </div>
 
-        <!-- 01 About -->
+        <!-- About -->
         <section id="about" class="scroll-reveal">
-            <h2><span>01</span> About Me</h2>
+            <h2>About Me</h2>
             <div class="about-editorial-grid">
                 <div class="about-narrative">
                     <div class="about-thesis">
@@ -146,7 +146,7 @@
                     <div class="about-highlight-item">
                         <div class="about-highlight-icon">✦</div>
                         <div class="about-highlight-text">
-                            <h4>Executive Institutional Impact</h4>
+                            <h4>Sub Executive Leadership &amp; Impact</h4>
                             <p>Recruiting and mentoring talent in IEEE, speaking to hundreds of students at orientations, and driving logistics for international research symposiums.</p>
                         </div>
                     </div>
@@ -154,74 +154,155 @@
             </div>
         </section>
 
-        <!-- 02 Selected Ventures & Works -->
+        <!-- Selected Ventures & Works -->
         <section id="ventures" class="scroll-reveal">
-            <h2><span>02</span> Selected Ventures &amp; Works</h2>
+            <h2>Selected Ventures &amp; Works</h2>
             <p class="about-text" style="margin-top: -15px; margin-bottom: 24px;">
                 A balanced portfolio of intelligent systems engineering, commercial venture creation, and high-stakes institutional leadership.
             </p>
 
             <div class="pillars-row">
-                <!-- Pillar I -->
+                <!-- Box 1: Applied AI & Software Projects -->
                 <div class="pillar-box item-glow" onclick="location.href='projects.html'">
                     <div>
-                        <div class="pillar-box-tag">Pillar 01 · Applied AI</div>
-                        <h3 class="pillar-box-title">TaxEaseBD &amp; Ain Sahayak</h3>
-                        <div class="pillar-box-sub">Domain RAG &amp; Legal AI</div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">Engineering Systems</div>
+                            <div class="pillar-status-pill">● Completed Systems</div>
+                        </div>
+                        <h3 class="pillar-box-title">Projects</h3>
+                        <div class="pillar-box-sub">TaxEaseBD Flagship · Database Systems · Pure C Engine</div>
                         <p class="pillar-box-desc">
-                            Production-grade retrieval-augmented generation systems solving complex regulatory and tax compliance problems using FastAPI, FAISS, and LangChain.
+                            Showcasing <strong>TaxEaseBD</strong> (NBR tax compliance RAG using FastAPI, LangChain, FAISS &amp; Groq LLaMA 3). Also built a full <strong>Departmental Store Management System</strong> in MySQL/PHP/Python and a <strong>Mobile Phone Management System</strong> in pure C.
                         </p>
                         <div class="pillar-box-badges">
-                            <span class="pillar-box-badge">FastAPI</span>
-                            <span class="pillar-box-badge">FAISS</span>
-                            <span class="pillar-box-badge">LangChain</span>
+                            <span class="pillar-box-badge">TaxEaseBD (RAG)</span>
+                            <span class="pillar-box-badge">MySQL &amp; PHP</span>
+                            <span class="pillar-box-badge">Pure C Engine</span>
                             <span class="pillar-box-badge">Python</span>
                         </div>
                     </div>
                     <div class="pillar-box-footer">
-                        <span class="pillar-box-link">Explore Architecture →</span>
+                        <span class="pillar-box-link">Explore Projects &amp; Code →</span>
                     </div>
                 </div>
 
-                <!-- Pillar II -->
+                <!-- Box 2: Apparel Ventures -->
                 <div class="pillar-box item-glow" onclick="location.href='experience.html#plush'">
                     <div>
-                        <div class="pillar-box-tag">Pillar 02 · The Venture</div>
-                        <h3 class="pillar-box-title">PLUSH — Circular Fashion</h3>
-                        <div class="pillar-box-sub">Founder &amp; Managing Lead</div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">The Ventures</div>
+                            <div class="pillar-status-pill">● Apparel Ventures</div>
+                        </div>
+                        <h3 class="pillar-box-title">PLUSH &amp; IBU Apparel</h3>
+                        <div class="pillar-box-sub">Founder · Waste Reduction &amp; Hand-Painted Wear</div>
                         <p class="pillar-box-desc">
-                            Sustainable thrifting venture reducing textile waste through curated pre-loved apparel, community outreach, and digital direct-to-consumer sales.
+                            Launched two commercial apparel ventures: <strong>PLUSH</strong> (waste reduction &amp; sustainable circular thrifting) and <strong>IBU</strong> (custom hand-painted Punjabi &amp; artisan t-shirts). Formative entrepreneurial ventures.
                         </p>
                         <div class="pillar-box-badges">
-                            <span class="pillar-box-badge">Founder</span>
-                            <span class="pillar-box-badge">Circular Economy</span>
-                            <span class="pillar-box-badge">Operations</span>
-                            <span class="pillar-box-badge">DTC</span>
+                            <span class="pillar-box-badge">PLUSH (Waste Reduction)</span>
+                            <span class="pillar-box-badge">IBU (Hand-Painted)</span>
+                            <span class="pillar-box-badge">Sustainable Fashion</span>
+                            <span class="pillar-box-badge">Pop-up Logistics</span>
                         </div>
                     </div>
                     <div class="pillar-box-footer">
-                        <span class="pillar-box-link">View Case Study →</span>
+                        <span class="pillar-box-link">View Venture Case Studies →</span>
                     </div>
                 </div>
 
-                <!-- Pillar III -->
+                <!-- Box 3: Institutional Leadership -->
                 <div class="pillar-box item-glow" onclick="location.href='experience.html#ieee'">
                     <div>
-                        <div class="pillar-box-tag">Pillar 03 · Leadership</div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">Leadership</div>
+                            <div class="pillar-status-pill">● 2,000+ Member Network</div>
+                        </div>
                         <h3 class="pillar-box-title">IEEE NSU Student Branch</h3>
-                        <div class="pillar-box-sub">Sub-Executive · Global Summits</div>
+                        <div class="pillar-box-sub">Sub Executive · INSB &amp; Chapter Leadership</div>
                         <p class="pillar-box-desc">
-                            Spearheaded student outreach, delivered orientation keynotes to 200+ engineering students, and organized operations for international academic conferences.
+                            Serving as <strong>Sub Executive</strong> on the Membership Development Team at INSB. Previously led PR &amp; Corporate Communications for <strong>IEEE IAS</strong>, and coordinated major technical events for <strong>IEEE PES</strong>.
                         </p>
                         <div class="pillar-box-badges">
-                            <span class="pillar-box-badge">Sub-Executive</span>
+                            <span class="pillar-box-badge">Sub Executive (INSB)</span>
+                            <span class="pillar-box-badge">IAS PR In-charge</span>
+                            <span class="pillar-box-badge">PES Events</span>
                             <span class="pillar-box-badge">Keynote</span>
-                            <span class="pillar-box-badge">Conferences</span>
-                            <span class="pillar-box-badge">IEEE</span>
                         </div>
                     </div>
                     <div class="pillar-box-footer">
-                        <span class="pillar-box-link">View Leadership →</span>
+                        <span class="pillar-box-link">View Leadership Archive →</span>
+                    </div>
+                </div>
+
+                <!-- Box 4: Conference Operations & Volunteering -->
+                <div class="pillar-box item-glow" onclick="location.href='experience.html#conferences'">
+                    <div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">Global Summits</div>
+                            <div class="pillar-status-pill">● 5 Academic Conferences</div>
+                        </div>
+                        <h3 class="pillar-box-title">Conference Volunteering</h3>
+                        <div class="pillar-box-sub">Protocol Coordination &amp; Delegate Management</div>
+                        <p class="pillar-box-desc">
+                            Volunteered on operational and protocol teams across 5 major international research conferences at NSU &amp; DU—including <strong>IC4ME2</strong>, <strong>ICCIT</strong>, <strong>ICJR-1</strong> (Senate Bhaban), <strong>SPAC 25</strong>, and China-South Asia.
+                        </p>
+                        <div class="pillar-box-badges">
+                            <span class="pillar-box-badge">IC4ME2</span>
+                            <span class="pillar-box-badge">ICCIT</span>
+                            <span class="pillar-box-badge">ICJR-1 (DU)</span>
+                            <span class="pillar-box-badge">SPAC 25</span>
+                        </div>
+                    </div>
+                    <div class="pillar-box-footer">
+                        <span class="pillar-box-link">View Conference Records →</span>
+                    </div>
+                </div>
+
+                <!-- Box 5: Professional Certifications -->
+                <div class="pillar-box item-glow" onclick="location.href='experience.html#certifications'">
+                    <div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">Verified Credentials</div>
+                            <div class="pillar-status-pill">● Google · Anthropic · Meta</div>
+                        </div>
+                        <h3 class="pillar-box-title">Professional Certifications</h3>
+                        <div class="pillar-box-sub">Google Cloud · Anthropic Claude · Meta Blueprint</div>
+                        <p class="pillar-box-desc">
+                            Earned official industry credentials across leading AI ecosystems: <strong>Introduction to Generative AI</strong> from <strong>Google Cloud</strong>, <strong>Claude Code in action</strong> from <strong>Claude Academy (Anthropic)</strong> in autonomous agentic systems, and <strong>Optimize your campaign with Meta Advantage+</strong> from <strong>Meta Blueprint</strong>.
+                        </p>
+                        <div class="pillar-box-badges">
+                            <span class="pillar-box-badge" style="border-color: rgba(56,189,248,0.4); color: #38bdf8;">Google Gen AI</span>
+                            <span class="pillar-box-badge" style="border-color: rgba(74,222,128,0.4); color: #4ade80;">Claude Code Certified</span>
+                            <span class="pillar-box-badge" style="border-color: rgba(96,165,250,0.4); color: #60a5fa;">Meta Advantage+</span>
+                            <span class="pillar-box-badge">Agentic Systems</span>
+                        </div>
+                    </div>
+                    <div class="pillar-box-footer">
+                        <span class="pillar-box-link">View Verified Credentials →</span>
+                    </div>
+                </div>
+
+                <!-- Box 6: Ongoing Work -->
+                <div class="pillar-box item-glow" onclick="location.href='projects.html#mars'">
+                    <div>
+                        <div class="pillar-box-top-row">
+                            <div class="pillar-box-tag">Active Research &amp; Pipeline</div>
+                            <div class="pillar-status-pill">● Active Investigation</div>
+                        </div>
+                        <h3 class="pillar-box-title">Ongoing Work</h3>
+                        <div class="pillar-box-sub">Mars Vision Research · Emerging Systems &amp; Pipelines</div>
+                        <p class="pillar-box-desc">
+                            Actively conducting computer vision research on <strong>Mars Image Novelty Detection</strong> (open-set anomaly classification for planetary rover downlinks using NASA HiRISE). Multiple new technical systems and initiatives launching soon.
+                        </p>
+                        <div class="pillar-box-badges">
+                            <span class="pillar-box-badge" style="border-color: rgba(245,158,11,0.4); color: #f59e0b;">Mars Anomaly AI</span>
+                            <span class="pillar-box-badge">PyTorch / OpenCV</span>
+                            <span class="pillar-box-badge">NASA HiRISE</span>
+                            <span class="pillar-box-badge">New Systems Soon</span>
+                        </div>
+                    </div>
+                    <div class="pillar-box-footer">
+                        <span class="pillar-box-link">Explore Ongoing Research →</span>
                     </div>
                 </div>
             </div>
@@ -229,19 +310,19 @@
             <!-- Deep Dive Directory Bar -->
             <div class="pillars-deepdive-bar">
                 <div class="pillars-deepdive-text">
-                    <strong>Looking for the complete archive?</strong> Explore dedicated sub-pages for in-depth source code, full career history, or academic coursework.
+                    <strong>Explore Detailed Archives:</strong> Deep-dive into technical project repositories, commercial ventures, leadership logs, or verified credentials.
                 </div>
                 <div class="pillars-deepdive-actions">
-                    <a href="projects.html" class="btn btn-primary" style="font-size: 0.82rem; padding: 10px 20px;">All Projects &amp; Code →</a>
-                    <a href="experience.html" class="btn btn-secondary" style="font-size: 0.82rem; padding: 10px 20px;">Full Experience Record</a>
-                    <a href="education.html" class="btn btn-secondary" style="font-size: 0.82rem; padding: 10px 20px;">Education &amp; Honors</a>
+                    <a href="projects.html" class="btn btn-primary" style="font-size: 0.82rem; padding: 9px 18px;">Projects &amp; Ventures →</a>
+                    <a href="experience.html" class="btn btn-secondary" style="font-size: 0.82rem; padding: 9px 18px;">Experience Archive</a>
+                    <a href="skills.html" class="btn btn-secondary" style="font-size: 0.82rem; padding: 9px 18px;">Skills &amp; Tech Stack</a>
                 </div>
             </div>
         </section>
 
-        <!-- 03 Education Summary -->
+        <!-- Academic Milestones -->
         <section id="education" class="scroll-reveal">
-            <h2 class="section-title-glow" onclick="location.href='education.html'"><span>03</span> Academic Milestones</h2>
+            <h2 class="section-title-glow" onclick="location.href='education.html'">Academic Milestones</h2>
             <div class="timeline">
                 <div class="timeline-item item-glow" onclick="location.href='education.html#bscnsu'">
                     <div class="timeline-dot"></div>
@@ -264,7 +345,7 @@
                                 <div class="timeline-title">Higher Secondary Certificate (HSC) &amp; SSC — Science</div>
                                 <div class="timeline-sub">Govt. M.M. City College &amp; A C Laha Pilot High School</div>
                             </div>
-                            <div class="timeline-date">GPA 5.00 / 5.00 (Both)</div>
+                            <div class="timeline-date"><span class="gpa-achievement-badge">Perfect GPA 5.00 / 5.00 (Both)</span></div>
                         </div>
                         <p class="timeline-desc">Consistently achieved top-tier academic standing across board examinations with perfect grade point averages.</p>
                     </div>
@@ -275,76 +356,80 @@
             </div>
         </section>
 
-        <!-- Marquee Interest Strip -->
-        <div class="marquee-section">
-            <div class="marquee-track">
-                <span>✦ AI & RAG Systems</span>
-                <span>✦ Full-Stack Engineering</span>
-                <span>✦ Sustainable Entrepreneurship</span>
-                <span>✦ Human Psychology & Philosophy</span>
-                <span>✦ Python & FastAPI</span>
-                <span>✦ Lusion-Inspired Interactions</span>
-                <span>✦ AI & RAG Systems</span>
-                <span>✦ Full-Stack Engineering</span>
-                <span>✦ Sustainable Entrepreneurship</span>
-                <span>✦ Human Psychology & Philosophy</span>
-                <span>✦ Python & FastAPI</span>
-                <span>✦ Lusion-Inspired Interactions</span>
-            </div>
-        </div>
-
-        <!-- 04 Skills -->
+        <!-- Skills & Tech Stack (Heads Up) -->
         <section id="skills" class="scroll-reveal">
-            <h2><span>04</span> Skills &amp; Competencies</h2>
-            <h3 class="subsection-title">AI &amp; Data Engineering</h3>
-            <div class="badges">
-                <span class="badge">RAG Architectures</span>
-                <span class="badge">Vector Search (FAISS)</span>
-                <span class="badge">LangChain</span>
-                <span class="badge">HuggingFace Embeddings</span>
-                <span class="badge">Groq / LLaMA</span>
-                <span class="badge">Machine Learning</span>
+            <h2>Skills &amp; Tech Stack</h2>
+            <p class="about-text">A high-level preview of my core technical architectures, engineering toolchains, and venture competencies:</p>
+            
+            <div class="skills-heads-up-grid">
+                <div class="skills-heads-up-card">
+                    <div class="skills-card-label">AI &amp; Intelligence</div>
+                    <h3 class="skills-card-title">RAG &amp; Computer Vision</h3>
+                    <p class="skills-card-desc">Production vector search (FAISS), LangChain orchestration, Groq / LLaMA high-speed inference, and Mars novelty detection.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge" style="border-color: rgba(74,222,128,0.4); color: #4ade80; background: rgba(74,222,128,0.06);">Claude Code Certified</span>
+                        <span class="badge">LangChain</span>
+                        <span class="badge">FAISS</span>
+                        <span class="badge">Groq / LLaMA</span>
+                        <span class="badge">PyTorch</span>
+                    </div>
+                </div>
+
+                <div class="skills-heads-up-card">
+                    <div class="skills-card-label">Core Engineering</div>
+                    <h3 class="skills-card-title">FastAPI &amp; Full-Stack</h3>
+                    <p class="skills-card-desc">Asynchronous Python API design, RESTful microservices, responsive vanilla JavaScript, and modern glassmorphic web architectures.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge">Python</span>
+                        <span class="badge">FastAPI</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">Git &amp; GitHub</span>
+                    </div>
+                </div>
+
+                <div class="skills-heads-up-card">
+                    <div class="skills-card-label">Venture &amp; Leadership</div>
+                    <h3 class="skills-card-title">Operations &amp; Outreach</h3>
+                    <p class="skills-card-desc">Bootstrapped circular fashion startup (PLUSH), IEEE membership development, international conference logistics, and brand curation.</p>
+                    <div class="badges" style="margin-top: 14px;">
+                        <span class="badge">Venture Ops</span>
+                        <span class="badge">IEEE NSU SB</span>
+                        <span class="badge">IC4ME2 / ICCIT</span>
+                        <span class="badge">Brand Strategy</span>
+                    </div>
+                </div>
             </div>
-            <h3 class="subsection-title">Core Development</h3>
-            <div class="badges">
-                <span class="badge">Python</span>
-                <span class="badge">FastAPI</span>
-                <span class="badge">JavaScript</span>
-                <span class="badge">RESTful APIs</span>
-                <span class="badge">Git &amp; GitHub</span>
-                <span class="badge">Responsive UI</span>
-            </div>
-            <h3 class="subsection-title">Venture &amp; Leadership</h3>
-            <div class="badges">
-                <span class="badge">Startup Operations</span>
-                <span class="badge">Brand &amp; Curation Strategy</span>
-                <span class="badge">Membership Outreach (IEEE)</span>
-                <span class="badge">Conference Coordination</span>
-                <span class="badge">Public Speaking</span>
-            </div>
-            <h3 class="subsection-title">Languages</h3>
-            <div class="badges">
-                <span class="badge">Bengali — Native</span>
-                <span class="badge">English — Fluent</span>
-                <span class="badge">Hindi — Conversational</span>
-                <span class="badge">Arabic — Elementary Reading</span>
+
+            <div style="margin-top: 24px; text-align: right;">
+                <a href="skills.html" class="pillar-link">Explore Full Skills &amp; Technology Stack →</a>
             </div>
         </section>
 
-        <!-- 05 Ask -->
+        <!-- Ask -->
         <section id="ask-page" class="scroll-reveal">
-            <h2><span>05</span> Ask This Page (Interactive AI)</h2>
+            <h2>Ask This Page (Interactive AI)</h2>
             <p class="about-text">Have a question about my background, projects, or research? Query my in-browser knowledge assistant directly:</p>
             <div class="ask-box">
+                <div class="ask-box-header">
+                    <div class="ask-live-status">
+                        <span class="pulse-dot"></span>
+                        <span class="ask-status-text">In-Browser RAG Engine Active</span>
+                    </div>
+                    <div class="ask-latency-badge">Zero Latency · Client-Side</div>
+                </div>
                 <div class="preset-chips">
                     <button class="chip" onclick="askPreset('What is TaxEaseBD?')">What is TaxEaseBD?</button>
+                    <button class="chip" onclick="askPreset('What certifications does Salman hold?')">Certifications?</button>
                     <button class="chip" onclick="askPreset('What are Salman\'s research interests?')">Research interests?</button>
                     <button class="chip" onclick="askPreset('What is PLUSH?')">What is PLUSH?</button>
-                    <button class="chip" onclick="askPreset('What is Ain Sahayak?')">Ain Sahayak?</button>
+                    <button class="chip" onclick="askPreset('What is Salman\'s Mars Vision research?')">Mars Research?</button>
                     <button class="chip" onclick="askPreset('What IEEE roles does Salman hold?')">IEEE roles?</button>
                 </div>
                 <div class="ask-input-row">
-                    <input type="text" id="ragQueryInput" placeholder="Ask anything about Salman's background..." autocomplete="off">
+                    <div class="ask-input-wrapper">
+                        <input type="text" id="ragQueryInput" placeholder="Ask anything about Salman's background, RAG systems, or venture..." autocomplete="off">
+                        <span class="kbd-shortcut-hint" title="Press / anywhere to search">/</span>
+                    </div>
                     <button class="btn btn-primary" onclick="runRagQuery()">Search</button>
                 </div>
                 <div id="ragResultContainer" class="rag-result-box" style="display: none;">
@@ -354,15 +439,27 @@
             </div>
         </section>
 
-        <!-- 06 Contact -->
+        <!-- Contact -->
         <section id="contact" class="scroll-reveal">
-            <h2><span>06</span> Get In Touch</h2>
-            <p class="about-text">Whether you want to discuss full-stack engineering, startups, academic research, or collaboration opportunities — my inbox is always open.</p>
-            <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px;">
-                <a href="mailto:ifrat.official25@gmail.com" class="btn btn-primary">Send Email</a>
-                <a href="https://github.com/salmanifrat" target="_blank" class="btn btn-secondary">GitHub</a>
-                <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="btn btn-secondary">LinkedIn</a>
-                <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="btn btn-secondary">Facebook</a>
+            <h2>Get In Touch</h2>
+            <div class="contact-card">
+                <div class="contact-status-bar">
+                    <span class="contact-status-dot"></span>
+                    <span>Open to Select AI Engineering, Research &amp; Startup Roles · Dhaka, Bangladesh (UTC+6)</span>
+                </div>
+                <h3 class="contact-title">Let’s build something consequential together.</h3>
+                <p class="about-text" style="max-width: 680px; margin-bottom: 24px;">
+                    Whether you want to discuss full-stack engineering, RAG architecture, sustainable startups, or academic research collaborations — my inbox is always open.
+                </p>
+                <div class="contact-actions-row">
+                    <a href="mailto:ifrat.official25@gmail.com" class="btn btn-primary">Send Email ↗</a>
+                    <button class="btn btn-secondary" id="copyEmailBtn" onclick="copyEmailToClipboard()">
+                        <span id="copyEmailText">Copy: ifrat.official25@gmail.com</span>
+                    </button>
+                    <a href="https://github.com/salmanifrat" target="_blank" class="btn btn-secondary">GitHub</a>
+                    <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                    <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="btn btn-secondary">Facebook</a>
+                </div>
             </div>
         </section>
 

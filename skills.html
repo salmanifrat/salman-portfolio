@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Stack | Mohammed Salman Ifrat</title>
+    <meta name="description" content="Technical, architectural, and venture competencies of Mohammed Salman Ifrat — AI, RAG, FastAPI, Full-Stack, and Operations.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <!-- Floating Capsule Navbar -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo-container">
+                <div class="nav-profile-pic visible" id="navProfilePic">
+                    <img src="assets/profile.jpg" alt="Mohammed Salman Ifrat" class="nav-profile-img" onerror="this.src='assets/photo.jpg';">
+                </div>
+                <a href="index.html" class="logo">Mohammed Salman Ifrat</a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="projects.html" class="nav-item">Projects &amp; Ventures</a>
+                <a href="experience.html" class="nav-item">Experience</a>
+                <a href="education.html" class="nav-item">Education</a>
+                <a href="skills.html" class="nav-item active">Skills</a>
+                <a href="weird.html" class="nav-item">Weird Corner</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-label">Technical &amp; Practical Competencies</div>
+            <h1 class="page-hero-title">Skills &amp; Tech Stack</h1>
+            <p class="page-hero-sub">An in-depth directory of engineering frameworks, AI architectures, toolchains, languages, and venture leadership.</p>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 0;">
+
+        <!-- AI, Machine Learning & Agentic Systems -->
+        <section class="skills-category-section scroll-reveal">
+            <div class="skills-category-title">
+                Artificial Intelligence, Agentic Systems &amp; RAG
+            </div>
+            <div class="skills-matrix-grid">
+
+                <!-- Claude Code & Agentic Workflows (Anthropic Certified Skill) -->
+                <div class="skill-matrix-card item-glow" style="border-color: rgba(74, 222, 128, 0.35); cursor: pointer;" onclick="location.href='experience.html#certifications'">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Claude Code &amp; Agentic AI Workflows</div>
+                        <div class="skill-matrix-level" style="color: #4ade80;">Anthropic Certified</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Engineering autonomous agentic software workflows, subagent orchestration, tool use, test-driven iteration, and CLI automation. Certified through the official <strong>Claude Code in action</strong> course by <strong>Claude Academy (Anthropic)</strong>.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag" style="border-color: rgba(74, 222, 128, 0.4); color: #4ade80;">Claude Code in Action</span>
+                        <span class="skill-matrix-tag">Claude Academy</span>
+                        <span class="skill-matrix-tag">Agentic Workflows</span>
+                        <span class="skill-matrix-tag">Tool Orchestration</span>
+                        <span class="skill-matrix-tag">CLI Automation</span>
+                    </div>
+                    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--accent); font-weight: 600;">View Certificate on Experience Page →</span>
+                        <a href="https://academy.claude.com/verify/a285820c05ed2449b849083ddd471f0d" target="_blank" rel="noopener noreferrer" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); text-decoration: none;" onclick="event.stopPropagation()">Verify Credential ↗</a>
+                    </div>
+                </div>
+
+                <!-- Google Generative AI Foundations (Google Cloud Skill) -->
+                <div class="skill-matrix-card item-glow" style="border-color: rgba(56, 189, 248, 0.35); cursor: pointer;" onclick="location.href='experience.html#certifications'">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Generative AI &amp; LLM Foundations</div>
+                        <div class="skill-matrix-level" style="color: #38bdf8;">Google Cloud Certified</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Deep foundational grasp of Generative AI mechanics, large language models, prompt conditioning, and distinction from traditional ML methods. Earned the official skill badge through <strong>Google Cloud &amp; Google Skills</strong>.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">Intro to Generative AI</span>
+                        <span class="skill-matrix-tag">Google Cloud</span>
+                        <span class="skill-matrix-tag">LLM Architecture</span>
+                        <span class="skill-matrix-tag">GenAI Toolchains</span>
+                    </div>
+                    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--accent); font-weight: 600;">View Certificate on Experience Page →</span>
+                        <a href="https://www.skills.google/public_profiles/790ca946-ad5e-4d49-8368-b181e4e0213c/badges/29820792" target="_blank" rel="noopener noreferrer" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); text-decoration: none;" onclick="event.stopPropagation()">Verify Credential ↗</a>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Retrieval-Augmented Generation (RAG)</div>
+                        <div class="skill-matrix-level">Core Specialization</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Designing modular end-to-end RAG pipelines. Experience indexing structured legal and statutory tax documents for Bangladesh (NBR), document chunking, prompt grounding, and hallucination reduction.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">LangChain</span>
+                        <span class="skill-matrix-tag">Context Chunking</span>
+                        <span class="skill-matrix-tag">TaxEaseBD</span>
+                        <span class="skill-matrix-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Vector Search &amp; Indexing</div>
+                        <div class="skill-matrix-level">Advanced</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Implementation of dense vector storage, nearest-neighbor cosine similarity search, index persistence, and metadata filtering for fast semantic retrieval over thousands of passage embeddings.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">FAISS</span>
+                        <span class="skill-matrix-tag">Dense Vectors</span>
+                        <span class="skill-matrix-tag">HuggingFace Embeddings</span>
+                        <span class="skill-matrix-tag">Semantic Search</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">LLM Orchestration &amp; Inference</div>
+                        <div class="skill-matrix-level">Production</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Deploying low-latency LLM inference pipelines with Groq and LLaMA models. Building custom system prompts, context-window constraints, and deterministic response parsing.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Groq API</span>
+                        <span class="skill-matrix-tag">LLaMA 3</span>
+                        <span class="skill-matrix-tag">Token Optimization</span>
+                        <span class="skill-matrix-tag">Guardrails</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Computer Vision &amp; Novelty Detection</div>
+                        <div class="skill-matrix-level">Research &amp; Senior Design</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Developing novelty categorization algorithms for planetary surface imagery (Mars exploration, CSE499 senior design). Classifying unfamiliar visual anomalies and outlier clusters.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">PyTorch</span>
+                        <span class="skill-matrix-tag">OpenCV</span>
+                        <span class="skill-matrix-tag">Anomaly Detection</span>
+                        <span class="skill-matrix-tag">Image Preprocessing</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Machine Learning &amp; Tabular Analysis</div>
+                        <div class="skill-matrix-level">Intermediate</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Feature engineering, data cleaning, exploratory analysis, classification, and regression modeling using standard scientific Python toolchains.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Scikit-Learn</span>
+                        <span class="skill-matrix-tag">NumPy</span>
+                        <span class="skill-matrix-tag">Pandas</span>
+                        <span class="skill-matrix-tag">Matplotlib</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 02 Core Engineering & Full-Stack -->
+        <section class="skills-category-section scroll-reveal">
+            <div class="skills-category-title">
+                Backend, Architecture &amp; Web Systems
+            </div>
+            <div class="skills-matrix-grid">
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Python 3</div>
+                        <div class="skill-matrix-level">Primary Language</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Core programming language used across backend services, AI models, data ingestion scripts, and university algorithms. Proficient with asynchronous patterns and object-oriented design.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Asyncio</span>
+                        <span class="skill-matrix-tag">Pydantic</span>
+                        <span class="skill-matrix-tag">OOP</span>
+                        <span class="skill-matrix-tag">Virtualenvs</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">FastAPI</div>
+                        <div class="skill-matrix-level">Production Backend</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Building high-performance asynchronous REST microservices. Implementing request validation with Pydantic, dependency injection, CORS middleware, and automatic OpenAPI documentation.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Async Routes</span>
+                        <span class="skill-matrix-tag">Pydantic V2</span>
+                        <span class="skill-matrix-tag">OpenAPI</span>
+                        <span class="skill-matrix-tag">Uvicorn</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Modern JavaScript (ES6+)</div>
+                        <div class="skill-matrix-level">Proficient</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Crafting reactive client-side logic without heavy framework bloat. Experience with dynamic DOM manipulation, fetch APIs, client-side RAG inference, and interactive physics.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">ES6 Modules</span>
+                        <span class="skill-matrix-tag">DOM Manipulation</span>
+                        <span class="skill-matrix-tag">Event Architecture</span>
+                        <span class="skill-matrix-tag">Client RAG</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Responsive Design &amp; CSS Architecture</div>
+                        <div class="skill-matrix-level">Advanced</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Precision UI styling using pure CSS3 custom variables, fluid typography with clamp(), 3D perspective transforms, and glassmorphic backdrop-filter blurs.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">CSS Variables</span>
+                        <span class="skill-matrix-tag">Fluid Clamp Grid</span>
+                        <span class="skill-matrix-tag">Glassmorphism</span>
+                        <span class="skill-matrix-tag">Keyframe Animation</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Relational Databases &amp; SQL</div>
+                        <div class="skill-matrix-level">Academic &amp; Applied</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Schema design, entity-relationship modeling, relational query writing, indexing, and joins developed through CSE311 (Database Systems) and applied projects.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">SQL</span>
+                        <span class="skill-matrix-tag">Relational Modeling</span>
+                        <span class="skill-matrix-tag">SQLite</span>
+                        <span class="skill-matrix-tag">Data Normalization</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 03 Venture, Leadership & Operations -->
+        <section class="skills-category-section scroll-reveal">
+            <div class="skills-category-title">
+                Venture, Leadership &amp; Operations
+            </div>
+            <div class="skills-matrix-grid">
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Bootstrapping &amp; Retail Operations</div>
+                        <div class="skill-matrix-level">Founder @ PLUSH</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Founded and scaled PLUSH, a sustainable circular fashion venture. Managed end-to-end thrift apparel sourcing, quality control, inventory turnover, digital marketing, and cash-flow management.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Unit Economics</span>
+                        <span class="skill-matrix-tag">Inventory Logistics</span>
+                        <span class="skill-matrix-tag">Circular Economy</span>
+                        <span class="skill-matrix-tag">Social Commerce</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card item-glow" onclick="location.href='experience.html#certifications'" style="cursor: pointer;">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Meta Advantage+ &amp; Ad Optimization</div>
+                        <div class="skill-matrix-level" style="color: #60a5fa;">Meta Blueprint Certified</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Engineering AI-driven digital marketing campaigns with Meta Advantage+. Specialized in algorithmic audience expansion, automated budget allocation, dynamic creative testing, and ROAS conversion modeling across Facebook &amp; Instagram.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag" style="border-color: rgba(96, 165, 250, 0.4); color: #60a5fa;">Meta Advantage+</span>
+                        <span class="skill-matrix-tag">Meta Blueprint</span>
+                        <span class="skill-matrix-tag">Campaign Optimization</span>
+                        <span class="skill-matrix-tag">AI Ad Automation</span>
+                        <span class="skill-matrix-tag">Performance Marketing</span>
+                    </div>
+                    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--accent); font-weight: 600;">View Certificate on Experience Page →</span>
+                        <a href="https://www.facebookblueprint.com/student/award/xTucaZ3Gvq4A4joNsHzcp3k1" target="_blank" rel="noopener noreferrer" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); text-decoration: none;" onclick="event.stopPropagation()">Verify Credential ↗</a>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Community Leadership &amp; Outreach</div>
+                        <div class="skill-matrix-level">Sub Executive @ IEEE NSU SB</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Serving on the Membership Development Team for the IEEE NSU Student Branch. Driving member engagement initiatives, onboarding campaigns, and student technical community growth.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Outreach Funnels</span>
+                        <span class="skill-matrix-tag">Member Retention</span>
+                        <span class="skill-matrix-tag">Team Collaboration</span>
+                        <span class="skill-matrix-tag">Event Logistics</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">International Conference Coordination</div>
+                        <div class="skill-matrix-level">Volunteer Operations</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Volunteered on operational teams for two flagship international conferences at NSU (IC4ME2 2024 &amp; ICCIT 2024), coordinating attendee registration, foreign speaker hospitality, and session logistics.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">IC4ME2</span>
+                        <span class="skill-matrix-tag">ICCIT</span>
+                        <span class="skill-matrix-tag">Speaker Hospitality</span>
+                        <span class="skill-matrix-tag">Event Protocols</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Brand Curation &amp; Content Strategy</div>
+                        <div class="skill-matrix-level">Creator @ IF</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Directing and producing digital essays on psychology, philosophy, and cultural dynamics for the "IF" brand. Skilled in Banglish storytelling, scriptwriting, and visual pacing.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Scriptwriting</span>
+                        <span class="skill-matrix-tag">Brand Voice</span>
+                        <span class="skill-matrix-tag">Visual Storytelling</span>
+                        <span class="skill-matrix-tag">Audience Retention</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 04 Natural Languages & Communication -->
+        <section class="skills-category-section scroll-reveal">
+            <div class="skills-category-title">
+                Natural Languages &amp; Communication
+            </div>
+            <div class="skills-matrix-grid">
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Bengali (বাংলা)</div>
+                        <div class="skill-matrix-level">Native Speaker</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Full native proficiency across academic, professional, and creative domains. Specialized in parsing and translating complex Bengali statutory tax texts and legal orders for NLP models.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Native</span>
+                        <span class="skill-matrix-tag">Technical Translation</span>
+                        <span class="skill-matrix-tag">Banglish Scripting</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">English</div>
+                        <div class="skill-matrix-level">Fluent &amp; Academic</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Professional working and academic proficiency. Used daily for university coursework, international conference management, technical documentation, and software engineering.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Professional Working</span>
+                        <span class="skill-matrix-tag">Technical Docs</span>
+                        <span class="skill-matrix-tag">Public Presentation</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Hindi (हिन्दी)</div>
+                        <div class="skill-matrix-level">Conversational</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        High conversational fluency and listening comprehension, enabling seamless interpersonal communication across South Asian contexts.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Conversational Fluency</span>
+                        <span class="skill-matrix-tag">Spoken Dialogue</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Arabic (العربية)</div>
+                        <div class="skill-matrix-level">Elementary Reading</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Script literacy and phonetic recitation capabilities for classical Arabic scripts and foundational reading.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Script Literacy</span>
+                        <span class="skill-matrix-tag">Phonetic Reading</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 05 Engineering Tools & Workflows -->
+        <section class="skills-category-section scroll-reveal">
+            <div class="skills-category-title">
+                Developer Toolchain &amp; Utilities
+            </div>
+            <div class="skills-matrix-grid">
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Git &amp; GitHub</div>
+                        <div class="skill-matrix-level">Daily Workflow</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Branching strategies, atomic commits, pull requests, release management, and open-source collaboration across academic and independent projects.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">Git CLI</span>
+                        <span class="skill-matrix-tag">GitHub</span>
+                        <span class="skill-matrix-tag">Version Control</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Postman &amp; API Testing</div>
+                        <div class="skill-matrix-level">Intermediate</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Constructing API testing suites, environment variables, headers/token debugging, and response payload validation for FastAPI endpoints.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">REST Testing</span>
+                        <span class="skill-matrix-tag">Mock Requests</span>
+                        <span class="skill-matrix-tag">Env Profiles</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Terminal &amp; UNIX Environments</div>
+                        <div class="skill-matrix-level">Proficient</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Proficient with macOS and Linux terminal environments, zsh/bash shell navigation, process management, SSH, and workflow automation.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">macOS / zsh</span>
+                        <span class="skill-matrix-tag">Shell Scripting</span>
+                        <span class="skill-matrix-tag">CLI Tools</span>
+                    </div>
+                </div>
+
+                <div class="skill-matrix-card">
+                    <div class="skill-matrix-header">
+                        <div class="skill-matrix-name">Figma &amp; Design Prototyping</div>
+                        <div class="skill-matrix-level">Prototyping</div>
+                    </div>
+                    <div class="skill-matrix-desc">
+                        Wireframing web user interfaces, planning layout proportions, color contrast testing, and drafting visual assets for web applications.
+                    </div>
+                    <div class="skill-matrix-tags">
+                        <span class="skill-matrix-tag">UI Wireframes</span>
+                        <span class="skill-matrix-tag">Color Systems</span>
+                        <span class="skill-matrix-tag">Layout Drafting</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding: 40px 0; border-top: 1px solid var(--border); margin-top: 60px;">
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">© 2026 Mohammed Salman Ifrat — CSE @ North South University</p>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <a href="index.html" class="pillar-link" style="font-size: 0.78rem;">← Back to Home</a>
+                <a href="#" class="pillar-link" style="font-size: 0.78rem;">Back to Top ↑</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script src="lusion-engine.js"></script>
+</body>
+</html>
