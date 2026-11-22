@@ -2361,20 +2361,27 @@ footer {
 }
 
 .pillar-box-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--accent);
-    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.82rem;
     font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(187, 114, 86, 0.4);
+    padding: 7px 16px;
+    border-radius: 6px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pillar-box:hover .pillar-box-link {
-    color: var(--text);
-    transform: translateX(6px);
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px var(--accent-glow);
+    transform: translateY(-2px);
 }
 
 /* Transitions across Homepage & Dialogue Box Elements */
