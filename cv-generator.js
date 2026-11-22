@@ -377,11 +377,10 @@ document.addEventListener('keydown', function(e) {
 
 
 /* ═══════════════════════════════════════════════════════════════
-   §4  PDF DOWNLOAD — Uses html2pdf.js from CDN
+   §4  PDF DOWNLOAD & PRINT
    ═══════════════════════════════════════════════════════════════ */
 
 function downloadCV() {
-  // Show loading state on the modal download button
   const btn = document.querySelector('.cv-modal-download-btn');
   const originalText = btn ? btn.innerHTML : '';
   if (btn) {
@@ -389,66 +388,22 @@ function downloadCV() {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;vertical-align:middle;margin-right:6px;">
         <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" stroke-dashoffset="10"/>
       </svg>
-      Generating…`;
-    btn.style.pointerEvents = 'none';
+      Downloading…`;
   }
 
-  // Inject spin animation if needed
-  if (!document.getElementById('cv-spin-style')) {
-    const style = document.createElement('style');
-    style.id = 'cv-spin-style';
-    style.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
-    document.head.appendChild(style);
-  }
+  // Trigger direct download of the high-res pre-rendered PDF asset
+  const pdfUrl = 'assets/Mohammed_Salman_Ifrat_Resume.pdf';
+  const link = document.createElement('a');
+  link.href = pdfUrl;
+  link.download = 'Mohammed_Salman_Ifrat_Resume.pdf';
+  link.target = '_blank';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-  // Build a hidden off-screen container for PDF rendering (needs fixed 210mm width)
-  const generate = () => {
-    const container = document.createElement('div');
-    container.style.position = 'fixed';
-    container.style.left = '-9999px';
-    container.style.top = '0';
-    container.innerHTML = buildCvHtml(cvData);
-    document.body.appendChild(container);
-
-    const element = container.firstElementChild;
-
-    const opt = {
-      margin:       0,
-      filename:     'Mohammed_Salman_Ifrat_Resume.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
-      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
-    };
-
-    html2pdf().set(opt).from(element).save().then(() => {
-      document.body.removeChild(container);
-      if (btn) {
-        btn.innerHTML = originalText;
-        btn.style.pointerEvents = '';
-      }
-    }).catch(() => {
-      document.body.removeChild(container);
-      if (btn) {
-        btn.innerHTML = originalText;
-        btn.style.pointerEvents = '';
-      }
-    });
-  };
-
-  if (typeof html2pdf !== 'undefined') {
-    generate();
-  } else {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js';
-    script.onload = generate;
-    script.onerror = () => {
-      alert('Could not load PDF library. Please check your internet connection and try again.');
-      if (btn) {
-        btn.innerHTML = originalText;
-        btn.style.pointerEvents = '';
-      }
-    };
-    document.head.appendChild(script);
-  }
+  setTimeout(() => {
+    if (btn) {
+      btn.innerHTML = originalText;
+    }
+  }, 1000);
 }
