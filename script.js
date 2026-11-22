@@ -347,7 +347,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const tiltCards = document.querySelectorAll('.project-card, .plush-card, .ieee-role-card, .course-card, .nsu-banner-card');
+    const tiltCards = document.querySelectorAll(
+        '.course-card, .flagship-project-card, .skill-matrix-card, .vault-card, .plush-card, .ieee-role-card, .skills-heads-up-card, .coming-next-card'
+    );
     tiltCards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
         card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
@@ -360,18 +362,18 @@ window.addEventListener('DOMContentLoaded', () => {
             const yc = rect.height / 2;
             const dx = x - xc;
             const dy = y - yc;
-            const maxTilt = 8;
+            const maxTilt = 7;
             const rotateX = (-dy / yc) * maxTilt;
             const rotateY = (dx / xc) * maxTilt;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.01, 1.01, 1.01)`;
+            card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)`;
         });
 
-        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)`;
+        card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)`;
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
-            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease';
+            card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease';
         });
 
         card.addEventListener('mouseenter', () => {

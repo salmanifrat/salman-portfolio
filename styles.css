@@ -280,6 +280,18 @@ body {
     line-height: 1.7;
     transition: background 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
+    animation: pageEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pageEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Scroll Progress Bar */
@@ -933,6 +945,7 @@ section h2 span {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 12px;
+    animation: pageEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
 .page-hero-title {
@@ -942,6 +955,7 @@ section h2 span {
     color: var(--text);
     letter-spacing: -0.01em;
     margin-bottom: 14px;
+    animation: pageEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
 .page-hero-sub {
@@ -950,6 +964,7 @@ section h2 span {
     font-weight: 300;
     max-width: 560px;
     line-height: 1.7;
+    animation: pageEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
 /* ─── Snapshot Rows (home page brief summaries) ─── */
@@ -1252,8 +1267,8 @@ section h2 span {
 
 .nsu-banner-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 12px 45px var(--accent-glow);
-    transform: translateY(-2px);
+    box-shadow: 0 12px 35px var(--accent-glow);
+    transform: translateY(-3px);
 }
 
 .nsu-banner-card:hover .nsu-banner-bg img {
@@ -1264,22 +1279,25 @@ section h2 span {
     color: var(--accent);
 }
 
+.scroll-reveal .nsu-banner-card,
 #education.scroll-reveal .nsu-banner-card {
     opacity: 0;
-    transform: translateX(-45px);
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-                opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+    transform: translateY(18px);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+                opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
 }
 
+.scroll-reveal.visible .nsu-banner-card,
 #education.scroll-reveal.visible .nsu-banner-card {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
+.scroll-reveal.visible .nsu-banner-card:hover,
 #education.scroll-reveal.visible .nsu-banner-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     transition-delay: 0s;
 }
 
@@ -1349,76 +1367,117 @@ section h2 span {
     text-underline-offset: 4px;
 }
 
-/* ─── Course Transcript Grid with Independent Hover ─── */
+/* ─── Course Transcript Grid with Tactile 3D Cards ─── */
 .course-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 14px;
-    margin-top: 14px;
+    margin-top: 16px;
 }
 
 .course-card {
     background: var(--code-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 14px 18px;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 14px 16px;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
     position: relative;
-    overflow: hidden;
-    height: 52px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 92px;
+    cursor: default;
+    transform-style: preserve-3d;
 }
+
+.scroll-reveal .course-card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+.scroll-reveal.visible .course-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal.visible .course-grid .course-card:nth-child(1) { transition-delay: 0.03s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(2) { transition-delay: 0.06s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(3) { transition-delay: 0.09s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(4) { transition-delay: 0.12s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(5) { transition-delay: 0.15s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(6) { transition-delay: 0.18s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(7) { transition-delay: 0.21s; }
+.scroll-reveal.visible .course-grid .course-card:nth-child(8) { transition-delay: 0.24s; }
 
 .course-card:hover {
     background: var(--bg-card);
     border-color: var(--accent);
-    box-shadow: 0 12px 40px var(--accent-glow);
-    height: auto;
-    transform: translateY(-2px);
-    z-index: 20;
+    box-shadow: 0 12px 35px var(--accent-glow);
+    z-index: 10;
+    transition-delay: 0s !important;
 }
 
 .course-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
 }
 
 .c-code {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: var(--accent);
     background: var(--accent-glow);
-    padding: 2px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.course-card:hover .c-code {
+    background: var(--accent);
+    color: #ffffff;
 }
 
 .c-name {
     font-size: 0.88rem;
     color: var(--text);
     flex: 1;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: white-space 0.2s ease;
+    font-weight: 600;
+    line-height: 1.35;
+    transition: color 0.25s ease;
 }
 
 .course-card:hover .c-name {
-    white-space: normal;
-    overflow: visible;
-    line-height: 1.35;
+    color: var(--accent);
 }
 
 .c-cr {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
     flex-shrink: 0;
-    align-self: flex-start;
+    padding: 2px 6px;
+    background: var(--bg-card-hover);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.course-card:hover .c-cr {
+    border-color: var(--accent);
+    color: var(--text);
 }
 
 .course-desc {
@@ -1427,16 +1486,14 @@ section h2 span {
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px dashed var(--border);
-    opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
-    font-weight: 300;
-    line-height: 1.4;
+    line-height: 1.45;
+    font-weight: 400;
+    transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .course-card:hover .course-desc {
-    opacity: 1;
-    transform: translateY(0);
+    color: var(--text);
+    border-top-color: var(--accent-glow);
 }
 .section-title-glow {
     display: inline-flex;
@@ -2481,17 +2538,41 @@ footer {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 24px;
-    transition: var(--transition);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    transform-style: preserve-3d;
 }
+
+.scroll-reveal .skill-matrix-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.scroll-reveal.visible .skill-matrix-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(1) { transition-delay: 0.04s; }
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(2) { transition-delay: 0.08s; }
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(3) { transition-delay: 0.12s; }
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(4) { transition-delay: 0.16s; }
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(5) { transition-delay: 0.20s; }
+.scroll-reveal.visible .skills-matrix-grid .skill-matrix-card:nth-child(6) { transition-delay: 0.24s; }
 
 .skill-matrix-card:hover {
     border-color: var(--accent);
-    transform: translateY(-4px);
     box-shadow: 0 12px 32px var(--accent-glow);
+    transition-delay: 0s !important;
 }
 
 /* Eye-catching colors for certified cards */
@@ -2812,12 +2893,33 @@ footer {
     padding: 36px 40px;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.scroll-reveal .flagship-project-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.scroll-reveal.visible .flagship-project-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal.visible .flagship-project-card:hover {
+    transition-delay: 0s !important;
 }
 
 .flagship-project-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 8px 40px rgba(187, 114, 86, 0.08);
+    box-shadow: 0 12px 40px var(--accent-glow);
 }
 
 .flagship-project-card::before {
@@ -3209,13 +3311,33 @@ footer {
     border-radius: 12px;
     padding: 24px 26px;
     opacity: 0.75;
-    transition: opacity 0.3s, border-color 0.3s, transform 0.2s;
+    transition: opacity 0.3s, border-color 0.3s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
 }
+
+.scroll-reveal .coming-next-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+}
+
+.scroll-reveal.visible .coming-next-card {
+    opacity: 0.75;
+    transform: translateY(0);
+}
+
+.scroll-reveal.visible .coming-next-grid .coming-next-card:nth-child(1) { transition-delay: 0.05s; }
+.scroll-reveal.visible .coming-next-grid .coming-next-card:nth-child(2) { transition-delay: 0.12s; }
+.scroll-reveal.visible .coming-next-grid .coming-next-card:nth-child(3) { transition-delay: 0.19s; }
 
 .coming-next-card:hover {
     opacity: 1;
     border-color: var(--accent);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+    transition-delay: 0s !important;
 }
 
 .coming-next-card-label {
