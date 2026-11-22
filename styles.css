@@ -977,6 +977,10 @@ section h2 span {
     animation: contentEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
+.page-hero ~ .container {
+    animation: contentEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
 /* ─── Snapshot Rows (home page brief summaries) ─── */
 .snapshot-block {
     display: flex;
@@ -1399,7 +1403,6 @@ section h2 span {
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
-    transform-style: preserve-3d;
 }
 
 .scroll-reveal .course-card {

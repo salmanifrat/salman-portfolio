@@ -348,7 +348,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     const tiltCards = document.querySelectorAll(
-        '.nsu-banner-card, .course-card, .flagship-project-card, .skill-matrix-card, .vault-card, .plush-card, .ieee-role-card, .skills-heads-up-card, .coming-next-card'
+        '.nsu-banner-card, .flagship-project-card, .skill-matrix-card, .vault-card, .plush-card, .ieee-role-card, .skills-heads-up-card, .coming-next-card'
     );
     tiltCards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
