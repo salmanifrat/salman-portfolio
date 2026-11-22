@@ -443,16 +443,16 @@
                     <div class="ask-latency-badge">Zero Latency · Client-Side</div>
                 </div>
                 <div class="preset-chips">
+                    <button class="chip" onclick="askPreset('Who is Salman?')">Who is Salman?</button>
                     <button class="chip" onclick="askPreset('What is TaxEaseBD?')">What is TaxEaseBD?</button>
                     <button class="chip" onclick="askPreset('What certifications does Salman hold?')">Certifications?</button>
-                    <button class="chip" onclick="askPreset('What are Salman\'s research interests?')">Research interests?</button>
                     <button class="chip" onclick="askPreset('What is PLUSH?')">What is PLUSH?</button>
-                    <button class="chip" onclick="askPreset('What is Salman\'s Mars Vision research?')">Mars Research?</button>
-                    <button class="chip" onclick="askPreset('What IEEE roles does Salman hold?')">IEEE roles?</button>
+                    <button class="chip" onclick="askPreset('Where does Salman study?')">Where does he study?</button>
+                    <button class="chip" onclick="askPreset('How can I contact Salman?')">Contact Info?</button>
                 </div>
                 <div class="ask-input-row">
                     <div class="ask-input-wrapper">
-                        <input type="text" id="ragQueryInput" placeholder="Ask anything about Salman's background, RAG systems, or venture..." autocomplete="off">
+                        <input type="text" id="ragQueryInput" placeholder="Ask anything (e.g. 'Who is Salman?', 'What projects has he built?', 'What is what?')..." autocomplete="off">
                         <span class="kbd-shortcut-hint" title="Press / anywhere to search">/</span>
                     </div>
                     <button class="btn btn-primary" onclick="runRagQuery()">Search</button>

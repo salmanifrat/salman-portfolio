@@ -1,45 +1,10 @@
-// Knowledge base for Ask This Page (Mini RAG)
+// Knowledge base for Ask This Page (Interactive AI)
 let knowledgeBase = [];
 
 async function loadPortfolioData() {
-    // Directly use static local data.js without attempting fetch('/api/data') when served statically (avoids 404 in console)
     if (typeof portfolioData !== 'undefined' && portfolioData.knowledgeBase) {
         knowledgeBase = portfolioData.knowledgeBase;
-        return;
     }
-
-    knowledgeBase = [
-        {
-            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship", "github", "repo"],
-            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq. The open-source repository is available on GitHub at https://github.com/salmanifrat/TaxeaseBD.",
-            source: "Projects • TaxEaseBD"
-        },
-        {
-            keywords: ["mars", "vision", "cse499", "senior", "design", "novelty", "image"],
-            answer: "For his senior design project (CSE499), Salman is developing a computer vision model to categorize Mars surface imagery objects into familiar, unfamiliar, and uncertain classes (novelty detection).",
-            source: "Research • Mars Vision"
-        },
-        {
-            keywords: ["nsu", "north", "south", "university", "cse", "student", "graduation", "batch"],
-            answer: "Salman is a 4th-year Computer Science and Engineering student at North South University (NSU) in Dhaka, expecting to graduate in late 2027.",
-            source: "About • Education"
-        },
-        {
-            keywords: ["ieee", "sub", "executive", "membership", "development", "volunteered", "conference"],
-            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has actively volunteered across three academic and research conferences.",
-            source: "Experience • IEEE & Leadership"
-        },
-        {
-            keywords: ["tutor", "tutoring", "math", "science", "english", "ict", "programming"],
-            answer: "Salman works as a private academic tutor across Bangla Medium, English Version, and English Medium, teaching Math, Physics, Chemistry, ICT, and basic programming.",
-            source: "Experience • Tutoring"
-        },
-        {
-            keywords: ["if", "brand", "instagram", "youtube", "psychology", "philosophy", "banglish"],
-            answer: "\"IF\" is Salman's personal creative content brand on Instagram and YouTube focusing on Banglish psychology, philosophy, and modern social commentary.",
-            source: "Content Brand • IF"
-        }
-    ];
 }
 
 // Welcome Overlay stub for backward compatibility
@@ -178,7 +143,19 @@ const observer = new IntersectionObserver((entries, observer) => {
     });
 }, observerOptions);
 
-// Mini RAG Query Engine
+// Helper to escape HTML characters in dynamic fallback text
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag] || tag));
+}
+
+// Interactive AI Engine (Semantic Intent Matching + Multi-Level NLP Scorer)
 function askPreset(query) {
     const input = document.getElementById('ragQueryInput');
     if (input) {
@@ -190,34 +167,121 @@ function askPreset(query) {
 function runRagQuery() {
     const inputEl = document.getElementById('ragQueryInput');
     if (!inputEl) return;
-    const input = inputEl.value.toLowerCase().trim();
+    const rawInput = inputEl.value.trim();
+    if (!rawInput) return;
+
     const resultBox = document.getElementById('ragResultContainer');
     const answerText = document.getElementById('ragAnswerText');
     const sourcesBox = document.getElementById('ragSourcesBox');
 
-    if (!input) return;
+    // Ensure knowledge base is loaded
+    if ((!knowledgeBase || knowledgeBase.length === 0) && typeof portfolioData !== 'undefined') {
+        knowledgeBase = portfolioData.knowledgeBase;
+    }
+    if (!knowledgeBase || knowledgeBase.length === 0) return;
 
-    let bestMatch = knowledgeBase[0] || { answer: "Information not found.", source: "General" };
-    let maxScore = 0;
+    const cleanInput = rawInput.toLowerCase();
+    const words = cleanInput.replace(/[^\w\s]/g, ' ').split(/\s+/).filter(w => w.length > 0);
 
-    knowledgeBase.forEach(item => {
+    const stopWords = new Set([
+        'a', 'an', 'the', 'is', 'are', 'was', 'were', 'am', 'be', 'been', 'being',
+        'what', 'who', 'which', 'where', 'when', 'why', 'how', 'can', 'could', 'would',
+        'will', 'do', 'does', 'did', 'have', 'has', 'had', 'tell', 'me', 'about', 'you',
+        'he', 'she', 'it', 'they', 'i', 'my', 'his', 'her', 'their', 'your', 'in', 'on',
+        'at', 'to', 'for', 'of', 'with', 'from', 'by', 'many', 'much', 'some', 'any'
+    ]);
+
+    const contentWords = words.filter(w => !stopWords.has(w));
+
+    // High-confidence Intent Classifiers
+    const isBioQuery = (cleanInput.includes('who') && (cleanInput.includes('salman') || cleanInput.includes('you') || cleanInput.includes('he') || cleanInput.includes('him') || cleanInput.includes('ifrat')))
+        || cleanInput.includes('about salman') || cleanInput.includes('about yourself') || cleanInput.includes('tell me about')
+        || cleanInput === 'who is salman' || cleanInput === 'who is salman?';
+
+    const isContactQuery = cleanInput.includes('contact') || cleanInput.includes('email') || cleanInput.includes('hire')
+        || cleanInput.includes('reach out') || cleanInput.includes('inbox') || cleanInput.includes('how to reach') || cleanInput.includes('how to contact');
+
+    const isResumeQuery = cleanInput.includes('resume') || cleanInput.includes('cv') || cleanInput.includes('curriculum vitae');
+
+    const isGreetingQuery = /^(hi|hello|hey|greetings|hola|help|what is what|what is this|what can you do|what not)[\s!?.]*$/.test(cleanInput)
+        || cleanInput === 'what is what' || cleanInput === 'what is what?' || cleanInput.includes('what not');
+
+    const isGeneralProjectsQuery = (cleanInput.includes('project') || cleanInput.includes('projects') || cleanInput.includes('built') || cleanInput.includes('apps') || cleanInput.includes('systems'))
+        && !cleanInput.includes('taxeasebd') && !cleanInput.includes('mars') && !cleanInput.includes('store') && !cleanInput.includes('c ');
+
+    const isGeneralCertQuery = (cleanInput.includes('cert') || cleanInput.includes('credential') || cleanInput.includes('badge'))
+        && !cleanInput.includes('google') && !cleanInput.includes('claude') && !cleanInput.includes('meta');
+
+    const isGeneralVenturesQuery = cleanInput.includes('venture') || cleanInput.includes('ventures') || cleanInput.includes('startup') || cleanInput.includes('startups') || cleanInput.includes('business');
+
+    const isEducationQuery = cleanInput.includes('study') || cleanInput.includes('studying') || cleanInput.includes('education') || cleanInput.includes('university') || cleanInput.includes('degree') || cleanInput.includes('credits') || cleanInput.includes('gpa') || cleanInput.includes('cgpa');
+
+    const isEmceeQuery = cleanInput.includes('emcee') || cleanInput.includes('speaking') || cleanInput.includes('host') || cleanInput.includes('presentation') || cleanInput.includes('stage') || cleanInput.includes(' mc') || cleanInput.startsWith('mc');
+
+    let scoredItems = knowledgeBase.map(item => {
         let score = 0;
+
+        // Intent boosters
+        if (isBioQuery && item.id === 'bio') score += 200;
+        if (isContactQuery && item.id === 'contact_info') score += 180;
+        if (isResumeQuery && item.id === 'resume_info') score += 180;
+        if (isGreetingQuery && item.id === 'conversational_greeting') score += 200;
+        if (isGeneralProjectsQuery && item.id === 'projects_overview') score += 120;
+        if (isGeneralCertQuery && item.id === 'certifications_overview') score += 120;
+        if (isGeneralVenturesQuery && item.id === 'ventures_overview') score += 120;
+        if (isEducationQuery && item.id === 'education_overview') score += 120;
+        if (isEmceeQuery && item.id === 'emcee_speaking') score += 140;
+
+        // Keyword phrase matching
         item.keywords.forEach(kw => {
-            if (input.includes(kw)) score++;
+            if (cleanInput.includes(kw)) {
+                if (words.includes(kw)) {
+                    score += 15;
+                } else {
+                    score += 8;
+                }
+            }
         });
-        if (score > maxScore) {
-            maxScore = score;
-            bestMatch = item;
-        }
+
+        // Content word matching (topic & answer text)
+        contentWords.forEach(w => {
+            if (item.topic && item.topic.toLowerCase().includes(w)) {
+                score += 12;
+            }
+            if (item.answer && item.answer.toLowerCase().includes(w)) {
+                score += 4;
+            }
+        });
+
+        return { item, score };
     });
 
+    scoredItems.sort((a, b) => b.score - a.score);
+
+    const best = scoredItems[0];
+
     resultBox.style.display = 'block';
-    if (maxScore > 0) {
-        answerText.innerHTML = `<p>${bestMatch.answer}</p>`;
-        sourcesBox.innerHTML = `<span class="source-tag">Retrieved from: ${bestMatch.source}</span>`;
+
+    if (best && best.score > 6) {
+        answerText.innerHTML = `<p>${best.item.answer}</p>`;
+        sourcesBox.innerHTML = `
+            <span class="source-tag">Retrieved from: ${best.item.source}</span>
+            <span class="confidence-tag" style="margin-left:8px;font-size:0.72rem;color:var(--accent);font-family:'JetBrains Mono',monospace;">● Verified Knowledge</span>
+        `;
     } else {
-        answerText.innerHTML = `<p>I couldn't find a precise match in my indexed memory for that query. Feel free to reach out directly via email or LinkedIn!</p>`;
-        sourcesBox.innerHTML = `<span class="source-tag">Fallback • General Inquiry</span>`;
+        answerText.innerHTML = `
+            <p>I couldn't find a direct match for <em>"${escapeHtml(rawInput)}"</em> in my current memory index.</p>
+            <p style="margin-top:10px;font-size:0.86rem;color:var(--text-muted);">You can try asking me one of these popular questions:</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+                <button class="chip" onclick="askPreset('Who is Salman?')">Who is Salman?</button>
+                <button class="chip" onclick="askPreset('What projects has Salman built?')">Projects Built?</button>
+                <button class="chip" onclick="askPreset('What certifications does Salman hold?')">Certifications?</button>
+                <button class="chip" onclick="askPreset('What is TaxEaseBD?')">TaxEaseBD?</button>
+                <button class="chip" onclick="askPreset('What is PLUSH?')">What is PLUSH?</button>
+                <button class="chip" onclick="askPreset('How can I contact Salman?')">Contact Info?</button>
+            </div>
+        `;
+        sourcesBox.innerHTML = `<span class="source-tag">Interactive AI • Suggested Questions</span>`;
     }
 }
 
