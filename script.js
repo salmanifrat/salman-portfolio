@@ -348,7 +348,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     const tiltCards = document.querySelectorAll(
-        '.nsu-banner-card, .flagship-project-card, .skill-matrix-card, .vault-card, .plush-card, .ieee-role-card, .skills-heads-up-card, .coming-next-card'
+        '.flagship-project-card, .skill-matrix-card, .vault-card, .plush-card, .ieee-role-card, .skills-heads-up-card, .coming-next-card'
     );
     tiltCards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
@@ -379,6 +379,40 @@ window.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseenter', () => {
             card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
         });
+    });
+
+    // Smooth Page Navigation Transitions between internal pages
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Skip external links, mailto, anchor hashes, javascript links, and new tabs
+        if (link.target === '_blank' || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('#') || href.startsWith('javascript:')) {
+            return;
+        }
+
+        // Get target filename
+        const targetClean = href.split('#')[0];
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        if (targetClean === currentPath || targetClean === '') {
+            return;
+        }
+
+        if (targetClean.endsWith('.html') || targetClean === 'index.html') {
+            e.preventDefault();
+            document.body.classList.add('page-leaving');
+            setTimeout(() => {
+                window.location.href = href;
+            }, 180);
+        }
+    });
+
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            document.body.classList.remove('page-leaving');
+        }
     });
 });
 
