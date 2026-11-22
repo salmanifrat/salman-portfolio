@@ -1661,6 +1661,8 @@ section h2 span {
     display: flex;
     flex-direction: column;
     gap: 0;
+    transform: none !important;
+    transform-style: flat !important;
 }
 
 .timeline-item {
@@ -1668,6 +1670,19 @@ section h2 span {
     gap: 20px;
     position: relative;
     padding-bottom: 40px;
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+}
+
+.timeline-body,
+#bscnsu,
+#hsc,
+#ssc,
+.course-grid {
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
 }
 
 .timeline-item:last-child {
