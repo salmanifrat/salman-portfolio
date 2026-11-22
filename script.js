@@ -10,8 +10,8 @@ async function loadPortfolioData() {
 
     knowledgeBase = [
         {
-            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship"],
-            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq.",
+            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship", "github", "repo"],
+            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq. The open-source repository is available on GitHub at https://github.com/salmanifrat/TaxeaseBD.",
             source: "Projects • TaxEaseBD"
         },
         {
@@ -26,7 +26,7 @@ async function loadPortfolioData() {
         },
         {
             keywords: ["ieee", "sub", "executive", "membership", "development", "volunteered", "conference"],
-            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has volunteered at two major international conferences hosted at NSU.",
+            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has actively volunteered across three academic and research conferences.",
             source: "Experience • IEEE & Leadership"
         },
         {
@@ -251,6 +251,8 @@ window.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    initMetricCounters();
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -421,4 +423,55 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ─── ANIMATED METRIC COUNTER (INCREASING & LOCKING EFFECT) ────
+function initMetricCounters() {
+    const box = document.querySelector('.about-highlights') || document.querySelector('.metrics-dialog-box');
+    if (!box) return;
 
+    let animated = false;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animated = true;
+                obs.unobserve(entry.target);
+                runCounters(box);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(box);
+
+    function runCounters(container) {
+        const counters = container.querySelectorAll('.metric-counter');
+        counters.forEach((counter, idx) => {
+            const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = target > 50 ? 1500 : 1100;
+            const delay = idx * 90;
+
+            setTimeout(() => {
+                const startTime = performance.now();
+
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Cubic ease-out: fast roll then smooth deceleration into locked number
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(ease * target);
+
+                    counter.textContent = current + (progress === 1 ? suffix : '');
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        counter.textContent = target + suffix;
+                        counter.classList.add('locked');
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }, delay);
+        });
+    }
+}

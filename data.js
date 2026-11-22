@@ -1,8 +1,8 @@
 const portfolioData = {
     knowledgeBase: [
         {
-            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship"],
-            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq.",
+            keywords: ["taxeasebd", "tax", "rag", "bangladesh", "nbr", "flagship", "github", "repo"],
+            answer: "TaxEaseBD is Salman's flagship RAG-powered tax compliance assistant built for Bangladesh. It indexes National Board of Revenue (NBR) tax laws and SROs using FastAPI, LangChain, FAISS, and LLaMA via Groq. The open-source repository is available on GitHub at https://github.com/salmanifrat/TaxeaseBD.",
             source: "Projects • TaxEaseBD"
         },
         {
@@ -17,7 +17,7 @@ const portfolioData = {
         },
         {
             keywords: ["ieee", "sub", "executive", "membership", "development", "volunteered", "conference"],
-            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has volunteered at two major international conferences hosted at NSU.",
+            answer: "Salman is a Sub Executive on the Membership Development Team at the IEEE NSU Student Branch and has actively volunteered across three academic and research conferences.",
             source: "Experience • IEEE & Leadership"
         },
         {
@@ -51,9 +51,24 @@ const portfolioData = {
             source: "Ventures • PLUSH & IBU"
         },
         {
-            keywords: ["conference", "conferences", "volunteer", "volunteering", "ic4me2", "iccit", "icjr", "spac"],
-            answer: "Salman has volunteered across 5 major international academic and professional conferences: IC4ME2, ICCIT, the 1st International Conference on the July Revolution (ICJR-1 at Senate Bhaban, DU), SPAC 25, and the China-South Asia Civilization Summit at NSU.",
+            keywords: ["conference", "conferences", "volunteer", "volunteering", "icjr", "spac", "china"],
+            answer: "Salman has volunteered across 3 major academic and professional conferences: the 1st International Conference on the July Revolution (ICJR-1 at Senate Bhaban, DU), SPAC 25 (IEEE NSU SB), and the China-South Asia Civilization Summit at NSU.",
             source: "Experience • Conference Volunteering"
+        },
+        {
+            keywords: ["office", "microsoft", "word", "excel", "powerpoint", "spreadsheet", "presentation", "slides"],
+            answer: "Salman is proficient in the Microsoft Office Suite including Word, Excel, and PowerPoint, with practical experience in spreadsheet formula modeling, structured report authoring, and professional slide deck design.",
+            source: "Skills • Productivity"
+        },
+        {
+            keywords: ["canva", "video", "editing", "design", "graphic", "reels", "media", "poster", "banner"],
+            answer: "Salman possesses strong visual design skills with Canva for social media graphics, event banners, and brand collateral, alongside practical video editing capabilities for digital storytelling and short-form video pacing.",
+            source: "Skills • Creative Media"
+        },
+        {
+            keywords: ["emcee", "mc", "hosting", "public", "speaking", "host", "presentation", "events", "stage"],
+            answer: "Salman has served as an EMCEE for 2–3 institutional and campus events, possessing strong public speaking skills, stage presence, crowd engagement, and live moderation capabilities.",
+            source: "Skills • Public Speaking & Hosting"
         }
     ]
 };

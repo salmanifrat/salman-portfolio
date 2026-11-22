@@ -181,6 +181,187 @@
                 height: 240px;
             }
         }
+
+        /* Document Vault styles */
+        .vault-jump-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .vault-jump-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .vault-filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            margin-bottom: 28px;
+        }
+        .vault-filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .vault-filter-btn:hover:not(.active) {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+        .vault-filter-btn.active {
+            background: var(--accent);
+            color: #120e0b;
+            border-color: var(--accent);
+            font-weight: 600;
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .vault-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.35s ease;
+        }
+        .vault-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px var(--accent-glow);
+        }
+
+        .vault-thumb-wrap {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #09090d;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .vault-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.35s ease;
+        }
+        .vault-card:hover .vault-thumb-wrap img {
+            transform: scale(1.05);
+        }
+        .vault-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 14, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            gap: 6px;
+        }
+        .vault-thumb-wrap:hover .vault-thumb-overlay {
+            opacity: 1;
+        }
+
+        .vault-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .vault-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .vault-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 6px 0;
+            line-height: 1.35;
+        }
+        .vault-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 16px;
+        }
+        .vault-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .vault-btn-inspect {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .vault-btn-inspect:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .vault-btn-verify {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: opacity 0.2s ease;
+        }
+        .vault-btn-verify:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -201,7 +382,6 @@
                 <a href="experience.html" class="nav-item active">Experience</a>
                 <a href="education.html" class="nav-item">Education</a>
                 <a href="skills.html" class="nav-item">Skills</a>
-                <a href="weird.html" class="nav-item">Weird Corner</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
@@ -213,6 +393,12 @@
             <div class="page-hero-label">Work, Leadership & Community</div>
             <h1 class="page-hero-title">Experience</h1>
             <p class="page-hero-sub">Entrepreneurship, IEEE leadership, conferences, teaching, and campus volunteering.</p>
+            <div style="margin-top: 18px;">
+                <a href="#vault" class="vault-jump-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    View Document &amp; Proof Vault (8 Credentials) ↓
+                </a>
+            </div>
         </div>
     </div>
 
@@ -585,6 +771,209 @@
             </div>
         </section>
 
+        <!-- Document & Credential Archive / Proof Vault -->
+        <section class="scroll-reveal" id="vault" style="margin-top: 70px;">
+            <div class="nsu-banner-card" style="height: 140px; cursor: default;">
+                <div class="nsu-banner-bg">
+                    <img src="assets/banner.jpg" alt="Credentials & Document Archive" onerror="this.src='assets/nsu_campus.jpg';">
+                    <div class="nsu-banner-gradient"></div>
+                </div>
+                <div class="nsu-banner-content">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px;">Unified Repository</div>
+                    <h2 class="nsu-banner-title">Document &amp; Proof Vault</h2>
+                </div>
+            </div>
+
+            <!-- Filter tabs -->
+            <div class="vault-filter-bar">
+                <button class="vault-filter-btn active" onclick="filterVault('all', this)">All Documents (8)</button>
+                <button class="vault-filter-btn" onclick="filterVault('cert', this)">Tech Certifications (3)</button>
+                <button class="vault-filter-btn" onclick="filterVault('conf', this)">Conferences (3)</button>
+                <button class="vault-filter-btn" onclick="filterVault('proof', this)">Leadership &amp; Ventures (2)</button>
+            </div>
+
+            <!-- Vault Grid -->
+            <div class="vault-grid" id="vaultGrid">
+
+                <!-- Doc 1: Claude Code -->
+                <div class="vault-card" data-category="cert">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_claude_code.png')">
+                        <img src="assets/cert_claude_code.png" alt="Claude Code in action Certificate">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">Anthropic Verified</div>
+                            <h3 class="vault-title">Claude Code in action</h3>
+                            <div class="vault-issuer">Claude Academy · Nov 21, 2026</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_claude_code.png')">Zoom Preview</button>
+                            <a href="https://academy.claude.com/verify/a285820c05ed2449b849083ddd471f0d" target="_blank" rel="noopener noreferrer" class="vault-btn-verify">Verify Credential ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 2: Google GenAI -->
+                <div class="vault-card" data-category="cert">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_google_genai.png')">
+                        <img src="assets/cert_google_genai.png" alt="Google Cloud Generative AI Badge">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">Google Cloud Badge</div>
+                            <h3 class="vault-title">Introduction to Generative AI</h3>
+                            <div class="vault-issuer">Google Cloud &amp; Google Skills · Nov 21, 2026</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_google_genai.png')">Zoom Preview</button>
+                            <a href="https://www.skills.google/public_profiles/790ca946-ad5e-4d49-8368-b181e4e0213c/badges/29820792" target="_blank" rel="noopener noreferrer" class="vault-btn-verify">Verify Credential ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 3: Meta Advantage+ -->
+                <div class="vault-card" data-category="cert">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_meta_advantage.png')">
+                        <img src="assets/cert_meta_advantage.png" alt="Meta Blueprint Advantage+ Certificate">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">Meta Blueprint</div>
+                            <h3 class="vault-title">Optimize your campaign with Meta Advantage+</h3>
+                            <div class="vault-issuer">Meta Blueprint · Nov 22, 2026</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_meta_advantage.png')">Zoom Preview</button>
+                            <a href="https://www.facebookblueprint.com/student/award/xTucaZ3Gvq4A4joNsHzcp3k1" target="_blank" rel="noopener noreferrer" class="vault-btn-verify">Verify Credential ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 4: July Revolution Conf -->
+                <div class="vault-card" data-category="conf">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_july_rev.jpg')">
+                        <img src="assets/cert_july_rev.jpg" alt="1st International Conference on the July Revolution Certificate">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">DU Senate Bhaban</div>
+                            <h3 class="vault-title">1st Int'l Conference on the July Revolution</h3>
+                            <div class="vault-issuer">University of Dhaka · July 27, 2025</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_july_rev.jpg')">Zoom Preview</button>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted);">Volunteer Credential</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 5: SPAC 25 Conf -->
+                <div class="vault-card" data-category="conf">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_spac25.jpg')">
+                        <img src="assets/cert_spac25.jpg" alt="SPAC 25 Conference Certificate">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">IEEE NSU Student Branch</div>
+                            <h3 class="vault-title">Student Professional Awareness Conference 2025</h3>
+                            <div class="vault-issuer">SPAC 25 · 2025</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_spac25.jpg')">Zoom Preview</button>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted);">Participant / Volunteer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 6: China-South Asia Conf -->
+                <div class="vault-card" data-category="conf">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/cert_china_conf.jpg')">
+                        <img src="assets/cert_china_conf.jpg" alt="China-South Asia Conference Certificate">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">NSU SIPG &amp; CSCSS</div>
+                            <h3 class="vault-title">China - South Asia Civilization &amp; Connectivity</h3>
+                            <div class="vault-issuer">North South University · Dec 27–28, 2024</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/cert_china_conf.jpg')">Zoom Preview</button>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted);">Student Volunteer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 7: IEEE Sub Executive -->
+                <div class="vault-card" data-category="proof">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/ieee_sub_exec.jpg')">
+                        <img src="assets/ieee_sub_exec.jpg" alt="IEEE NSU Student Branch Sub Executive Appointment">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">Leadership Appointment</div>
+                            <h3 class="vault-title">Sub Executive — Membership Development</h3>
+                            <div class="vault-issuer">IEEE NSU Student Branch (INSB) · 2026–2027</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/ieee_sub_exec.jpg')">Zoom Preview</button>
+                            <a href="https://ieeensusb.org/" target="_blank" rel="noopener noreferrer" class="vault-btn-verify">IEEE NSU SB ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 8: PLUSH Pop-up Stall -->
+                <div class="vault-card" data-category="proof">
+                    <div class="vault-thumb-wrap" onclick="openLightbox('assets/plush_stall.jpg')">
+                        <img src="assets/plush_stall.jpg" alt="PLUSH On-Campus Pop-Up Stall at NSU">
+                        <div class="vault-thumb-overlay">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            <span>Inspect Document</span>
+                        </div>
+                    </div>
+                    <div class="vault-card-body">
+                        <div>
+                            <div class="vault-tag">Venture Proof of Work</div>
+                            <h3 class="vault-title">PLUSH On-Campus Pop-Up Retail Stall</h3>
+                            <div class="vault-issuer">North South University Campus · Venture Curation</div>
+                        </div>
+                        <div class="vault-actions">
+                            <button class="vault-btn-inspect" onclick="openLightbox('assets/plush_stall.jpg')">Zoom Preview</button>
+                            <a href="https://facebook.com/PLUSH.CO" target="_blank" rel="noopener noreferrer" class="vault-btn-verify">PLUSH Page ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <footer>
             <p>© 2026 Mohammed Salman Ifrat — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a></p>
         </footer>
@@ -607,6 +996,18 @@
         }
         function closeLightbox() {
             document.getElementById('lightboxModal').style.display = 'none';
+        }
+        function filterVault(category, btn) {
+            document.querySelectorAll('.vault-filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            const cards = document.querySelectorAll('.vault-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>

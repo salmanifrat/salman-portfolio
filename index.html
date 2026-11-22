@@ -29,7 +29,6 @@
                 <a href="experience.html" class="nav-item">Experience</a>
                 <a href="education.html" class="nav-item">Education</a>
                 <a href="skills.html" class="nav-item">Skills</a>
-                <a href="weird.html" class="nav-item">Weird Corner</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">Theme</button>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
@@ -51,8 +50,22 @@
                     Department of Computer Science &amp; Engineering,<br>North South University, Dhaka
                 </div>
                 <div class="hero-cta">
-                    <a href="projects.html" class="btn btn-primary">View My Work →</a>
-                    <a href="mailto:ifrat.official25@gmail.com" class="btn btn-secondary">Get in Touch</a>
+                    <a href="projects.html" class="btn btn-primary">Projects →</a>
+                    <button id="downloadCvBtn" onclick="openCvPreview()" class="btn btn-cv">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Resume
+                    </button>
+                    <a href="experience.html#vault" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;">
+                            <circle cx="12" cy="8" r="6"/>
+                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                        </svg>
+                        Credentials
+                    </a>
                 </div>
                 <div class="profile-socials">
                     <a href="https://github.com/salmanifrat" target="_blank" class="social-icon-btn" title="GitHub">
@@ -63,6 +76,9 @@
                     </a>
                     <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="social-icon-btn" title="Facebook">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/mohammadsalmanifrat/" target="_blank" class="social-icon-btn" title="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
                     <a href="mailto:ifrat.official25@gmail.com" class="social-icon-btn" title="Email">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -129,25 +145,35 @@
                     </div>
                 </div>
                 <div class="about-highlights">
-                    <div class="about-highlight-item">
-                        <div class="about-highlight-icon">✦</div>
-                        <div class="about-highlight-text">
-                            <h4>Applied AI &amp; Domain RAG</h4>
-                            <p>Engineering retrieval systems that accurately translate complex legal codes and tax regulations into actionable natural language answers.</p>
-                        </div>
+                    <div class="about-dialog-header">
+                        <span class="about-dialog-tag">✦ Quantitative Milestones &amp; Track Record ✦</span>
                     </div>
-                    <div class="about-highlight-item">
-                        <div class="about-highlight-icon">✦</div>
-                        <div class="about-highlight-text">
-                            <h4>Venture Creation &amp; Operations</h4>
-                            <p>Hands-on founder experience with PLUSH: customer discovery, supply chain curation, brand identity, and multi-channel fulfillment.</p>
+
+                    <div class="about-metrics-grid">
+                        <!-- Row 1: Academic Credits & Projects -->
+                        <div class="about-metric-cell">
+                            <span class="metric-counter" data-target="100" data-suffix="+">0+</span>
+                            <span class="metric-cell-title">Academic Credits Done</span>
                         </div>
-                    </div>
-                    <div class="about-highlight-item">
-                        <div class="about-highlight-icon">✦</div>
-                        <div class="about-highlight-text">
-                            <h4>Sub Executive Leadership &amp; Impact</h4>
-                            <p>Recruiting and mentoring talent in IEEE, speaking to hundreds of students at orientations, and driving logistics for international research symposiums.</p>
+                        <div class="about-metric-cell">
+                            <span class="metric-counter" data-target="4">0</span>
+                            <span class="metric-cell-title">Software Projects</span>
+                        </div>
+
+                        <!-- Row 2: Certifications & Conferences -->
+                        <div class="about-metric-cell">
+                            <span class="metric-counter" data-target="3">0</span>
+                            <span class="metric-cell-title">Professional Certifications</span>
+                        </div>
+                        <div class="about-metric-cell">
+                            <span class="metric-counter" data-target="3">0</span>
+                            <span class="metric-cell-title">Academic Conferences</span>
+                        </div>
+
+                        <!-- Row 3: Ventures Launched (Col 1 has 3 items, Col 2 has 2 items) -->
+                        <div class="about-metric-cell">
+                            <span class="metric-counter" data-target="2">0</span>
+                            <span class="metric-cell-title">Ventures Launched</span>
                         </div>
                     </div>
                 </div>
@@ -239,18 +265,17 @@
                     <div>
                         <div class="pillar-box-top-row">
                             <div class="pillar-box-tag">Global Summits</div>
-                            <div class="pillar-status-pill">● 5 Academic Conferences</div>
+                            <div class="pillar-status-pill">● 3 Academic Conferences</div>
                         </div>
                         <h3 class="pillar-box-title">Conference Volunteering</h3>
                         <div class="pillar-box-sub">Protocol Coordination &amp; Delegate Management</div>
                         <p class="pillar-box-desc">
-                            Volunteered on operational and protocol teams across 5 major international research conferences at NSU &amp; DU—including <strong>IC4ME2</strong>, <strong>ICCIT</strong>, <strong>ICJR-1</strong> (Senate Bhaban), <strong>SPAC 25</strong>, and China-South Asia.
+                            Volunteered on operational and protocol teams across 3 major academic and research conferences at NSU &amp; DU—including <strong>ICJR-1</strong> (Senate Bhaban, DU), <strong>SPAC 25</strong>, and <strong>China - South Asia Civilization</strong>.
                         </p>
                         <div class="pillar-box-badges">
-                            <span class="pillar-box-badge">IC4ME2</span>
-                            <span class="pillar-box-badge">ICCIT</span>
                             <span class="pillar-box-badge">ICJR-1 (DU)</span>
                             <span class="pillar-box-badge">SPAC 25</span>
+                            <span class="pillar-box-badge">China - South Asia</span>
                         </div>
                     </div>
                     <div class="pillar-box-footer">
@@ -394,7 +419,7 @@
                     <div class="badges" style="margin-top: 14px;">
                         <span class="badge">Venture Ops</span>
                         <span class="badge">IEEE NSU SB</span>
-                        <span class="badge">IC4ME2 / ICCIT</span>
+                        <span class="badge">Conference Ops</span>
                         <span class="badge">Brand Strategy</span>
                     </div>
                 </div>
@@ -459,6 +484,7 @@
                     <a href="https://github.com/salmanifrat" target="_blank" class="btn btn-secondary">GitHub</a>
                     <a href="https://www.linkedin.com/in/salman-ifrat-457157272/" target="_blank" class="btn btn-secondary">LinkedIn</a>
                     <a href="https://www.facebook.com/ifu.9596/" target="_blank" class="btn btn-secondary">Facebook</a>
+                    <a href="https://www.instagram.com/mohammadsalmanifrat/" target="_blank" class="btn btn-secondary">Instagram</a>
                 </div>
             </div>
         </section>
@@ -471,6 +497,35 @@
         </footer>
     </div>
 
+    <!-- CV Preview Modal -->
+    <div id="cvPreviewModal" class="cv-modal-overlay" onclick="closeCvPreview(event)">
+        <div class="cv-modal-container" onclick="event.stopPropagation()">
+            <div class="cv-modal-toolbar">
+                <span class="cv-modal-title">Resume Preview</span>
+                <div class="cv-modal-actions">
+                    <button onclick="downloadCV()" class="cv-modal-download-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download PDF
+                    </button>
+                    <button onclick="closeCvPreview()" class="cv-modal-close-btn" aria-label="Close">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cv-modal-body" id="cvPreviewBody">
+                <!-- CV content injected here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="cv-generator.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
     <script src="lusion-engine.js"></script>
