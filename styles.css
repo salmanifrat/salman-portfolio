@@ -282,9 +282,9 @@ body {
     background-position: 0 0, 16px 16px;
     color: var(--text);
     line-height: 1.7;
-    transition: background 0.4s ease, color 0.4s ease, opacity 0.2s ease, transform 0.2s ease;
+    transition: background 0.4s ease, color 0.4s ease, opacity 0.22s ease, transform 0.22s ease;
     overflow-x: hidden;
-    animation: pageEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: contentEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body.page-leaving {
@@ -292,10 +292,10 @@ body.page-leaving {
     transform: translateY(-8px);
 }
 
-@keyframes pageEntrance {
+@keyframes contentEntrance {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(22px);
     }
     to {
         opacity: 1;
@@ -945,6 +945,7 @@ section h2 span {
 .page-hero {
     padding: 110px 0 50px;
     border-bottom: 1px solid var(--border);
+    animation: contentEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .page-hero-label {
@@ -954,7 +955,7 @@ section h2 span {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 12px;
-    animation: pageEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    animation: contentEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
 .page-hero-title {
@@ -964,7 +965,7 @@ section h2 span {
     color: var(--text);
     letter-spacing: -0.01em;
     margin-bottom: 14px;
-    animation: pageEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+    animation: contentEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
 .page-hero-sub {
@@ -973,7 +974,7 @@ section h2 span {
     font-weight: 300;
     max-width: 560px;
     line-height: 1.7;
-    animation: pageEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+    animation: contentEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
 /* ─── Snapshot Rows (home page brief summaries) ─── */
@@ -1204,8 +1205,8 @@ section h2 span {
     border: 1px solid var(--border);
     text-decoration: none;
     height: 140px;
-    transform: translateY(0);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nsu-banner-bg {
@@ -1390,7 +1391,7 @@ section h2 span {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 14px 18px;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
                 border-color 0.3s ease,
                 box-shadow 0.3s ease,
                 background 0.3s ease;
@@ -1398,6 +1399,7 @@ section h2 span {
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
+    transform-style: preserve-3d;
 }
 
 .scroll-reveal .course-card {
