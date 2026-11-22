@@ -1195,7 +1195,8 @@ section h2 span {
     border: 1px solid var(--border);
     text-decoration: none;
     height: 140px;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nsu-banner-bg {
@@ -1391,7 +1392,6 @@ section h2 span {
     justify-content: space-between;
     min-height: 92px;
     cursor: default;
-    transform-style: preserve-3d;
 }
 
 .scroll-reveal .course-card {
@@ -1421,7 +1421,8 @@ section h2 span {
 .course-card:hover {
     background: var(--bg-card);
     border-color: var(--accent);
-    box-shadow: 0 12px 35px var(--accent-glow);
+    box-shadow: 0 10px 30px var(--accent-glow);
+    transform: translateY(-3px);
     z-index: 10;
     transition-delay: 0s !important;
 }
